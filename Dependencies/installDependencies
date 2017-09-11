@@ -1,0 +1,16 @@
+echo "Starting dependencies install."
+
+echo "Installing: bcm2835 v.52 dependency..."
+echo ""
+echo ""
+wget 'http://www.airspayce.com/mikem/bcm2835/bcm2835-1.52.tar.gz'
+tar zxvf bcm2835-1.52.tar.gz
+cd bcm2835-1.52
+./configure
+make
+sudo make check
+sudo make install
+echo ""
+echo ""
+echo "Done."
+

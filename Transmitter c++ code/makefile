@@ -9,6 +9,5 @@ serial_test: serial_test.o
 serial_test.o: serial_test.c
 	g++ $(FLAGS) -c serial_test.c
 
-
 clean:
 	rm -rf $(OBJS) serial_test
