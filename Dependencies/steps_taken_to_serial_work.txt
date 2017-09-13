@@ -6,3 +6,8 @@
 6. Added "dtoverlay=pi3-miniuart-bt" to set BlueTooth to the mini-uart while
    the serial connection will get the nice, fast ttyAMA0 uart.
 7. Reboot.
+
+8. changed "/dev/ttys0" to "/dev/serial0"
+9. Set baud rate to 9600 (for now).
+
+Okay, so running serial_test.c with these steps, the serialOpen() call does not fail -> serial is working.

@@ -15,14 +15,16 @@ int main(int argc, char *argv[]) {
 	size_t size;
 	unsigned char c;
 	int i;
-	int fd = serialOpen("serial0", 9600);
+	int fd = serialOpen("/dev/serial0", 9600);
 	char size_bytes[4];
 
 	if (fd == -1){
 		printf("Serial error: <%d>\n",fd);
 		return 0;
 	}
-
+	
+	printf("NO SERIAL ERROR!!\n");
+	
 	fp = fopen(argv[1], "rb");
 	fseek(fp, 0, SEEK_END);
 	size = ftell(fp);
