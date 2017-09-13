@@ -1,0 +1,8 @@
+1. ran "installDependencies" first
+2. Made sure /boot/config.txt had enable_uart=1 AND core_freq=250
+3. ran "sudo systemctl stop serial-getty@ttyS0.service"
+4. ran "sudo systemctl disable serial-getty@ttyS0.service"
+5. Made sure /boot/cmdline.txt did not have "console="serial,XX...XX"
+6. Added "dtoverlay=pi3-miniuart-bt" to set BlueTooth to the mini-uart while
+   the serial connection will get the nice, fast ttyAMA0 uart.
+7. Reboot.

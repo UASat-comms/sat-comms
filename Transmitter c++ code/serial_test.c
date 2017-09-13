@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
 	size_t size;
 	unsigned char c;
 	int i;
-	int fd = serialOpen("/dev/ttyS0", 9600);
+	int fd = serialOpen("serial0", 9600);
 	char size_bytes[4];
 
 	if (fd == -1){
