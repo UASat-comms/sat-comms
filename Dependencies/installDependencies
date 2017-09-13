@@ -1,4 +1,12 @@
+#!/bin/bash
+
 echo "Starting dependencies install."
+
+# This is necessary to get the latest package
+# information.
+echo "Updating package information"
+sudo apt-get update
+sudo apt-get upgrade
 
 echo "Installing: bcm2835 v.52 dependency..."
 echo ""
@@ -10,7 +18,8 @@ cd bcm2835-1.52
 make
 sudo make check
 sudo make install
+echo "Current pinout setup for wiringPi:"
+gpio readall
 echo ""
 echo ""
 echo "Done."
-

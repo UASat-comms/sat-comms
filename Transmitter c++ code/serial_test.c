@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 	char size_bytes[4];
 
 	if (fd == -1){
-		printf("Serial error\n");
+		printf("Serial error: <%d>\n",fd);
 		return 0;
 	}
 
@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
 		c = fgetc(fp);
 		serialPutchar(fd, c);
 	}
-	
+
 	fclose(fp);
 	serialClose(fd);
 }
