@@ -18,7 +18,7 @@ lwr()
 }
 
 # Prints two newlines.
-spcr
+spcr()
 {
   printf '\n\n'
 }
