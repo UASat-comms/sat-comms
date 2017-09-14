@@ -1,2 +1,5 @@
 http://wind.cs.purdue.edu/doc/adhoc.html    <- Setting up ad-hoc
+
 https://spellfoundry.com/2016/05/29/configuring-gpio-serial-port-raspbian-jessie-including-pi-3/    <- Setting up serial to use nicer UART module
+
+https://github.com/Hallard/RadioHead.git   <-  Repo w/ RPi examples.
