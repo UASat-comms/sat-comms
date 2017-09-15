@@ -53,7 +53,8 @@ int main(int argc, const char **argv) {
      FILE *fp = fopen(argv[1], "r");
      int fsize = fileSize(fp);
      char *stringFileSize = IntToString(fsize);
-     
+
+     printf("FILE SIZE: <%d>\n", fsize);      
      int fd = serialOpen(INTERFACE, BAUD_RATE);
      if(fd < 0) {
           printf("ERROR 1\n");
