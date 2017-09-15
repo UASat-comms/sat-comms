@@ -1,8 +1,9 @@
 # System Configuration
 1. ran "installDependencies" first
-2. Made sure /boot/config.txt had enable_uart=1 AND core_freq=250
-    -> core_freq=250 was set because UART gets its clock as a derivative
-       of the cpu core frequency; therefore, if the sender & receiver have
+2. Made sure /boot/config.txt had enable_uart=1 AND core_freq=400 
+    -> (core_freq=250 is default for RPi 1 & 2, core_freq=400 for RPi 3)
+    -> core_freq=400 was set because UART gets its clock as a derivative
+       of the gpu core frequency; therefore, if the sender & receiver have
        too different clock rates then issues might arise.
 3. ran "sudo systemctl stop serial-getty@ttyS0.service"
 4. ran "sudo systemctl disable serial-getty@ttyS0.service"
