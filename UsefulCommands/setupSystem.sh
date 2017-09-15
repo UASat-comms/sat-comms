@@ -125,10 +125,8 @@ echo "       You could change the ad-hoc network range to be something like"
 echo "       '192.166.2.1 <-> 192.166.2.255' to ensure that the wireless and wired"
 echo "       interfaces will not interfere with one another."
 spcr
-echo "Backing up existing /etc/network/interfaces file."
-sudo cp /etc/network/interfaces ./interfaces.backup
 echo "Placing ad-hoc-interfaces into place."
-sudo cp ./ad-hoc-interfaces /etc/network/interfaces
+sudo cp ad-hoc-interfaces /etc/network/interfaces
 lwr
 
 uppr
