@@ -8,16 +8,16 @@
 # evalues to 'make foo clean'
 
 CC            = g++
-CFLAGS        = -DRASPBERRY_PI -DBCM2835_NO_DELAY_COMPATIBILITY -D__BASEFILE__=\"$*\"
-LIBS          = -lbcm2835
+CFLAGS        = -DRASPBERRY_PI -DBCM2835_NO_DELAY_COMPATIBILITY -D__BASEFILE__=\"$*\" -O3 -std=c++11
+LIBS          = -lbcm2835 -lwiringPi
 RADIOHEADBASE = ./../RadioHead/
 INCLUDE       = -I$(RADIOHEADBASE)
 
 serialTest: serialTest.o RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o
-	$(CC) $^ $(LIBS) -o serialTest
+	$(CC) $(INCLUDE) $^ $(LIBS) -o $@
 
-serialTest.o: serialTest.cpp
-	$(CC) $(CFLAGS) -c $(INCLUDE) $<
+serialTest.o: serialTest.cpp serialconstants.h
+	$(CC) $(CFLAGS) -c $(INCLUDE) serialTest.cpp
 
 RasPi.o: $(RADIOHEADBASE)/RHutil/RasPi.cpp
 	$(CC) $(CFLAGS) -c $(RADIOHEADBASE)/RHutil/RasPi.cpp $(INCLUDE)
@@ -37,3 +37,6 @@ RHGenericDriver.o: $(RADIOHEADBASE)/RHGenericDriver.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 RHGenericSPI.o: $(RADIOHEADBASE)/RHGenericSPI.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
+
+clean:
+	rm -f *.o serialTest

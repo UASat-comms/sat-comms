@@ -7,9 +7,10 @@
  * ======================================================
  */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <inttypes.h>
+
+#include <cstdlib>
+#include <cstdio>
+#include <cinttypes>
 #include <wiringPi.h>
 #include <wiringSerial.h>
 #include "serialconstants.h"
@@ -40,9 +41,9 @@ int fileSize(FILE *fp) {
  * ======================================================
  */
 char *IntToString(int input) {
-     char *intString = malloc(sizeof(IDENTIFIER_LENGTH));
-     sprintf(intString, "%d", input);
-     return intString;
+	char *buffer = (char *) malloc(sizeof(char) * 50);
+	sprintf(buffer, "%d", input);
+	return buffer;
 }
 
 int main(int argc, const char **argv) {
@@ -52,7 +53,7 @@ int main(int argc, const char **argv) {
      int fsize = fileSize(fp);
      char *stringFileSize = IntToString(fsize);
      printf("%s\n", stringFileSize);
-
+	printf("%d\n", atoi(stringFileSize));
      int fd = serialOpen("/dev/serial0", BAUD_RATE);
 
      serialPuts(fd, stringFileSize);
@@ -62,3 +63,4 @@ int main(int argc, const char **argv) {
 
      return 0;
 }
+
