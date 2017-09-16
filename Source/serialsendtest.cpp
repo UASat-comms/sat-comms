@@ -24,6 +24,7 @@
  *
  * Notes: The file pointer will be set at the beginning
  *        of the file after finding the size of the file.
+ *	  Also, it includes the EOF char in the count.
  * ======================================================
  */
 int fileSize(FILE *fp) {
@@ -52,6 +53,10 @@ int main(int argc, const char **argv) {
 
      FILE *fp = fopen(argv[1], "r");
      int fsize = fileSize(fp);
+     
+     // Putting this here for time-being to get rid of EOF char.
+     // fsize -= 1;
+
      char *stringFileSize = IntToString(fsize);
 
      printf("FILE SIZE: <%d>\n", fsize);      
@@ -60,10 +65,18 @@ int main(int argc, const char **argv) {
           printf("ERROR 1\n");
 	  return 1;
      }
-	for(int i = 0; i < IDENTIFIER_LENGTH; i++) {
-		serialPutchar(fd, stringFileSize[i]);
-	}
+     
+     char *fileData = (char *) malloc(sizeof(char) * fsize);
+     for(int i = 0; i < fsize; i++) fileData[i] = fgetc(fp);     
+     
+     for(int i = 0; i < IDENTIFIER_LENGTH; i++) {
+          serialPutchar(fd, stringFileSize[i]);
+     }
 
+
+     for(int i = 0; i < fsize; i++) serialPutchar(fd, fileData[i]);   
+     
+     free(fileData);
      fclose(fp);
      serialClose(fd);
 
