@@ -10,8 +10,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <inttypes.h>
-//#include <wiringPi.h>
-//#include <wiringSerial.h>
+#include <wiringPi.h>
+#include <wiringSerial.h>
 #include "serialconstants.h"
 
 /* ======================================================
