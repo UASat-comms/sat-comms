@@ -14,11 +14,11 @@ RADIOHEADBASE = ./../RadioHead/
 PICOSHABASE   = ./../PicoSHA2/
 INCLUDE       = -I$(RADIOHEADBASE) -I$(PICOSHABASE)
 
-serialtest: serialtest.o RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o
+serialsendtest: serialsendtest.o RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o
 	$(CC) $(INCLUDE) $^ $(LIBS) -o $@
 
-serialtest.o: serialtest.cpp serialconstants.h
-	$(CC) $(CFLAGS) -c $(INCLUDE) $< 
+serialsendtest.o: serialsendtest.cpp settings.h
+	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 RasPi.o: $(RADIOHEADBASE)/RHutil/RasPi.cpp
 	$(CC) $(CFLAGS) -c $(RADIOHEADBASE)/RHutil/RasPi.cpp $(INCLUDE)
@@ -40,4 +40,4 @@ RHGenericSPI.o: $(RADIOHEADBASE)/RHGenericSPI.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 clean:
-	rm -f *.o serialtest
+	rm -f *.o serialsendtest

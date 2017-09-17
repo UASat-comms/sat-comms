@@ -1,6 +1,6 @@
 
-#ifndef _SERIAL_CON_H_
-#define _SERIAL_CON_H_
+#ifndef _SETTINGS_H_
+#define _SETTINGS_H_
 
 #define INTERFACE "/dev/serial0"
 #define IDENTIFIER_LENGTH 50

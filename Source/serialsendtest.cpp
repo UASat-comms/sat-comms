@@ -13,7 +13,7 @@
 #include <cinttypes>
 #include <wiringPi.h>
 #include <wiringSerial.h>
-#include "serialconstants.h"
+#include "settings.h"
 #include "picosha2.h"
 
 /* ======================================================
