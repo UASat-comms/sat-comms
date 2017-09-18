@@ -13,10 +13,18 @@ LIBS          = -lbcm2835 -lwiringPi
 RADIOHEADBASE = ./../RadioHead/
 PICOSHABASE   = ./../PicoSHA2/
 INCLUDE       = -I$(RADIOHEADBASE) -I$(PICOSHABASE)
+OBJS = RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o
 
-serialsendtest: serialsendtest.o RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o
+all: serialreceivetest serialsendtest
+
+serialreceivetest: serialreceivetest.o $(OBJS)
+	$(CC) $(INCLUDE) $^ $(LIBS) -o $@
+serialsendtest: serialsendtest.o $(OBJS) 
 	$(CC) $(INCLUDE) $^ $(LIBS) -o $@
 
+
+serialreceivetest.o: serialreceivetest.cpp settings.h
+	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 serialsendtest.o: serialsendtest.cpp settings.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
@@ -40,4 +48,4 @@ RHGenericSPI.o: $(RADIOHEADBASE)/RHGenericSPI.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 clean:
-	rm -f *.o serialsendtest
+	rm -f *.o serialsendtest serialreceivetest

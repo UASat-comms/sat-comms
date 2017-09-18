@@ -56,15 +56,15 @@ int main(int argc, const char **argv) {
      
      int fd = serialOpen(INTERFACE, BAUD_RATE);
      if(fd < 0) {
-          printf("ERROR 0!\n");
+          printf("ERROR 1\n");
 	  return 1;
      }
-     	// check to see if this returns an error int.
-	serialPuts(fd, stringFileSize);
+	for(int i = 0; i < IDENTIFIER_LENGTH; i++) {
+		serialPutchar(fd, stringFileSize[i]);
+	}
 
      fclose(fp);
      serialClose(fd);
 
      return 0;
 }
-
