@@ -33,11 +33,11 @@ int main(int argc, const char **argv) {
      
      char *filedata = (char *) malloc(sizeof(char) * (fileSize));
      //filedata[fileSize - 1] = '\0';
-     clock_t start, end;
-     start = clock();
+     time_t start, end;
+     start = time(0);
      for(int i = 0; i < fileSize; i++) filedata[i] = serialGetchar(fd);     
-     end = clock();
-     double avg = ((double) end - start) / CLOCKS_PER_SEC;
+     end = time(0);
+     double avg = ((double) end - (double) start);
      printf("%lf\n", avg);
 
      FILE *fp = fopen("RECD_data", "w");
