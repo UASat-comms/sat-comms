@@ -28,7 +28,7 @@ int main(int argc, const char **argv) {
      }
 
      int fileSize = getMessageSize(fd);
-     printf("Size of file to receive: <%d>\n", fileSize);
+     printf("Size of file to receive IN BYTES: <%d>\n", fileSize);
      
      char *filedata = (char *) malloc(sizeof(char) * (fileSize));
      //filedata[fileSize - 1] = '\0';
@@ -38,8 +38,9 @@ int main(int argc, const char **argv) {
      end = time(0);
      double avg = ((double) end - (double) start);
 
-     printf("Time in seconds taken to transmit: <%lf>\n", avg);
-     printf("Resulting bit/s rate: <%lf>\n", fileSize / avg);
+     printf("Time in seconds taken to transmit IN SECONDS: <%lf>\n", avg);
+     printf("Resulting BYTES/s rate: <%lf>\n", fileSize / avg);
+     printf("Resulting bits/s rate: <%lf>\n", (fileSize * 8) / avg);
 
      FILE *fp = fopen("RECD_data", "w");
      for(int i = 0; i < fileSize; i++) fputc(filedata[i], fp);
