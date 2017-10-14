@@ -10,7 +10,7 @@
 CC            = g++
 CFLAGS        = -DRASPBERRY_PI -DBCM2835_NO_DELAY_COMPATIBILITY -D__BASEFILE__=\"$*\" -O3 -std=c++11
 LIBS          = -lbcm2835 -lwiringPi
-RADIOHEADBASE = ./../RadioHead/
+RADIOHEADBASE = ./../../githubLibraries/RadioHead/
 INCLUDE       = -I$(RADIOHEADBASE)
 OBJS = RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o
 
