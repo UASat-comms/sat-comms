@@ -14,7 +14,6 @@
 #include <wiringPi.h>
 #include <wiringSerial.h>
 #include "settings.h"
-#include "picosha2.h"
 
 /* ======================================================
  * Desc: Returns the number of BYTES in a file.

@@ -6,7 +6,6 @@
 #include <wiringPi.h>
 #include <wiringSerial.h>
 #include "settings.h"
-#include "picosha2.h"
 
 int getMessageSize(int fd) {
      char *stringFileSize = (char *) malloc(sizeof(char) * IDENTIFIER_LENGTH);
@@ -29,7 +28,7 @@ int main(int argc, const char **argv) {
      }
 
      int fileSize = getMessageSize(fd);
-     printf("%d\n", fileSize);
+     printf("Size of file to receive: <%d>\n", fileSize);
      
      char *filedata = (char *) malloc(sizeof(char) * (fileSize));
      //filedata[fileSize - 1] = '\0';
@@ -38,7 +37,9 @@ int main(int argc, const char **argv) {
      for(int i = 0; i < fileSize; i++) filedata[i] = serialGetchar(fd);     
      end = time(0);
      double avg = ((double) end - (double) start);
-     printf("%lf\n", avg);
+
+     printf("Time in seconds taken to transmit: <%lf>\n", avg);
+     printf("Resulting bit/s rate: <%lf>\n", fileSize / avg);
 
      FILE *fp = fopen("RECD_data", "w");
      for(int i = 0; i < fileSize; i++) fputc(filedata[i], fp);
