@@ -13,7 +13,7 @@ LIBS          = -lbcm2835 -lwiringPi
 RADIOHEADBASE = ./../../githubLibraries/RadioHead/
 SETTINGSBASE = ./../
 SERIALBASE = ./../serial/
-INCLUDE       = -I $(RADIOHEADBASE) -I $(SETTINGSBASE) -I $(SERIALBASE)
+INCLUDE       = -I$(RADIOHEADBASE) -I$(SETTINGSBASE) -I$(SERIALBASE)
 
 OBJS = RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o
 
