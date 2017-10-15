@@ -21,13 +21,13 @@ all: serialreceivetest serialsendtest
 
 serialreceivetest: serialreceivetest.o #$(OBJS)
 	$(CC) $(INCLUDE) $^ $(LIBS) -o $@
-serialsendtest: serialsendtest.o serial.o#$(OBJS) 
+serialsendtest: serialsendtest.o serial.o#$(OBJS)
 	$(CC) $(INCLUDE) $^ $(LIBS) -o $@
 
 
-serialreceivetest.o: serialreceivetest.cpp settings.h
+serialreceivetest.o: serialreceivetest.cpp $(SETTINGBASE)/settings.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
-serialsendtest.o: serialsendtest.cpp settings.h
+serialsendtest.o: serialsendtest.cpp $(SETTINGSBASE)/settings.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 serial.o: serial.cpp serial.hpp
