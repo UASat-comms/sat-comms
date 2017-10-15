@@ -21,7 +21,7 @@ all: serialreceivetest serialsendtest
 
 serialreceivetest: serialreceivetest.o #$(OBJS)
 	$(CC) $(INCLUDE) $^ $(LIBS) -o $@
-serialsendtest: serialsendtest.o #$(OBJS) 
+serialsendtest: serialsendtest.o serial.o#$(OBJS) 
 	$(CC) $(INCLUDE) $^ $(LIBS) -o $@
 
 
@@ -29,6 +29,10 @@ serialreceivetest.o: serialreceivetest.cpp settings.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 serialsendtest.o: serialsendtest.cpp settings.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
+
+serial.o: serial.cpp serial.hpp
+	$(CC) $(CFLAGS) -c $(INCLUDE) $<
+
 clean:
 	rm -f *.o serialsendtest serialreceivetest
 
@@ -54,4 +58,3 @@ RHGenericDriver.o: $(RADIOHEADBASE)/RHGenericDriver.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 RHGenericSPI.o: $(RADIOHEADBASE)/RHGenericSPI.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
-
