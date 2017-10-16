@@ -7,37 +7,35 @@
 #	make $* clean
 # evalues to 'make foo clean'
 
-CC            	= g++
-CFLAGS        	= -DRASPBERRY_PI -DBCM2835_NO_DELAY_COMPATIBILITY -D__BASEFILE__=\"$*\" -O3 -std=c++11
-LIBS          	= -lbcm2835 -lwiringPi
-RADIOHEADBASE 	= ./../../githubLibraries/RadioHead
-RasPiBoardBase 	= $(RADIOHEADBASE)/examples/raspi
-SRC 	      	= ./..
-INCLUDE       	= -I$(RADIOHEADBASE) -I$(SRC) -I$(RasPiBoardBase)
+CC            		= g++
+CFLAGS        		= -DRASPBERRY_PI -DBCM2835_NO_DELAY_COMPATIBILITY -D__BASEFILE__=\"$*\" -O3 -std=c++11
+LIBS          		= -lbcm2835 -lwiringPi
+PROJECT_HEAD		= ./../../
+RADIOHEAD_BASE 	= $(PROJECT_HEAD)/RadioHead
+RASPIBOARD_BASE 	= $(RADIOHEAD_BASE)/examples/raspi
+SRC_BASE 	      	= $(PROJECT_HEAD)/src
+INCLUDE       		= -I$(RADIOHEAD_BASE) -I$(SRC_BASE) -I$(RASPIBOARD_BASE)
 
-RFOBJS = RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o
+OBJS = RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o
 
 all: rfreceivetest rfsendtest
 
-rfreceivetest: rfreceivetest.o $(RFOBJS)
+rfreceivetest: rfreceivetest.o $(OBJS)
 	$(CC) $(INCLUDE) $^ $(LIBS) -o $@
-rfsendtest: rfsendtest.o $(RFOBJS)
+rfsendtest: rfsendtest.o $(OBJS)
 	$(CC) $(INCLUDE) $^ $(LIBS) -o $@
 
-rfreceivetest.o: rfreceivetest.cpp 
+rfreceivetest.o: rfreceivetest.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 rfsendtest.o: rfsendtest.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
-
-
 clean:
-	rm -f $(RFOBJS) rfreceivetest.o rfsendtest.o rfreceivetest rfsendtest
+	rm -f $(OBJS) rfreceivetest.o rfsendtest.o rfreceivetest rfsendtest
 
 
 # =======================================================================
 # -------------- Dependency files for RF communications -----------------
-#
 RasPi.o: $(RADIOHEADBASE)/RHutil/RasPi.cpp
 	$(CC) $(CFLAGS) -c $(RADIOHEADBASE)/RHutil/RasPi.cpp $(INCLUDE)
 rf95_client.o: rf95_client.cpp
