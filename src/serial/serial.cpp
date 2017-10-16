@@ -32,6 +32,17 @@ static char *IntToString(int input) {
 	return buffer;
 }
 
+static int getMessageSize(int fd) {
+     char *stringFileSize = (char *) malloc(sizeof(char) * IDENTIFIER_LENGTH);
+     int c = 0;
+     for(int i = 0; i < IDENTIFIER_LENGTH; i++) {
+          c = serialGetchar(fd);
+	  if(c == -1) { printf("ERROR 2\n"); return 2; }
+	  stringFileSize[i] = (char) c;
+     }
+     return atoi(stringFileSize);
+}
+
 void transmitFile(char *fileName) {
      FILE *fp = fopen(fileName, "r");
      int fsize = fileSize(fp);
@@ -58,4 +69,34 @@ void transmitFile(char *fileName) {
      free(fileData);
      fclose(fp);
      serialClose(fd);
+}
+
+void receiveFile() {
+     int fd = serialOpen(INTERFACE, BAUD_RATE);
+     if(fd < 0) {
+          printf("ERROR 1\n");
+          return 1;
+     }
+
+     int fileSize = getMessageSize(fd);
+     printf("Size of file to receive IN BYTES: <%d>\n", fileSize);
+
+     char *filedata = (char *) malloc(sizeof(char) * (fileSize));
+     //filedata[fileSize - 1] = '\0';
+     time_t start, end;
+     start = time(0);
+     for(int i = 0; i < fileSize; i++) filedata[i] = serialGetchar(fd);
+     end = time(0);
+     double avg = ((double) end - (double) start);
+
+     printf("Time in seconds taken to transmit IN SECONDS: <%lf>\n", avg);
+     printf("Resulting BYTES/s rate: <%lf>\n", fileSize / avg);
+     printf("Resulting bits/s rate: <%lf>\n", (fileSize * 8) / avg);
+
+     FILE *fp = fopen("RECD_data", "w");
+     for(int i = 0; i < fileSize; i++) fputc(filedata[i], fp);
+
+     free(filedata);
+     fclose(fp);
+     serialClose(fd);     
 }

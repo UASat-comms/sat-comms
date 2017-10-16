@@ -10,8 +10,7 @@
 #include <wiringSerial.h>
 #include "settings.h"
 
-static int fileSize(FILE *);
-static char *IntToString(int);
 void transmitFile(char *);
+void receiveFile();
 
 #endif
