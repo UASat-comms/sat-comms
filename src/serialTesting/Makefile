@@ -15,13 +15,14 @@ SRC 	      	= ./..
 SERIALBASE 	= ./../serial
 INCLUDE       	= -I$(RADIOHEADBASE) -I$(SRC) -I$(SERIALBASE)
 
-OBJS = RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o
+SERIALOBJS = serial.o
+RFOBJS = RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o
 
 all: serialreceivetest serialsendtest
 
-serialreceivetest: serialreceivetest.o #$(OBJS)
+serialreceivetest: serialreceivetest.o $(SERIALOBJS)
 	$(CC) $(INCLUDE) $^ $(LIBS) -o $@
-serialsendtest: serialsendtest.o serial.o#$(OBJS)
+serialsendtest: serialsendtest.o serial.o $(SERIALOBJS)
 	$(CC) $(INCLUDE) $^ $(LIBS) -o $@
 
 

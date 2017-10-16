@@ -75,7 +75,7 @@ void receiveFile() {
      int fd = serialOpen(INTERFACE, BAUD_RATE);
      if(fd < 0) {
           printf("ERROR 1\n");
-          return 1;
+          exit(1);
      }
 
      int fileSize = getMessageSize(fd);

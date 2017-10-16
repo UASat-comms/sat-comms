@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <cstdio>
 #include <cinttypes>
+#include <ctime>
 #include <wiringPi.h>
 #include <wiringSerial.h>
 #include "settings.h"
