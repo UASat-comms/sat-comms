@@ -7,13 +7,13 @@
 #	make $* clean
 # evalues to 'make foo clean'
 
-CC            = g++
-CFLAGS        = -DRASPBERRY_PI -DBCM2835_NO_DELAY_COMPATIBILITY -D__BASEFILE__=\"$*\" -O3 -std=c++11
-LIBS          = -lbcm2835 -lwiringPi
-RADIOHEADBASE = ./../../githubLibraries/RadioHead
-SETTINGSBASE = ./..
-SERIALBASE = ./../serial
-INCLUDE       = -I$(RADIOHEADBASE) -I$(SETTINGSBASE) -I$(SERIALBASE)
+CC            	= g++
+CFLAGS        	= -DRASPBERRY_PI -DBCM2835_NO_DELAY_COMPATIBILITY -D__BASEFILE__=\"$*\" -O3 -std=c++11
+LIBS          	= -lbcm2835 -lwiringPi
+RADIOHEADBASE 	= ./../../githubLibraries/RadioHead
+SRC 	      	= ./..
+SERIALBASE 	= ./../serial
+INCLUDE       	= -I$(RADIOHEADBASE) -I$(SRC) -I$(SERIALBASE)
 
 OBJS = RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o
 
@@ -25,12 +25,12 @@ serialsendtest: serialsendtest.o serial.o#$(OBJS)
 	$(CC) $(INCLUDE) $^ $(LIBS) -o $@
 
 
-serialreceivetest.o: serialreceivetest.cpp $(SETTINGBASE)/settings.h
+serialreceivetest.o: serialreceivetest.cpp $(SRC)/settings.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
-serialsendtest.o: serialsendtest.cpp $(SETTINGSBASE)/settings.h
+serialsendtest.o: serialsendtest.cpp $(SRC)/settings.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
-serial.o: serial.cpp serial.hpp
+serial.o: $(SERIALBASE)/serial.cpp $(SERIALBASE)/serial.hpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 clean:

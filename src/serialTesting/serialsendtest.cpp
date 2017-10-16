@@ -17,6 +17,6 @@
 
 int main(int argc, const char **argv) {
      wiringPiSetup();
-     transmitFile(argv[1]);
+     transmitFile((char *) argv[1]);
      return 0;
 }
