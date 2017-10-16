@@ -35,7 +35,7 @@ serial.o: $(SERIALBASE)/serial.cpp $(SERIALBASE)/serial.hpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 clean:
-	rm -f *.o serialsendtest serialreceivetest
+	rm -f $(SERIALOBJS) $(RFOBJS) serialsendtest.o serialreceivetest.o serialsendtest serialreceivetest
 
 
 # =======================================================================
