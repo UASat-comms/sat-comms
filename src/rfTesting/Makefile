@@ -37,7 +37,7 @@ clean:
 # =======================================================================
 # -------------- Dependency files for RF communications -----------------
 RasPi.o: $(RADIOHEAD_BASE)/RHutil/RasPi.cpp
-	$(CC) $(CFLAGS) -c $(RADIOHEAD_BASE)/RHutil/RasPi.cpp $(INCLUDE)
+	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 rf95_client.o: rf95_client.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 rf95_server.o: rf95_server.cpp
