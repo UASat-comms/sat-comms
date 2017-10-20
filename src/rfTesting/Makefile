@@ -36,21 +36,21 @@ clean:
 
 # =======================================================================
 # -------------- Dependency files for RF communications -----------------
-RasPi.o: $(RADIOHEADBASE)/RHutil/RasPi.cpp
-	$(CC) $(CFLAGS) -c $(RADIOHEADBASE)/RHutil/RasPi.cpp $(INCLUDE)
+RasPi.o: $(RADIOHEAD_BASE)/RHutil/RasPi.cpp
+	$(CC) $(CFLAGS) -c $(RADIOHEAD_BASE)/RHutil/RasPi.cpp $(INCLUDE)
 rf95_client.o: rf95_client.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 rf95_server.o: rf95_server.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
-RH_RF95.o: $(RADIOHEADBASE)/RH_RF95.cpp
+RH_RF95.o: $(RADIOHEAD_BASE)/RH_RF95.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
-RHDatagram.o: $(RADIOHEADBASE)/RHDatagram.cpp
+RHDatagram.o: $(RADIOHEAD_BASE)/RHDatagram.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
-RHHardwareSPI.o: $(RADIOHEADBASE)/RHHardwareSPI.cpp
+RHHardwareSPI.o: $(RADIOHEAD_BASE)/RHHardwareSPI.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
-RHSPIDriver.o: $(RADIOHEADBASE)/RHSPIDriver.cpp
+RHSPIDriver.o: $(RADIOHEAD_BASE)/RHSPIDriver.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
-RHGenericDriver.o: $(RADIOHEADBASE)/RHGenericDriver.cpp
+RHGenericDriver.o: $(RADIOHEAD_BASE)/RHGenericDriver.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
-RHGenericSPI.o: $(RADIOHEADBASE)/RHGenericSPI.cpp
+RHGenericSPI.o: $(RADIOHEAD_BASE)/RHGenericSPI.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
