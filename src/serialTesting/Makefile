@@ -20,9 +20,9 @@ OBJS = serial.o
 all: serialreceivetest serialsendtest
 
 serialreceivetest: serialreceivetest.o $(OBJS)
-	$(CC) $(INCLUDE) $^ $(LIBS) -o $@
+	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
 serialsendtest: serialsendtest.o serial.o $(OBJS)
-	$(CC) $(INCLUDE) $^ $(LIBS) -o $@
+	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
 
 serialreceivetest.o: serialreceivetest.cpp $(SRC_BASE)/settings.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<

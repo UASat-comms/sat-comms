@@ -4,6 +4,6 @@ BASE 	= ./../
 INCLUDE = -I$(BASE)
 
 serial.o: serial.cpp serial.hpp
-	g++ $(CFLAGS) $(INCLUDE) -c serial.cpp
+	$(CC) $(CFLAGS) $(INCLUDE) -c $<
 clean:
 	rm -rf serial.o

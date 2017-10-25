@@ -11,7 +11,7 @@ CC            		= g++
 CFLAGS        		= -DRASPBERRY_PI -DBCM2835_NO_DELAY_COMPATIBILITY -D__BASEFILE__=\"$*\" -O3 -std=c++11
 LIBS          		= -lbcm2835 -lwiringPi
 PROJECT_HEAD		= ./../../
-RADIOHEAD_BASE 	= $(PROJECT_HEAD)/RadioHead
+RADIOHEAD_BASE		= $(PROJECT_HEAD)/RadioHead
 RASPIBOARD_BASE 	= $(RADIOHEAD_BASE)/examples/raspi
 SRC_BASE 	      	= $(PROJECT_HEAD)/src
 INCLUDE       		= -I$(RADIOHEAD_BASE) -I$(SRC_BASE) -I$(RASPIBOARD_BASE)
@@ -21,9 +21,9 @@ OBJS = RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPID
 all: rfreceivetest rfsendtest
 
 rfreceivetest: rfreceivetest.o $(OBJS)
-	$(CC) $(INCLUDE) $^ $(LIBS) -o $@
+	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
 rfsendtest: rfsendtest.o $(OBJS)
-	$(CC) $(INCLUDE) $^ $(LIBS) -o $@
+	$(CC) $(CLFAGS) $(INCLUDE) $^ $(LIBS) -o $@
 
 rfreceivetest.o: rfreceivetest.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
