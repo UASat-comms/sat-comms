@@ -1,0 +1,3 @@
+[DEBUG] [Wed Oct 25 12:51:39 PM] [line #: 8] MSG: My first info log using default logger
+[INFO] [Wed Oct 25 12:51:39 PM] [line #: 9] MSG: My name is matthew.
+[
