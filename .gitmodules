@@ -4,3 +4,6 @@
 [submodule "easyloggingpp"]
 	path = easyloggingpp
 	url = https://github.com/muflihun/easyloggingpp
+[submodule "PicoSHA2"]
+	path = PicoSHA2
+	url = https://github.com/okdshin/PicoSHA2
