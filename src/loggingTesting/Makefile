@@ -1,6 +1,5 @@
-
 CC					= g++
-CFLAGS				= -std=c++11 -O3 -Wall -Wextra
+CFLAGS				= -std=c++11 -O3 -Wall -Wextra -DLOGCONFIG=\"./../logconfig.txt\"
 PROJECT_HEAD		= ./../../
 SRC_BASE			= $(PROJECT_HEAD)/src
 EASYLOGGING_BASE	= $(PROJECT_HEAD)/easyloggingpp

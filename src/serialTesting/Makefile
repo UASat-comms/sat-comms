@@ -7,21 +7,23 @@
 #	make $* clean
 # evalues to 'make foo clean'
 
-CC            	= g++
-CFLAGS        	= -DRASPBERRY_PI -DBCM2835_NO_DELAY_COMPATIBILITY -D__BASEFILE__=\"$*\" -O3 -std=c++11
-LIBS          	= -lbcm2835 -lwiringPi
-PROJECT_HEAD	= ./../../
-SRC_BASE 	     = $(PROJECT_HEAD)/src/
-SERIAL_BASE 	= $(SRC_BASE)/serial/
-INCLUDE       	= -I$(SRC_BASE) -I$(SERIAL_BASE)
+CC            		= g++
+CFLAGS        		= -DRASPBERRY_PI -DBCM2835_NO_DELAY_COMPATIBILITY -D__BASEFILE__=\"$*\" -O3 -std=c++11
+LIBS          		= -lbcm2835 -lwiringPi
+PROJECT_HEAD		= ./../../
+SRC_BASE 	     	= $(PROJECT_HEAD)/src/
+SERIAL_BASE 		= $(SRC_BASE)/serial/
+EASYLOGGING_BASE 	= $(PROJECT_HEAD)/easyloggingpp
+EASYSRC_BASE		= $(EASYLOGGING_BASE)/src
+INCLUDE       		= -I$(SRC_BASE) -I$(SERIAL_BASE) -I$(EASYSRC_BASE)
 
-OBJS = serial.o
+OBJS = serial.o easylogging++.o
 
 all: serialreceivetest serialsendtest
 
 serialreceivetest: serialreceivetest.o $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
-serialsendtest: serialsendtest.o serial.o $(OBJS)
+serialsendtest: serialsendtest.o $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
 
 serialreceivetest.o: serialreceivetest.cpp $(SRC_BASE)/settings.h
@@ -30,6 +32,9 @@ serialsendtest.o: serialsendtest.cpp $(SRC_BASE)/settings.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 serial.o: $(SERIAL_BASE)/serial.cpp $(SERIAL_BASE)/serial.hpp
+	$(CC) $(CFLAGS) -c $(INCLUDE) $<
+
+easylogging++.o: $(EASYSRC_BASE)/easylogging++.cc $(EASYSRC_BASE)/easylogging++.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 clean:

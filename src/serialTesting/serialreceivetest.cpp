@@ -7,7 +7,9 @@
 #include <wiringSerial.h>
 #include "settings.h"
 #include "serial.hpp"
+#include "easylogging++.h"
 
+INITIALIZE_EASYLOGGINGPP
 
 int main(int argc, const char **argv) {
      wiringPiSetup();
