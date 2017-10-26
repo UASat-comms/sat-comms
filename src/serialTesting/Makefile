@@ -8,7 +8,7 @@
 # evalues to 'make foo clean'
 
 CC            		= g++
-CFLAGS        		= -DRASPBERRY_PI -DBCM2835_NO_DELAY_COMPATIBILITY -D__BASEFILE__=\"$*\" -O3 -std=c++11
+CFLAGS        		= -DRASPBERRY_PI -DBCM2835_NO_DELAY_COMPATIBILITY -D__BASEFILE__=\"$*\" -O3 -std=c++11 -DLOGCONFIG=\"./../logconfig.txt\"
 LIBS          		= -lbcm2835 -lwiringPi
 PROJECT_HEAD		= ./../../
 SRC_BASE 	     	= $(PROJECT_HEAD)/src/

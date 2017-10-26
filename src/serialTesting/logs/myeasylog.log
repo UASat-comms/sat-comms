@@ -1,1 +1,31 @@
 2017-10-26 18:08:44,574 INFO [default] File Size: <512>
+2017-10-26 18:23:30,873 DEBUG [default] [pi@unknown-host] [void transmitFile(char*)] [../..//src//serial//serial.cpp:47] Attempting to open file.
+2017-10-26 18:23:30,874 DEBUG [default] [pi@unknown-host] [void transmitFile(char*)] [../..//src//serial//serial.cpp:52] File opened successfully.
+2017-10-26 18:23:30,874 INFO [default] File Size in BYTES: <512>
+2017-10-26 18:23:30,874 DEBUG [default] [pi@unknown-host] [void transmitFile(char*)] [../..//src//serial//serial.cpp:58] Attempting to open serial interface.
+2017-10-26 18:23:30,884 DEBUG [default] [pi@unknown-host] [void transmitFile(char*)] [../..//src//serial//serial.cpp:63] Serial interface opened successfully.
+2017-10-26 18:23:30,884 DEBUG [default] [pi@unknown-host] [void transmitFile(char*)] [../..//src//serial//serial.cpp:65] Attempting to reserve memory for file data.
+2017-10-26 18:23:30,884 DEBUG [default] [pi@unknown-host] [void transmitFile(char*)] [../..//src//serial//serial.cpp:70] Memory successfully reserved for file data.
+2017-10-26 18:23:30,884 DEBUG [default] [pi@unknown-host] [void transmitFile(char*)] [../..//src//serial//serial.cpp:72] Storing file data in memory.
+2017-10-26 18:23:30,885 INFO [default] Transmitting file size...
+2017-10-26 18:23:30,885 INFO [default] File size transmit complete.
+2017-10-26 18:23:30,885 INFO [default] Transmitting file data...
+2017-10-26 18:23:30,888 INFO [default] File data transmitted.
+2017-10-26 18:23:30,888 DEBUG [default] [pi@unknown-host] [void transmitFile(char*)] [../..//src//serial//serial.cpp:85] Freeing resources...
+2017-10-26 18:23:30,888 DEBUG [default] [pi@unknown-host] [void transmitFile(char*)] [../..//src//serial//serial.cpp:89] Resources freed.
+2017-10-26 18:52:38,204 DEBUG [default] [pi@unknown-host] [void receiveFile()] [../..//src//serial//serial.cpp:96] Attempting to open serial interface.
+2017-10-26 18:52:38,215 DEBUG [default] [pi@unknown-host] [void receiveFile()] [../..//src//serial//serial.cpp:101] Serial interface opened successfully.
+2017-10-26 18:52:38,215 INFO [default] Waiting for file size transmission...
+2017-10-26 18:52:40,813 INFO [default] File size transmission received.
+2017-10-26 18:52:40,813 INFO [default] Size of file of file to receive in BYTES: <512>
+2017-10-26 18:52:40,813 DEBUG [default] [pi@unknown-host] [void receiveFile()] [../..//src//serial//serial.cpp:120] Attempting to reserve memory for file data...
+2017-10-26 18:52:40,813 DEBUG [default] [pi@unknown-host] [void receiveFile()] [../..//src//serial//serial.cpp:125] Memory successfully reserved for file data.
+2017-10-26 18:52:40,813 INFO [default] Receiving file data...
+2017-10-26 18:52:46,637 INFO [default] File data received.
+2017-10-26 18:52:46,637 INFO [default] Time in seconds taken to receive: <6>
+2017-10-26 18:52:46,637 INFO [default] Resulting bit/s: <85.3333>
+2017-10-26 18:52:46,637 INFO [default] Resulting BYTE/s: <682.667>
+2017-10-26 18:52:46,637 INFO [default] attempting to write file data to 'RECD_data'...
+2017-10-26 18:52:46,638 INFO [default] File data written.
+2017-10-26 18:52:46,638 DEBUG [default] [pi@unknown-host] [void receiveFile()] [../..//src//serial//serial.cpp:150] Freeing resources...
+2017-10-26 18:52:46,638 DEBUG [default] [pi@unknown-host] [void receiveFile()] [../..//src//serial//serial.cpp:154] Resources freed.

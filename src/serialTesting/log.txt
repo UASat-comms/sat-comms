@@ -1,0 +1,292 @@
+[DEBUG] [Thu Oct 26 18:27:40 PM] [line #: 47] MSG: Attempting to open file.
+[DEBUG] [Thu Oct 26 18:27:40 PM] [line #: 52] MSG: File opened successfully.
+[INFO] [Thu Oct 26 18:27:40 PM] [line #: 56] MSG: File Size in BYTES: <512>
+[DEBUG] [Thu Oct 26 18:27:40 PM] [line #: 58] MSG: Attempting to open serial interface.
+[DEBUG] [Thu Oct 26 18:27:40 PM] [line #: 63] MSG: Serial interface opened successfully.
+[DEBUG] [Thu Oct 26 18:27:40 PM] [line #: 65] MSG: Attempting to reserve memory for file data.
+[DEBUG] [Thu Oct 26 18:27:40 PM] [line #: 70] MSG: Memory successfully reserved for file data.
+[DEBUG] [Thu Oct 26 18:27:40 PM] [line #: 72] MSG: Storing file data in memory.
+[INFO] [Thu Oct 26 18:27:40 PM] [line #: 75] MSG: Transmitting file size...
+[INFO] [Thu Oct 26 18:27:40 PM] [line #: 79] MSG: File size transmit complete.
+[INFO] [Thu Oct 26 18:27:40 PM] [line #: 81] MSG: Transmitting file data...
+[INFO] [Thu Oct 26 18:27:40 PM] [line #: 83] MSG: File data transmitted.
+[DEBUG] [Thu Oct 26 18:27:40 PM] [line #: 85] MSG: Freeing resources...
+[DEBUG] [Thu Oct 26 18:27:40 PM] [line #: 89] MSG: Resources freed.
+[INFO] [Thu Oct 26 18:28:42 PM] [line #: 56] MSG: File Size in BYTES: <512>
+[INFO] [Thu Oct 26 18:28:42 PM] [line #: 75] MSG: Transmitting file size...
+[INFO] [Thu Oct 26 18:28:42 PM] [line #: 79] MSG: File size transmit complete.
+[INFO] [Thu Oct 26 18:28:42 PM] [line #: 81] MSG: Transmitting file data...
+[INFO] [Thu Oct 26 18:28:42 PM] [line #: 83] MSG: File data transmitted.
+[DEBUG] [Thu Oct 26 18:52:40 PM] [line #: 47] MSG: Attempting to open file.
+[DEBUG] [Thu Oct 26 18:52:40 PM] [line #: 52] MSG: File opened successfully.
+[INFO] [Thu Oct 26 18:52:40 PM] [line #: 56] MSG: File Size in BYTES: <512>
+[DEBUG] [Thu Oct 26 18:52:40 PM] [line #: 58] MSG: Attempting to open serial interface.
+[DEBUG] [Thu Oct 26 18:52:40 PM] [line #: 63] MSG: Serial interface opened successfully.
+[DEBUG] [Thu Oct 26 18:52:40 PM] [line #: 65] MSG: Attempting to reserve memory for file data.
+[DEBUG] [Thu Oct 26 18:52:40 PM] [line #: 70] MSG: Memory successfully reserved for file data.
+[DEBUG] [Thu Oct 26 18:52:40 PM] [line #: 72] MSG: Storing file data in memory.
+[INFO] [Thu Oct 26 18:52:40 PM] [line #: 75] MSG: Transmitting file size...
+[INFO] [Thu Oct 26 18:52:40 PM] [line #: 79] MSG: File size transmit complete.
+[INFO] [Thu Oct 26 18:52:40 PM] [line #: 81] MSG: Sleeping shortly (2s) to allow setup on Rx side.
+[INFO] [Thu Oct 26 18:52:42 PM] [line #: 84] MSG: Transmitting file data...
+[INFO] [Thu Oct 26 18:52:42 PM] [line #: 86] MSG: File data transmitted.
+[DEBUG] [Thu Oct 26 18:52:42 PM] [line #: 88] MSG: Freeing resources...
+[DEBUG] [Thu Oct 26 18:52:42 PM] [line #: 92] MSG: Resources freed.
+[DEBUG] [Thu Oct 26 18:54:54 PM] [line #: 47] MSG: Attempting to open file.
+[DEBUG] [Thu Oct 26 18:54:54 PM] [line #: 52] MSG: File opened successfully.
+[INFO] [Thu Oct 26 18:54:54 PM] [line #: 56] MSG: File Size in BYTES: <512>
+[DEBUG] [Thu Oct 26 18:54:54 PM] [line #: 58] MSG: Attempting to open serial interface.
+[DEBUG] [Thu Oct 26 18:54:54 PM] [line #: 63] MSG: Serial interface opened successfully.
+[DEBUG] [Thu Oct 26 18:54:54 PM] [line #: 65] MSG: Attempting to reserve memory for file data.
+[DEBUG] [Thu Oct 26 18:54:54 PM] [line #: 70] MSG: Memory successfully reserved for file data.
+[DEBUG] [Thu Oct 26 18:54:54 PM] [line #: 72] MSG: Storing file data in memory.
+[INFO] [Thu Oct 26 18:54:54 PM] [line #: 75] MSG: Transmitting file size...
+[INFO] [Thu Oct 26 18:54:54 PM] [line #: 79] MSG: File size transmit complete.
+[INFO] [Thu Oct 26 18:54:54 PM] [line #: 81] MSG: Sleeping shortly (2s) to allow setup on Rx side.
+[INFO] [Thu Oct 26 18:54:56 PM] [line #: 84] MSG: Transmitting file data...
+[INFO] [Thu Oct 26 18:54:56 PM] [line #: 86] MSG: File data transmitted.
+[DEBUG] [Thu Oct 26 18:54:56 PM] [line #: 88] MSG: Freeing resources...
+[DEBUG] [Thu Oct 26 18:54:56 PM] [line #: 92] MSG: Resources freed.
+[DEBUG] [Thu Oct 26 18:54:52 PM] [line #: 96] MSG: Attempting to open serial interface.
+[DEBUG] [Thu Oct 26 18:54:52 PM] [line #: 101] MSG: Serial interface opened successfully.
+[INFO] [Thu Oct 26 18:54:52 PM] [line #: 103] MSG: Waiting for file size transmission...
+[INFO] [Thu Oct 26 18:54:54 PM] [line #: 113] MSG: File size transmission received.
+[INFO] [Thu Oct 26 18:54:54 PM] [line #: 118] MSG: Size of file of file to receive in BYTES: <512>
+[DEBUG] [Thu Oct 26 18:54:54 PM] [line #: 120] MSG: Attempting to reserve memory for file data...
+[DEBUG] [Thu Oct 26 18:54:54 PM] [line #: 125] MSG: Memory successfully reserved for file data.
+[INFO] [Thu Oct 26 18:54:54 PM] [line #: 130] MSG: Receiving file data...
+[INFO] [Thu Oct 26 18:55:00 PM] [line #: 134] MSG: File data received.
+[INFO] [Thu Oct 26 18:55:00 PM] [line #: 138] MSG: Time in seconds taken to receive: <6>
+[INFO] [Thu Oct 26 18:55:00 PM] [line #: 139] MSG: Resulting BYTE/s: <85.3333>
+[INFO] [Thu Oct 26 18:55:00 PM] [line #: 140] MSG: Resulting bit/s: <682.667>
+[INFO] [Thu Oct 26 18:55:00 PM] [line #: 142] MSG: attempting to write file data to 'RECD_data'...
+[INFO] [Thu Oct 26 18:55:00 PM] [line #: 148] MSG: File data written.
+[DEBUG] [Thu Oct 26 18:55:00 PM] [line #: 150] MSG: Freeing resources...
+[DEBUG] [Thu Oct 26 18:55:00 PM] [line #: 154] MSG: Resources freed.
+[DEBUG] [Thu Oct 26 18:57:18 PM] [line #: 47] MSG: Attempting to open file.
+[DEBUG] [Thu Oct 26 18:57:18 PM] [line #: 52] MSG: File opened successfully.
+[INFO] [Thu Oct 26 18:57:18 PM] [line #: 56] MSG: File Size in BYTES: <512>
+[DEBUG] [Thu Oct 26 18:57:18 PM] [line #: 58] MSG: Attempting to open serial interface.
+[DEBUG] [Thu Oct 26 18:57:18 PM] [line #: 63] MSG: Serial interface opened successfully.
+[DEBUG] [Thu Oct 26 18:57:18 PM] [line #: 65] MSG: Attempting to reserve memory for file data.
+[DEBUG] [Thu Oct 26 18:57:18 PM] [line #: 70] MSG: Memory successfully reserved for file data.
+[DEBUG] [Thu Oct 26 18:57:18 PM] [line #: 72] MSG: Storing file data in memory.
+[INFO] [Thu Oct 26 18:57:18 PM] [line #: 75] MSG: Transmitting file size...
+[INFO] [Thu Oct 26 18:57:18 PM] [line #: 79] MSG: File size transmit complete.
+[INFO] [Thu Oct 26 18:57:18 PM] [line #: 81] MSG: Sleeping shortly (2s) to allow setup on Rx side.
+[INFO] [Thu Oct 26 18:57:20 PM] [line #: 84] MSG: Transmitting file data...
+[INFO] [Thu Oct 26 18:57:20 PM] [line #: 86] MSG: File data transmitted.
+[DEBUG] [Thu Oct 26 18:57:20 PM] [line #: 88] MSG: Freeing resources...
+[DEBUG] [Thu Oct 26 18:57:20 PM] [line #: 92] MSG: Resources freed.
+[DEBUG] [Thu Oct 26 18:57:16 PM] [line #: 96] MSG: Attempting to open serial interface.
+[DEBUG] [Thu Oct 26 18:57:16 PM] [line #: 101] MSG: Serial interface opened successfully.
+[INFO] [Thu Oct 26 18:57:16 PM] [line #: 103] MSG: Waiting for file size transmission...
+[INFO] [Thu Oct 26 18:57:19 PM] [line #: 113] MSG: File size transmission received.
+[INFO] [Thu Oct 26 18:57:19 PM] [line #: 118] MSG: Size of file of file to receive in BYTES: <512>
+[DEBUG] [Thu Oct 26 18:57:19 PM] [line #: 120] MSG: Attempting to reserve memory for file data...
+[DEBUG] [Thu Oct 26 18:57:19 PM] [line #: 125] MSG: Memory successfully reserved for file data.
+[INFO] [Thu Oct 26 18:57:19 PM] [line #: 130] MSG: Receiving file data...
+[INFO] [Thu Oct 26 18:57:24 PM] [line #: 134] MSG: File data received.
+[INFO] [Thu Oct 26 18:57:24 PM] [line #: 138] MSG: Time in seconds taken to receive: <5>
+[INFO] [Thu Oct 26 18:57:24 PM] [line #: 139] MSG: Resulting BYTE/s: <102.4>
+[INFO] [Thu Oct 26 18:57:24 PM] [line #: 140] MSG: Resulting bit/s: <819.2>
+[INFO] [Thu Oct 26 18:57:24 PM] [line #: 142] MSG: attempting to write file data to 'RECD_data'...
+[INFO] [Thu Oct 26 18:57:24 PM] [line #: 148] MSG: File data written.
+[DEBUG] [Thu Oct 26 18:57:24 PM] [line #: 150] MSG: Freeing resources...
+[DEBUG] [Thu Oct 26 18:57:24 PM] [line #: 154] MSG: Resources freed.
+[DEBUG] [Thu Oct 26 19:07:19 PM] [line #: 47] MSG: Attempting to open file.
+[DEBUG] [Thu Oct 26 19:07:19 PM] [line #: 52] MSG: File opened successfully.
+[INFO] [Thu Oct 26 19:07:19 PM] [line #: 56] MSG: File Size in BYTES: <512>
+[DEBUG] [Thu Oct 26 19:07:19 PM] [line #: 58] MSG: Attempting to open serial interface.
+[DEBUG] [Thu Oct 26 19:07:19 PM] [line #: 63] MSG: Serial interface opened successfully.
+[DEBUG] [Thu Oct 26 19:07:19 PM] [line #: 65] MSG: Attempting to reserve memory for file data.
+[DEBUG] [Thu Oct 26 19:07:19 PM] [line #: 70] MSG: Memory successfully reserved for file data.
+[DEBUG] [Thu Oct 26 19:07:19 PM] [line #: 72] MSG: Storing file data in memory.
+[INFO] [Thu Oct 26 19:07:19 PM] [line #: 75] MSG: Transmitting file size...
+[INFO] [Thu Oct 26 19:07:19 PM] [line #: 79] MSG: File size transmit complete.
+[INFO] [Thu Oct 26 19:07:19 PM] [line #: 81] MSG: Sleeping shortly (2s) to allow setup on Rx side.
+[INFO] [Thu Oct 26 19:07:21 PM] [line #: 84] MSG: Transmitting file data...
+[INFO] [Thu Oct 26 19:07:21 PM] [line #: 86] MSG: File data transmitted.
+[DEBUG] [Thu Oct 26 19:07:21 PM] [line #: 88] MSG: Freeing resources...
+[DEBUG] [Thu Oct 26 19:07:21 PM] [line #: 92] MSG: Resources freed.
+[DEBUG] [Thu Oct 26 19:07:18 PM] [line #: 96] MSG: Attempting to open serial interface.
+[DEBUG] [Thu Oct 26 19:07:18 PM] [line #: 101] MSG: Serial interface opened successfully.
+[INFO] [Thu Oct 26 19:07:18 PM] [line #: 103] MSG: Waiting for file size transmission...
+[INFO] [Thu Oct 26 19:07:19 PM] [line #: 113] MSG: File size transmission received.
+[INFO] [Thu Oct 26 19:07:19 PM] [line #: 118] MSG: Size of file of file to receive in BYTES: <512>
+[DEBUG] [Thu Oct 26 19:07:19 PM] [line #: 120] MSG: Attempting to reserve memory for file data...
+[DEBUG] [Thu Oct 26 19:07:19 PM] [line #: 125] MSG: Memory successfully reserved for file data.
+[INFO] [Thu Oct 26 19:07:19 PM] [line #: 130] MSG: Receiving file data...
+[INFO] [Thu Oct 26 19:07:22 PM] [line #: 134] MSG: File data received.
+[INFO] [Thu Oct 26 19:07:22 PM] [line #: 138] MSG: Time in seconds taken to receive: <3>
+[INFO] [Thu Oct 26 19:07:22 PM] [line #: 139] MSG: Resulting BYTE/s: <170.667>
+[INFO] [Thu Oct 26 19:07:22 PM] [line #: 140] MSG: Resulting bit/s: <1365.33>
+[INFO] [Thu Oct 26 19:07:22 PM] [line #: 142] MSG: attempting to write file data to 'RECD_data'...
+[INFO] [Thu Oct 26 19:07:22 PM] [line #: 148] MSG: File data written.
+[DEBUG] [Thu Oct 26 19:07:22 PM] [line #: 150] MSG: Freeing resources...
+[DEBUG] [Thu Oct 26 19:07:22 PM] [line #: 154] MSG: Resources freed.
+[INFO] [Thu Oct 26 19:09:07 PM] [line #: 25] MSG: Detected baud rate: <4000000>
+[DEBUG] [Thu Oct 26 19:09:07 PM] [line #: 47] MSG: Attempting to open file.
+[DEBUG] [Thu Oct 26 19:09:07 PM] [line #: 52] MSG: File opened successfully.
+[INFO] [Thu Oct 26 19:09:07 PM] [line #: 56] MSG: File Size in BYTES: <512>
+[DEBUG] [Thu Oct 26 19:09:07 PM] [line #: 58] MSG: Attempting to open serial interface.
+[DEBUG] [Thu Oct 26 19:09:07 PM] [line #: 63] MSG: Serial interface opened successfully.
+[DEBUG] [Thu Oct 26 19:09:07 PM] [line #: 65] MSG: Attempting to reserve memory for file data.
+[DEBUG] [Thu Oct 26 19:09:07 PM] [line #: 70] MSG: Memory successfully reserved for file data.
+[DEBUG] [Thu Oct 26 19:09:07 PM] [line #: 72] MSG: Storing file data in memory.
+[INFO] [Thu Oct 26 19:09:07 PM] [line #: 75] MSG: Transmitting file size...
+[INFO] [Thu Oct 26 19:09:07 PM] [line #: 79] MSG: File size transmit complete.
+[INFO] [Thu Oct 26 19:09:07 PM] [line #: 81] MSG: Sleeping shortly (2s) to allow setup on Rx side.
+[INFO] [Thu Oct 26 19:09:09 PM] [line #: 84] MSG: Transmitting file data...
+[INFO] [Thu Oct 26 19:09:09 PM] [line #: 86] MSG: File data transmitted.
+[DEBUG] [Thu Oct 26 19:09:09 PM] [line #: 88] MSG: Freeing resources...
+[DEBUG] [Thu Oct 26 19:09:09 PM] [line #: 92] MSG: Resources freed.
+[INFO] [Thu Oct 26 19:09:05 PM] [line #: 17] MSG: Detected baud rate: <4000000>
+[DEBUG] [Thu Oct 26 19:09:05 PM] [line #: 96] MSG: Attempting to open serial interface.
+[DEBUG] [Thu Oct 26 19:09:05 PM] [line #: 101] MSG: Serial interface opened successfully.
+[INFO] [Thu Oct 26 19:09:05 PM] [line #: 103] MSG: Waiting for file size transmission...
+[INFO] [Thu Oct 26 19:09:07 PM] [line #: 113] MSG: File size transmission received.
+[INFO] [Thu Oct 26 19:09:07 PM] [line #: 118] MSG: Size of file of file to receive in BYTES: <512>
+[DEBUG] [Thu Oct 26 19:09:07 PM] [line #: 120] MSG: Attempting to reserve memory for file data...
+[DEBUG] [Thu Oct 26 19:09:07 PM] [line #: 125] MSG: Memory successfully reserved for file data.
+[INFO] [Thu Oct 26 19:09:07 PM] [line #: 130] MSG: Receiving file data...
+[INFO] [Thu Oct 26 19:09:09 PM] [line #: 134] MSG: File data received.
+[INFO] [Thu Oct 26 19:09:09 PM] [line #: 138] MSG: Time in seconds taken to receive: <2>
+[INFO] [Thu Oct 26 19:09:09 PM] [line #: 139] MSG: Resulting BYTE/s: <256>
+[INFO] [Thu Oct 26 19:09:09 PM] [line #: 140] MSG: Resulting bit/s: <2048>
+[INFO] [Thu Oct 26 19:09:09 PM] [line #: 142] MSG: attempting to write file data to 'RECD_data'...
+[INFO] [Thu Oct 26 19:09:09 PM] [line #: 148] MSG: File data written.
+[DEBUG] [Thu Oct 26 19:09:09 PM] [line #: 150] MSG: Freeing resources...
+[DEBUG] [Thu Oct 26 19:09:09 PM] [line #: 154] MSG: Resources freed.
+[INFO] [Thu Oct 26 19:12:50 PM] [line #: 17] MSG: Detected baud rate: <4000000>
+[DEBUG] [Thu Oct 26 19:12:50 PM] [line #: 96] MSG: Attempting to open serial interface.
+[DEBUG] [Thu Oct 26 19:12:50 PM] [line #: 101] MSG: Serial interface opened successfully.
+[INFO] [Thu Oct 26 19:12:50 PM] [line #: 103] MSG: Waiting for file size transmission...
+[INFO] [Thu Oct 26 19:12:54 PM] [line #: 113] MSG: File size transmission received.
+[INFO] [Thu Oct 26 19:12:54 PM] [line #: 118] MSG: Size of file of file to receive in BYTES: <0>
+[DEBUG] [Thu Oct 26 19:12:54 PM] [line #: 120] MSG: Attempting to reserve memory for file data...
+[DEBUG] [Thu Oct 26 19:12:54 PM] [line #: 125] MSG: Memory successfully reserved for file data.
+[INFO] [Thu Oct 26 19:12:54 PM] [line #: 130] MSG: Receiving file data...
+[INFO] [Thu Oct 26 19:12:54 PM] [line #: 134] MSG: File data received.
+[INFO] [Thu Oct 26 19:12:54 PM] [line #: 138] MSG: Time in seconds taken to receive: <0>
+[INFO] [Thu Oct 26 19:12:54 PM] [line #: 139] MSG: Resulting BYTE/s: <nan>
+[INFO] [Thu Oct 26 19:12:54 PM] [line #: 140] MSG: Resulting bit/s: <nan>
+[INFO] [Thu Oct 26 19:12:54 PM] [line #: 142] MSG: attempting to write file data to 'RECD_data'...
+[INFO] [Thu Oct 26 19:12:54 PM] [line #: 148] MSG: File data written.
+[DEBUG] [Thu Oct 26 19:12:54 PM] [line #: 150] MSG: Freeing resources...
+[DEBUG] [Thu Oct 26 19:12:54 PM] [line #: 154] MSG: Resources freed.
+[INFO] [Thu Oct 26 19:12:54 PM] [line #: 25] MSG: Detected baud rate: <4000000>
+[DEBUG] [Thu Oct 26 19:12:54 PM] [line #: 47] MSG: Attempting to open file.
+[DEBUG] [Thu Oct 26 19:12:54 PM] [line #: 52] MSG: File opened successfully.
+[INFO] [Thu Oct 26 19:12:54 PM] [line #: 56] MSG: File Size in BYTES: <512>
+[DEBUG] [Thu Oct 26 19:12:54 PM] [line #: 58] MSG: Attempting to open serial interface.
+[DEBUG] [Thu Oct 26 19:12:54 PM] [line #: 63] MSG: Serial interface opened successfully.
+[DEBUG] [Thu Oct 26 19:12:54 PM] [line #: 65] MSG: Attempting to reserve memory for file data.
+[DEBUG] [Thu Oct 26 19:12:54 PM] [line #: 70] MSG: Memory successfully reserved for file data.
+[DEBUG] [Thu Oct 26 19:12:54 PM] [line #: 72] MSG: Storing file data in memory.
+[INFO] [Thu Oct 26 19:12:54 PM] [line #: 75] MSG: Transmitting file size...
+[INFO] [Thu Oct 26 19:12:54 PM] [line #: 79] MSG: File size transmit complete.
+[INFO] [Thu Oct 26 19:12:54 PM] [line #: 81] MSG: Sleeping shortly (2s) to allow setup on Rx side.
+[INFO] [Thu Oct 26 19:12:56 PM] [line #: 84] MSG: Transmitting file data...
+[INFO] [Thu Oct 26 19:12:56 PM] [line #: 86] MSG: File data transmitted.
+[DEBUG] [Thu Oct 26 19:12:56 PM] [line #: 88] MSG: Freeing resources...
+[DEBUG] [Thu Oct 26 19:12:57 PM] [line #: 92] MSG: Resources freed.
+[INFO] [Thu Oct 26 19:13:11 PM] [line #: 25] MSG: Detected baud rate: <4000000>
+[DEBUG] [Thu Oct 26 19:13:11 PM] [line #: 47] MSG: Attempting to open file.
+[DEBUG] [Thu Oct 26 19:13:11 PM] [line #: 52] MSG: File opened successfully.
+[INFO] [Thu Oct 26 19:13:11 PM] [line #: 56] MSG: File Size in BYTES: <512>
+[DEBUG] [Thu Oct 26 19:13:11 PM] [line #: 58] MSG: Attempting to open serial interface.
+[DEBUG] [Thu Oct 26 19:13:11 PM] [line #: 63] MSG: Serial interface opened successfully.
+[DEBUG] [Thu Oct 26 19:13:11 PM] [line #: 65] MSG: Attempting to reserve memory for file data.
+[DEBUG] [Thu Oct 26 19:13:11 PM] [line #: 70] MSG: Memory successfully reserved for file data.
+[DEBUG] [Thu Oct 26 19:13:11 PM] [line #: 72] MSG: Storing file data in memory.
+[INFO] [Thu Oct 26 19:13:11 PM] [line #: 75] MSG: Transmitting file size...
+[INFO] [Thu Oct 26 19:13:11 PM] [line #: 79] MSG: File size transmit complete.
+[INFO] [Thu Oct 26 19:13:11 PM] [line #: 81] MSG: Sleeping shortly (2s) to allow setup on Rx side.
+[INFO] [Thu Oct 26 19:13:13 PM] [line #: 84] MSG: Transmitting file data...
+[INFO] [Thu Oct 26 19:13:13 PM] [line #: 86] MSG: File data transmitted.
+[DEBUG] [Thu Oct 26 19:13:13 PM] [line #: 88] MSG: Freeing resources...
+[DEBUG] [Thu Oct 26 19:13:13 PM] [line #: 92] MSG: Resources freed.
+[INFO] [Thu Oct 26 19:13:09 PM] [line #: 17] MSG: Detected baud rate: <4000000>
+[DEBUG] [Thu Oct 26 19:13:09 PM] [line #: 96] MSG: Attempting to open serial interface.
+[DEBUG] [Thu Oct 26 19:13:09 PM] [line #: 101] MSG: Serial interface opened successfully.
+[INFO] [Thu Oct 26 19:13:09 PM] [line #: 103] MSG: Waiting for file size transmission...
+[INFO] [Thu Oct 26 19:13:11 PM] [line #: 113] MSG: File size transmission received.
+[INFO] [Thu Oct 26 19:13:11 PM] [line #: 118] MSG: Size of file of file to receive in BYTES: <512>
+[DEBUG] [Thu Oct 26 19:13:11 PM] [line #: 120] MSG: Attempting to reserve memory for file data...
+[DEBUG] [Thu Oct 26 19:13:11 PM] [line #: 125] MSG: Memory successfully reserved for file data.
+[INFO] [Thu Oct 26 19:13:11 PM] [line #: 130] MSG: Receiving file data...
+[INFO] [Thu Oct 26 19:13:14 PM] [line #: 134] MSG: File data received.
+[INFO] [Thu Oct 26 19:13:14 PM] [line #: 138] MSG: Time in seconds taken to receive: <3>
+[INFO] [Thu Oct 26 19:13:14 PM] [line #: 139] MSG: Resulting BYTE/s: <170.667>
+[INFO] [Thu Oct 26 19:13:14 PM] [line #: 140] MSG: Resulting bit/s: <1365.33>
+[INFO] [Thu Oct 26 19:13:14 PM] [line #: 142] MSG: attempting to write file data to 'RECD_data'...
+[INFO] [Thu Oct 26 19:13:14 PM] [line #: 148] MSG: File data written.
+[DEBUG] [Thu Oct 26 19:13:14 PM] [line #: 150] MSG: Freeing resources...
+[DEBUG] [Thu Oct 26 19:13:14 PM] [line #: 154] MSG: Resources freed.
+[INFO] [Thu Oct 26 19:13:20 PM] [line #: 25] MSG: Detected baud rate: <4000000>
+[DEBUG] [Thu Oct 26 19:13:20 PM] [line #: 47] MSG: Attempting to open file.
+[DEBUG] [Thu Oct 26 19:13:20 PM] [line #: 52] MSG: File opened successfully.
+[INFO] [Thu Oct 26 19:13:20 PM] [line #: 56] MSG: File Size in BYTES: <512>
+[DEBUG] [Thu Oct 26 19:13:20 PM] [line #: 58] MSG: Attempting to open serial interface.
+[DEBUG] [Thu Oct 26 19:13:20 PM] [line #: 63] MSG: Serial interface opened successfully.
+[DEBUG] [Thu Oct 26 19:13:20 PM] [line #: 65] MSG: Attempting to reserve memory for file data.
+[DEBUG] [Thu Oct 26 19:13:20 PM] [line #: 70] MSG: Memory successfully reserved for file data.
+[DEBUG] [Thu Oct 26 19:13:20 PM] [line #: 72] MSG: Storing file data in memory.
+[INFO] [Thu Oct 26 19:13:20 PM] [line #: 75] MSG: Transmitting file size...
+[INFO] [Thu Oct 26 19:13:20 PM] [line #: 79] MSG: File size transmit complete.
+[INFO] [Thu Oct 26 19:13:20 PM] [line #: 81] MSG: Sleeping shortly (2s) to allow setup on Rx side.
+[INFO] [Thu Oct 26 19:13:22 PM] [line #: 84] MSG: Transmitting file data...
+[INFO] [Thu Oct 26 19:13:22 PM] [line #: 86] MSG: File data transmitted.
+[DEBUG] [Thu Oct 26 19:13:22 PM] [line #: 88] MSG: Freeing resources...
+[DEBUG] [Thu Oct 26 19:13:22 PM] [line #: 92] MSG: Resources freed.
+[INFO] [Thu Oct 26 19:13:19 PM] [line #: 17] MSG: Detected baud rate: <4000000>
+[DEBUG] [Thu Oct 26 19:13:19 PM] [line #: 96] MSG: Attempting to open serial interface.
+[DEBUG] [Thu Oct 26 19:13:19 PM] [line #: 101] MSG: Serial interface opened successfully.
+[INFO] [Thu Oct 26 19:13:19 PM] [line #: 103] MSG: Waiting for file size transmission...
+[INFO] [Thu Oct 26 19:13:20 PM] [line #: 113] MSG: File size transmission received.
+[INFO] [Thu Oct 26 19:13:20 PM] [line #: 118] MSG: Size of file of file to receive in BYTES: <512>
+[DEBUG] [Thu Oct 26 19:13:20 PM] [line #: 120] MSG: Attempting to reserve memory for file data...
+[DEBUG] [Thu Oct 26 19:13:20 PM] [line #: 125] MSG: Memory successfully reserved for file data.
+[INFO] [Thu Oct 26 19:13:20 PM] [line #: 130] MSG: Receiving file data...
+[INFO] [Thu Oct 26 19:13:23 PM] [line #: 134] MSG: File data received.
+[INFO] [Thu Oct 26 19:13:23 PM] [line #: 138] MSG: Time in seconds taken to receive: <3>
+[INFO] [Thu Oct 26 19:13:23 PM] [line #: 139] MSG: Resulting BYTE/s: <170.667>
+[INFO] [Thu Oct 26 19:13:23 PM] [line #: 140] MSG: Resulting bit/s: <1365.33>
+[INFO] [Thu Oct 26 19:13:23 PM] [line #: 142] MSG: attempting to write file data to 'RECD_data'...
+[INFO] [Thu Oct 26 19:13:23 PM] [line #: 148] MSG: File data written.
+[DEBUG] [Thu Oct 26 19:13:23 PM] [line #: 150] MSG: Freeing resources...
+[DEBUG] [Thu Oct 26 19:13:23 PM] [line #: 154] MSG: Resources freed.
+[INFO] [Thu Oct 26 19:14:21 PM] [line #: 25] MSG: Detected baud rate: <4000000>
+[DEBUG] [Thu Oct 26 19:14:21 PM] [line #: 47] MSG: Attempting to open file...
+[DEBUG] [Thu Oct 26 19:14:21 PM] [line #: 52] MSG: File opened successfully.
+[INFO] [Thu Oct 26 19:14:21 PM] [line #: 56] MSG: File Size in BYTES: <512>
+[DEBUG] [Thu Oct 26 19:14:21 PM] [line #: 58] MSG: Attempting to open serial interface.
+[DEBUG] [Thu Oct 26 19:14:21 PM] [line #: 63] MSG: Serial interface opened successfully.
+[DEBUG] [Thu Oct 26 19:14:21 PM] [line #: 65] MSG: Attempting to reserve memory for file data.
+[DEBUG] [Thu Oct 26 19:14:21 PM] [line #: 70] MSG: Memory successfully reserved for file data.
+[DEBUG] [Thu Oct 26 19:14:21 PM] [line #: 72] MSG: Storing file data in memory.
+[INFO] [Thu Oct 26 19:14:21 PM] [line #: 75] MSG: Transmitting file size...
+[INFO] [Thu Oct 26 19:14:21 PM] [line #: 79] MSG: File size transmit complete.
+[INFO] [Thu Oct 26 19:14:21 PM] [line #: 81] MSG: Sleeping shortly (2s) to allow setup on Rx side.
+[INFO] [Thu Oct 26 19:14:23 PM] [line #: 84] MSG: Transmitting file data...
+[INFO] [Thu Oct 26 19:14:23 PM] [line #: 86] MSG: File data transmitted.
+[DEBUG] [Thu Oct 26 19:14:23 PM] [line #: 88] MSG: Freeing resources...
+[DEBUG] [Thu Oct 26 19:14:23 PM] [line #: 92] MSG: Resources freed.
+[INFO] [Thu Oct 26 19:14:19 PM] [line #: 17] MSG: Detected baud rate: <4000000>
+[DEBUG] [Thu Oct 26 19:14:19 PM] [line #: 96] MSG: Attempting to open serial interface...
+[DEBUG] [Thu Oct 26 19:14:19 PM] [line #: 101] MSG: Serial interface opened successfully.
+[INFO] [Thu Oct 26 19:14:19 PM] [line #: 103] MSG: Waiting for file size transmission...
+[INFO] [Thu Oct 26 19:14:21 PM] [line #: 113] MSG: File size transmission received.
+[INFO] [Thu Oct 26 19:14:21 PM] [line #: 118] MSG: Size of file of file to receive in BYTES: <512>
+[DEBUG] [Thu Oct 26 19:14:21 PM] [line #: 120] MSG: Attempting to reserve memory for file data...
+[DEBUG] [Thu Oct 26 19:14:21 PM] [line #: 125] MSG: Memory successfully reserved for file data.
+[INFO] [Thu Oct 26 19:14:21 PM] [line #: 130] MSG: Receiving file data...
+[INFO] [Thu Oct 26 19:14:23 PM] [line #: 134] MSG: File data received.
+[INFO] [Thu Oct 26 19:14:23 PM] [line #: 138] MSG: Time in seconds taken to receive: <2>
+[INFO] [Thu Oct 26 19:14:23 PM] [line #: 139] MSG: Resulting BYTE/s: <256>
+[INFO] [Thu Oct 26 19:14:23 PM] [line #: 140] MSG: Resulting bit/s: <2048>
+[INFO] [Thu Oct 26 19:14:23 PM] [line #: 142] MSG: attempting to write file data to 'RECD_data'...
+[INFO] [Thu Oct 26 19:14:23 PM] [line #: 148] MSG: File data written.
+[DEBUG] [Thu Oct 26 19:14:23 PM] [line #: 150] MSG: Freeing resources...
+[DEBUG] [Thu Oct 26 19:14:23 PM] [line #: 154] MSG: Resources freed.

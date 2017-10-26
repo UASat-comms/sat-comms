@@ -19,7 +19,10 @@
 INITIALIZE_EASYLOGGINGPP
 
 int main(int argc, const char **argv) {
+     el::Configurations conf(LOGCONFIG);
+     el::Loggers::reconfigureAllLoggers(conf);
      wiringPiSetup();
+     LOG(INFO) << "Detected baud rate: <" << BAUD_RATE << ">";
      transmitFile((char *) argv[1]);
      return 0;
 }

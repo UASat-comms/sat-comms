@@ -44,60 +44,112 @@ static int getMessageSize(int fd) {
 }
 
 void transmitFile(char *fileName) {
+     LOG(DEBUG) << "Attempting to open file...";
      FILE *fp = fopen(fileName, "r");
+     if(fp == NULL) {
+          LOG(FATAL) << "Unable to open file to transmit.";
+     }
+     LOG(DEBUG) << "File opened successfully.";
+
      int fsize = fileSize(fp);
-
      char *stringFileSize = IntToString(fsize);
+     LOG(INFO) << "File Size in BYTES: <" << fsize << ">";
 
-     LOG(INFO) << "File Size: <" << fsize << ">";
-     //printf("FILE SIZE: <%d>\n", fsize);
+     LOG(DEBUG) << "Attempting to open serial interface.";
      int fd = serialOpen(INTERFACE, BAUD_RATE);
      if(fd < 0) {
-          printf("ERROR 1\n");
-	  exit(1);
+          LOG(FATAL) << "Unable to open serial interface.";
      }
+     LOG(DEBUG) << "Serial interface opened successfully.";
 
+     LOG(DEBUG) << "Attempting to reserve memory for file data.";
      char *fileData = (char *) malloc(sizeof(char) * fsize);
+     if(fileData == NULL) {
+          LOG(FATAL) << "Unable to reserve memory for file data.";
+     }
+     LOG(DEBUG) << "Memory successfully reserved for file data.";
+
+     LOG(DEBUG) << "Storing file data in memory.";
      for(int i = 0; i < fsize; i++) fileData[i] = fgetc(fp);
 
+     LOG(INFO) << "Transmitting file size...";
      for(int i = 0; i < IDENTIFIER_LENGTH; i++) {
           serialPutchar(fd, stringFileSize[i]);
      }
+     LOG(INFO) << "File size transmit complete.";
 
+     LOG(INFO) << "Sleeping shortly (2s) to allow setup on Rx side.";
+     sleep(2);
 
+     LOG(INFO) << "Transmitting file data...";
      for(int i = 0; i < fsize; i++) serialPutchar(fd, fileData[i]);
+     LOG(INFO) << "File data transmitted.";
 
+     LOG(DEBUG) << "Freeing resources...";
      free(fileData);
      fclose(fp);
      serialClose(fd);
+     LOG(DEBUG) << "Resources freed.";
 }
 
 void receiveFile() {
+     LOG(DEBUG) << "Attempting to open serial interface...";
      int fd = serialOpen(INTERFACE, BAUD_RATE);
      if(fd < 0) {
-          printf("ERROR 1\n");
-          exit(1);
+          LOG(FATAL) << "Unable to open serial interface.";
      }
+     LOG(DEBUG) << "Serial interface opened successfully.";
 
-     int fileSize = getMessageSize(fd);
-     printf("Size of file to receive IN BYTES: <%d>\n", fileSize);
+     LOG(INFO) << "Waiting for file size transmission...";
+     char *stringFileSize = (char *) malloc(sizeof(char) * IDENTIFIER_LENGTH);
+     int c = 0;
+     for(int i = 0; i < IDENTIFIER_LENGTH; i++) {
+          c = serialGetchar(fd);
+          if(c == -1) {
+               LOG(FATAL) << "File size transmission timed out (10s).";
+          }
+          stringFileSize[i] = (char) c;
+     }
+     LOG(INFO) << "File size transmission received.";
 
-     char *filedata = (char *) malloc(sizeof(char) * (fileSize));
+     int fileSize = atoi(stringFileSize);
+     free(stringFileSize);
+
+     LOG(INFO) << "Size of file of file to receive in BYTES: <" << fileSize << ">";
+
+     LOG(DEBUG) << "Attempting to reserve memory for file data...";
+     char *fileData = (char *) malloc(sizeof(char) * (fileSize));
+     if(fileData == NULL) {
+          LOG(FATAL) << "Unable to reserve memory for file data.";
+     }
+     LOG(DEBUG) << "Memory successfully reserved for file data.";
+
      //filedata[fileSize - 1] = '\0';
      time_t start, end;
+
+     LOG(INFO) << "Receiving file data...";
      start = time(0);
-     for(int i = 0; i < fileSize; i++) filedata[i] = serialGetchar(fd);
+     for(int i = 0; i < fileSize; i++) fileData[i] = serialGetchar(fd);
      end = time(0);
+     LOG(INFO) << "File data received.";
+
+
      double avg = ((double) end - (double) start);
+     LOG(INFO) << "Time in seconds taken to receive: <" << avg << ">";
+     LOG(INFO) << "Resulting BYTE/s: <" << (fileSize / avg) << ">";
+     LOG(INFO) << "Resulting bit/s: <" << (fileSize * 8 / avg) << ">";
 
-     printf("Time in seconds taken to transmit IN SECONDS: <%lf>\n", avg);
-     printf("Resulting BYTES/s rate: <%lf>\n", fileSize / avg);
-     printf("Resulting bits/s rate: <%lf>\n", (fileSize * 8) / avg);
-
+     LOG(INFO) << "attempting to write file data to 'RECD_data'...";
      FILE *fp = fopen("RECD_data", "w");
-     for(int i = 0; i < fileSize; i++) fputc(filedata[i], fp);
+     if(fp == NULL) {
+          LOG(FATAL) << "Unable to open file.";
+     }
+     for(int i = 0; i < fileSize; i++) fputc(fileData[i], fp);
+     LOG(INFO) << "File data written.";
 
-     free(filedata);
+     LOG(DEBUG) << "Freeing resources...";
+     free(fileData);
      fclose(fp);
-     serialClose(fd);     
+     serialClose(fd);
+     LOG(DEBUG) << "Resources freed.";
 }

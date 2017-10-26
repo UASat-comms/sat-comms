@@ -3,6 +3,7 @@
 #ifndef _SERIAL_H_
 #define _SERIAL_H_
 
+#include <unistd.h>
 #include <cstdlib>
 #include <cstdio>
 #include <cinttypes>
