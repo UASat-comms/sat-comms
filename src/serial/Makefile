@@ -16,7 +16,7 @@ EASYLOGGING_BASE 	= $(PROJECT_HEAD)/easyloggingpp
 EASYSRC_BASE		= $(EASYLOGGING_BASE)/src
 INCLUDE       		= -I$(SRC_BASE) -I$(EASYSRC_BASE)
 
-serial.o: serial.cpp serial.hpp
+serial.o: serial.cpp serial.hpp $(SRC_BASE)/settings.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 clean:
