@@ -49,7 +49,8 @@ void transmitFile(char *fileName) {
 
      char *stringFileSize = IntToString(fsize);
 
-     printf("FILE SIZE: <%d>\n", fsize);
+     LOG(INFO) << "File Size: <" << fsize << ">";
+     //printf("FILE SIZE: <%d>\n", fsize);
      int fd = serialOpen(INTERFACE, BAUD_RATE);
      if(fd < 0) {
           printf("ERROR 1\n");

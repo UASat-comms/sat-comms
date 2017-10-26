@@ -8,7 +8,7 @@
  */
 #define INTERFACE "/dev/serial0"
 #define IDENTIFIER_LENGTH 50
-#define BAUD_RATE 500000
+#define BAUD_RATE 1200
 
 /* Transfer Protocol Settings
  *

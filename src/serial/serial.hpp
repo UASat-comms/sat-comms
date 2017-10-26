@@ -10,6 +10,7 @@
 #include <wiringPi.h>
 #include <wiringSerial.h>
 #include "settings.h"
+#include "easylogging++.h"
 
 void transmitFile(char *);
 void receiveFile();
