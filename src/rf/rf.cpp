@@ -6,7 +6,7 @@ RH_RF95 driver(RF_CS_PIN, RF_IRQ_PIN);
 void setupRF() {
      LOG(DEBUG) << "Setting up RF interface...";
 
-     LOG(DEBUG) << "Starting with pin assignments: "
+     LOG(DEBUG) << "Starting with pin assignments: ";
      if(!bcm2835_init())
           LOG(FATAL) << "Could not initialize bcm2835 library.";
      LOG(DEBUG) << "CS Pin (GPIO): <" << RF_CS_PIN << ">";
@@ -46,11 +46,11 @@ char *receiveRF() {
      uint8_t flags  = driver.headerFlags();;
      int8_t rssi    = driver.lastRssi();
 
-     time_t start = time();
+     time_t start = time(NULL);
      // wait 10s for a message.
-     while(time() - start < 10) {
-          if(bcm2835_gpio_set_eds(RF_IRQ_PIN)) {
-               bcm2835_gpio_eds(RF_IRQ_PIN);
+     while(time(NULL) - start < 10) {
+          if(bcm2835_gpio_eds(RF_IRQ_PIN)) {
+               bcm2835_gpio_set_eds(RF_IRQ_PIN);
                if(driver.available()) {
                     if(driver.recv(buf, &len)) {
                          LOG(DEBUG) << "RECEIVED: " << buf;
