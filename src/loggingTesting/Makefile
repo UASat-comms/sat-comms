@@ -1,9 +1,9 @@
-CC					= g++
+CC					= g++-6
 CFLAGS				= -std=c++11 -O3 -Wall -Wextra -DLOGCONFIG=\"./../logconfig.txt\"
-PROJECT_HEAD		= ./../../
-SRC_BASE			= $(PROJECT_HEAD)/src
-EASYLOGGING_BASE	= $(PROJECT_HEAD)/easyloggingpp
-EASYSRC_BASE		= $(EASYLOGGING_BASE)/src
+PROJECT_HEAD			= ./../../
+SRC_BASE				= $(PROJECT_HEAD)/src
+EASYLOGGING_BASE		= $(PROJECT_HEAD)/easyloggingpp
+EASYSRC_BASE			= $(EASYLOGGING_BASE)/src
 INCLUDE				= -I $(SRC_BASE) -I $(EASYLOGGING_BASE) -I $(EASYSRC_BASE)
 
 OBJS = main.o easylogging++.o
