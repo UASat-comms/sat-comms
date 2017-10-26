@@ -10,3 +10,6 @@
   LOG_FLUSH_THRESHOLD   = 10
 * DEBUG:
   ENABLED = true
+* INFO:
+  FORMAT                = "[%level]  [%datetime{%a %b %d %H:%m:%s %F}] [line #: %line] MSG: %msg"
+  

@@ -7,8 +7,8 @@
  *        in the range of 1200 to 115200.
  */
 #define INTERFACE "/dev/serial0"
-#define IDENTIFIER_LENGTH 25
-#define BAUD_RATE 4000000
+#define IDENTIFIER_LENGTH 32
+#define BAUD_RATE 38400
 
 /* Transfer Protocol Settings
  *
