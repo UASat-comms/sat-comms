@@ -6,7 +6,7 @@ RH_RF95 driver(RF_CS_PIN, RF_IRQ_PIN);
 rfMessage *createRFMessage(char *str) {
      if(strlen(str) > 255)
           LOG(FATAL) << "RF message must be between 0 and 255 chars. (8-bit unsigned)";
-     rfMessage *mess = malloc(sizeof(rfMessage));
+     rfMessage *mess = (rfMessage *) malloc(sizeof(rfMessage));
      mess->data = (uint8_t *) str;
      mess->len = (uint8_t) strlen((const char *) str);
      LOG(DEBUG) << "RF Message created.";

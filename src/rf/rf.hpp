@@ -20,11 +20,11 @@ typedef struct RF_MESSAGE {
      uint8_t len;
 } rfMessage;
 
-rfMessage createRFMessage(char *data);
+rfMessage *createRFMessage(char *data);
 void transmitModeRF();
 void receiveModeRF();
 void closeRF();
-void receiveRF();
-void transmitRF(uint8_t *, uint8_t);
+rfMessage *receiveRF();
+void transmitRF(rfMessage *);
 
 #endif
