@@ -10,6 +10,7 @@
 // RF Interface Settings
 #define RF_FREQUENCY 915.00
 #define RF_NODE_ID 1
+#define RF_GATEWAY_ID 1
 #define TX_POWER 14
 #define BOARD_LORASPI // For RadioHead/..../RasPiBoards.h
 

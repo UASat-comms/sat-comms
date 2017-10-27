@@ -18,6 +18,8 @@ RADIOHEAD_BASE		= $(PROJECT_HEAD)/RadioHead
 RASPIBOARD_BASE 	= $(RADIOHEAD_BASE)/examples/raspi
 INCLUDE       		= -I$(SRC_BASE) -I$(EASYSRC_BASE) -I$(RADIOHEAD_BASE) -I$(RASPIBOARD_BASE)
 
+
+
 rf.o: rf.cpp rf.hpp $(SRC_BASE)/settings.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 

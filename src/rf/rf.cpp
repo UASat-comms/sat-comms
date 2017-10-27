@@ -46,7 +46,7 @@ void transmitModeRF() {
      driver.setTxPower(TX_POWER, false);
      LOG(DEBUG) << "TX_POWER set: <" << TX_POWER << ">";
      driver.setFrequency(RF_FREQUENCY);
-     LOG(DEBIG) << "RF_FREQUENCY set: <" << RF_FREQUENCY << ">";
+     LOG(DEBUG) << "RF_FREQUENCY set: <" << RF_FREQUENCY << ">";
      driver.setThisAddress(RF_NODE_ID);
      driver.setHeaderFrom(RF_NODE_ID);
      LOG(DEBUG) << "Address and HeaderFrom set: <" << RF_NODE_ID << ">";
@@ -94,14 +94,14 @@ void receiveModeRF() {
      LOG(INFO) << "RF configured for receive.";
 }
 
-void transmitRF(rfMessage m) {
+void transmitRF(rfMessage *m) {
      driver.send(m->data, m->len);
      driver.waitPacketSent();
      LOG(INFO) << "Message transmitted.";
 }
 
 rfMessage *receiveRF() {
-     uint8_t *buf   = malloc(sizeof(uint8_t) * RH_RF95_MAX_MESSAGE_LEN);
+     uint8_t *buf   = (uint8_t *) malloc(sizeof(uint8_t) * RH_RF95_MAX_MESSAGE_LEN);
      uint8_t len    = RH_RF95_MAX_MESSAGE_LEN;
      uint8_t from   = driver.headerFrom();
      uint8_t to     = driver.headerTo();
@@ -115,7 +115,7 @@ rfMessage *receiveRF() {
           LOG(FATAL) << "RF messaged failed to receive.";
      }
 
-     rfMessage *mess = malloc(sizeof(rfMessage));
+     rfMessage *mess = (rfMessage *) malloc(sizeof(rfMessage));
      mess->data = buf;
      mess->len = len;
 
@@ -126,3 +126,4 @@ rfMessage *receiveRF() {
 void closeRF() {
      bcm2835_close();
 }
+
