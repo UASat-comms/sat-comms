@@ -162,7 +162,7 @@ int main (int argc, const char* argv[] )
 
         if (rf95.available()) { 
 #ifdef RF_LED_PIN
-          led_blink = millis();
+          led_blink = milliseconds();
           digitalWrite(RF_LED_PIN, HIGH);
 #endif
           // Should be a message for us now
@@ -189,7 +189,7 @@ int main (int argc, const char* argv[] )
       
 #ifdef RF_LED_PIN
       // Led blink timer expiration ?
-      if (led_blink && millis()-led_blink>200) {
+      if (led_blink && milliseconds()-led_blink>200) {
         led_blink = 0;
         digitalWrite(RF_LED_PIN, LOW);
       }

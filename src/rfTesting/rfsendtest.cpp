@@ -151,7 +151,7 @@ int main (int argc, const char* argv[] )
 
     printf("RF95 node #%d init OK @ %3.2fMHz\n", RF_NODE_ID, RF_FREQUENCY );
 
-    last_millis = millis();
+    last_millis = milliseconds();
 
     //Begin the main body of code
     while (!force_exit) {
@@ -159,11 +159,11 @@ int main (int argc, const char* argv[] )
       //printf( "millis()=%ld last=%ld diff=%ld\n", millis() , last_millis,  millis() - last_millis );
 
       // Send every 5 seconds
-      if ( millis() - last_millis > 5000 ) {
-        last_millis = millis();
+      if ( milliseconds() - last_millis > 5000 ) {
+        last_millis = milliseconds();
 
 #ifdef RF_LED_PIN
-        led_blink = millis();
+        led_blink = milliseconds();
         digitalWrite(RF_LED_PIN, HIGH);
 #endif
         
@@ -199,7 +199,7 @@ int main (int argc, const char* argv[] )
 
 #ifdef RF_LED_PIN
       // Led blink timer expiration ?
-      if (led_blink && millis()-led_blink>200) {
+      if (led_blink && milliseconds()-led_blink>200) {
         led_blink = 0;
         digitalWrite(RF_LED_PIN, LOW);
       }
