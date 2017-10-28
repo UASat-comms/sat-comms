@@ -1,6 +1,3 @@
-[submodule "RadioHead"]
-	path = RadioHead
-	url = https://github.com/hallard/RadioHead
 [submodule "easyloggingpp"]
 	path = easyloggingpp
 	url = https://github.com/muflihun/easyloggingpp
