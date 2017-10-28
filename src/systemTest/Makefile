@@ -15,9 +15,10 @@ SRC_BASE 	     	= $(PROJECT_HEAD)/src/
 EASYLOGGING_BASE 	= $(PROJECT_HEAD)/easyloggingpp
 EASYSRC_BASE		= $(EASYLOGGING_BASE)/src
 SERIAL_BASE 		= $(SRC_BASE)/serial/
+RF_BASE			= $(SRC_BASE)/rf/
 RADIOHEAD_BASE		= $(PROJECT_HEAD)/RadioHead
 RASPIBOARD_BASE 	= $(RADIOHEAD_BASE)/examples/raspi
-INCLUDE       		= -I$(SRC_BASE) -I$(EASYSRC_BASE) -I$(SERIAL_BASE) -I$(RADIOHEAD_BASE) -I$(RASPIBOARD_BASE)
+INCLUDE       		= -I$(SRC_BASE) -I$(EASYSRC_BASE) -I$(SERIAL_BASE) -I$(RF_BASE) -I$(RADIOHEAD_BASE) -I$(RASPIBOARD_BASE)
 
 OBJS = serial.o rf.o RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o
 
@@ -33,6 +34,9 @@ send.o: send.cpp $(SRC_BASE)/settings.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 receive.o: receive.cpp $(SRC_BASE)/settings.h
+	$(CC) $(CFLAGS) -c $(INCLUDE) $<
+
+rf.o: $(RF_BASE)/rf.cpp $(RF_BASE)/rf.hpp $(SRC_BASE)/settings.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 serial.o: $(SERIAL_BASE)/serial.cpp $(SERIAL_BASE)/serial.hpp
@@ -67,3 +71,6 @@ RHGenericDriver.o: $(RADIOHEAD_BASE)/RHGenericDriver.cpp
 
 RHGenericSPI.o: $(RADIOHEAD_BASE)/RHGenericSPI.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
+
+clean:
+	rm -f send receive $(OBJS)
