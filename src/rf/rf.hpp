@@ -16,6 +16,6 @@
 
 void setupRF();
 char *receiveRF();
-void transmitRF(char *, int);
+void transmitRF(uint8_t, uint8_t);
 
 #endif

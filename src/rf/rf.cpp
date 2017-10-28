@@ -38,6 +38,7 @@ void setupRF() {
 }
 
 char *receiveRF() {
+     driver.setModeRx();
      uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
      uint8_t len    = sizeof(buf);
      uint8_t from   = driver.headerFrom();
@@ -64,6 +65,8 @@ char *receiveRF() {
      }
 }
 
-void transmitRF(char *s, int len) {
-
+void transmitRF(uint8_t data[], uint8_t len) {
+     driver.setModeTx();
+     driver.send(data, len);
+     driver.waitPacketSent();
 }
