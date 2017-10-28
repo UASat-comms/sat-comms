@@ -44,3 +44,13 @@
 [DEBUG] [Sat Oct 28 22:08:09 PM] [line #: 26] MSG: RF Tx Power: <14>
 [DEBUG] [Sat Oct 28 22:08:09 PM] [line #: 28] MSG: RF Frequency: <868>
 [DEBUG] [Sat Oct 28 22:08:09 PM] [line #: 30] MSG: RF Node ID: <1>
+[DEBUG] [Sat Oct 28 22:15:29 PM] [line #: 7] MSG: Setting up RF interface...
+[DEBUG] [Sat Oct 28 22:15:29 PM] [line #: 9] MSG: Starting with pin assignments: 
+[DEBUG] [Sat Oct 28 22:15:29 PM] [line #: 12] MSG: CS Pin (GPIO): <8>
+[DEBUG] [Sat Oct 28 22:15:29 PM] [line #: 13] MSG: IRQ Pin (GPIO): <25>
+[DEBUG] [Sat Oct 28 22:15:29 PM] [line #: 17] MSG: RST Pin (GPIO): <22>
+[DEBUG] [Sat Oct 28 22:15:29 PM] [line #: 23] MSG: Pins assigned.
+[DEBUG] [Sat Oct 28 22:15:29 PM] [line #: 25] MSG: Setting RF settings: 
+[DEBUG] [Sat Oct 28 22:15:29 PM] [line #: 26] MSG: RF Tx Power: <14>
+[DEBUG] [Sat Oct 28 22:15:29 PM] [line #: 28] MSG: RF Frequency: <868>
+[DEBUG] [Sat Oct 28 22:15:29 PM] [line #: 30] MSG: RF Node ID: <1>
