@@ -20,7 +20,7 @@ RADIOHEAD_BASE		= $(PROJECT_HEAD)/RadioHead
 RASPIBOARD_BASE 	= $(RADIOHEAD_BASE)/examples/raspi
 INCLUDE       		= -I$(SRC_BASE) -I$(EASYSRC_BASE) -I$(SERIAL_BASE) -I$(RF_BASE) -I$(RADIOHEAD_BASE) -I$(RASPIBOARD_BASE)
 
-OBJS = serial.o rf.o RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o
+OBJS = serial.o rf.o easylogging++.o RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o
 
 all: send receive
 

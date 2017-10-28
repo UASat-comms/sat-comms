@@ -37,7 +37,11 @@ void setupRF() {
      LOG(DEBUG) << "Done setting up RF interface.";
 }
 
-char *receiveRF() {
+void closeRF() {
+     bcm2835_close(); 
+}
+
+void receiveRF() {
      driver.setModeRx();
      uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
      uint8_t len    = sizeof(buf);
@@ -55,6 +59,7 @@ char *receiveRF() {
                if(driver.available()) {
                     if(driver.recv(buf, &len)) {
                          LOG(DEBUG) << "RECEIVED: " << buf;
+                         printbuffer(buf, len);
                     } else {
                          LOG(FATAL) << "RF receive failed.";
                     }

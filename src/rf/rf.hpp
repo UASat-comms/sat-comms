@@ -15,7 +15,8 @@
 #include "easylogging++.h"
 
 void setupRF();
-char *receiveRF();
-void transmitRF(uint8_t, uint8_t);
+void closeRF();
+void receiveRF();
+void transmitRF(uint8_t *, uint8_t);
 
 #endif
