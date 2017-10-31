@@ -3,6 +3,10 @@
 ## Overview
 This is a project so communicate via RF, laser, and UV following the cubesat model.
 
+## To-do:
+* Add pinout diagram for RF.
+* Design logic circuit for multiplexing interfaces (Laser, UV).
+
 ## Notes
 
 ### Setting Up & Interfacing with RPi 3B
