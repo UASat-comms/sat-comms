@@ -8,7 +8,7 @@ INCLUDE				= -I $(SRC_BASE) -I $(EASYLOGGING_BASE) -I $(EASYSRC_BASE)
 
 OBJS = main.o easylogging++.o
 
-app: $(OBJS)
+loggingTest: $(OBJS)
 	$(CC) $(CFLAGS) $(NCLUDE) $^ -o $@
 
 main.o: main.cpp $(EASYSRC_BASE)/easylogging++.h
