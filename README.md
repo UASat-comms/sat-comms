@@ -6,7 +6,8 @@ This is a project so communicate via RF, laser, and UV following the cubesat mod
 ## To-do:
 * Add pinout diagram for RF.
 * Design logic circuit for multiplexing interfaces (Laser, UV).
-
+* Create custom rf source directory.
+* Put rf & serial together to complete basic transmission protocol.
 ## Notes
 
 ### Setting Up & Interfacing with RPi 3B
