@@ -100,7 +100,7 @@ void receiveFile() {
      }
      LOG(DEBUG) << "Serial interface opened successfully.";
 
-     LOG(INFO) << "Waiting for file size transmission...";
+     LOG(DEBUG) << "Waiting for file size transmission...";
      char *stringFileSize = (char *) malloc(sizeof(char) * IDENTIFIER_LENGTH);
      int c = 0;
      for(int i = 0; i < IDENTIFIER_LENGTH; i++) {
@@ -110,7 +110,7 @@ void receiveFile() {
           }
           stringFileSize[i] = (char) c;
      }
-     LOG(INFO) << "File size transmission received.";
+     LOG(DEBUG) << "File size transmission received.";
 
      int fileSize = atoi(stringFileSize);
      free(stringFileSize);
