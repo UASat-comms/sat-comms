@@ -5,11 +5,16 @@
 
 INITIALIZE_EASYLOGGINGPP
 
-int main(void) {
+void setup() {
      el::Configurations conf(LOGCONFIG);
      el::Loggers::reconfigureAllLoggers(conf);
      wiringPiSetup();
-     setupRF();
+     if(!bcm2835_init()) {
+          LOG(FATAL) << "Could not initialize bcm2835 library.";
+     }
+}
+
+int main(void) {
      uint8_t data[] = "HELLO THERE!";
      uint8_t len = sizeof(data);
      transmitRF(data, len);

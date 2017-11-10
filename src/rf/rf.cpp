@@ -3,46 +3,104 @@
 // Create driver instance.
 RH_RF95 driver(RF_CS_PIN, RF_IRQ_PIN);
 
-void setupRF() {
-     LOG(DEBUG) << "Setting up RF interface...";
+rfMessage *createRFMessage(char *str) {
+     if(strlen(str) > 255)
+          LOG(FATAL) << "RF message must be between 0 and 255 chars. (8-bit unsigned)";
+     rfMessage *mess = malloc(sizeof(rfMessage));
+     mess->data = (uint8_t *) str;
+     mess->len = (uint8_t) strlen((const char *) str);
+     LOG(DEBUG) << "RF Message created.";
+     return mess;
+}
 
-     LOG(DEBUG) << "Starting with pin assignments: ";
-     if(!bcm2835_init())
-          LOG(FATAL) << "Could not initialize bcm2835 library.";
-     LOG(DEBUG) << "CS Pin (GPIO): <" << RF_CS_PIN << ">";
-     LOG(DEBUG) << "IRQ Pin (GPIO): <" << RF_IRQ_PIN << ">";
+void transmitModeRF() {
+     LOG(DEBUG) << "Setting up RF for transmit...";
+#ifdef RF_IRQ_PIN
+     // IRQ input pull-down setup.
      pinMode(RF_IRQ_PIN, INPUT);
      bcm2835_gpio_set_pud(RF_IRQ_PIN, BCM2835_GPIO_PUD_DOWN);
-     bcm2835_gpio_ren(RF_IRQ_PIN);
-     LOG(DEBUG) << "RST Pin (GPIO): <" << RF_RST_PIN << ">";
+     LOG(DEBUG) << "RF_IRQ_PIN setup complete. Pin: <" << RF_IRQ_PIN << ">";
+#endif
+
+#ifdef RF_RST_PIN
+     // Do a reset pulse.
      pinMode(RF_RST_PIN, OUTPUT);
      digitalWrite(RF_RST_PIN, LOW);
      bcm2835_delay(150);
      digitalWrite(RF_RST_PIN, HIGH);
      bcm2835_delay(100);
-     LOG(DEBUG) << "Pins assigned.";
+     LOG(DEBUG) << "RF_RST_PIN setup complete. Pin: <" << RF_RST_PIN << ">";
+#endif
 
-     LOG(DEBUG) << "Setting RF settings: ";
-     LOG(DEBUG) << "RF Tx Power: <" << TX_POWER << ">";
+     if(!driver.init()) {
+          LOG(FATAL) << "RF95 module init failed.";
+     } else {
+          LOG(DEBUG) << "RF95 module init succeeded.";
+     }
+
+#ifdef RF_IRQ_PIN
+     driver.available();
+     bcm2835_gpio_ren(RF_IRQ_PIN);
+#endif
+
      driver.setTxPower(TX_POWER, false);
-     LOG(DEBUG) << "RF Frequency: <" << RF_FREQUENCY << ">";
+     LOG(DEBUG) << "TX_POWER set: <" << TX_POWER << ">";
      driver.setFrequency(RF_FREQUENCY);
-     LOG(DEBUG) << "RF Node ID: <" << RF_NODE_ID << ">";
+     LOG(DEBIG) << "RF_FREQUENCY set: <" << RF_FREQUENCY << ">";
      driver.setThisAddress(RF_NODE_ID);
      driver.setHeaderFrom(RF_NODE_ID);
+     LOG(DEBUG) << "Address and HeaderFrom set: <" << RF_NODE_ID << ">";
+     driver.setHeaderTo(RF_GATEWAY_ID);
+     LOG(DEBUG) << "HeaderTo set: <" << RF_GATEWAY_ID << ">";
+
+     LOG(INFO) << "RF configured for transmit.";
+}
+
+void receiveModeRF() {
+     LOG(DEBUG) << "Setting up RF for receive...";
+#ifdef RF_IRQ_PIN
+     pinMode(RF_IRQ_PIN, INPUT);
+     bcm2835_gpio_set_pud(RF_IRQ_PIN, BCM2835_GPIO_PUD_DOWN);
+     bcm2835_gpio_ren(RF_IRQ_PIN);
+     LOG(DEBUG) << "RF_IRQ_PIN setup complete. Pin: <" << RF_IRQ_PIN << ">";
+#endif
+
+#ifdef RF_RST_PIN
+     pinMode(RF_RST_PIN, OUTPUT);
+     digitalWrite(RF_RST_PIN, LOW );
+     bcm2835_delay(150);
+     digitalWrite(RF_RST_PIN, HIGH );
+     bcm2835_delay(100);
+     LOG(DEBUG) << "RF_RST_PIN setup complete. Pin: <" << RF_RST_PIN << ">";
+#endif
+
+     if(!driver.init()) {
+          LOG(FATAL) << "RF95 module init failed.";
+     } else {
+          LOG(DEBUG) << "RF95 module init succeeded.";
+     }
+
+     driver.setTxPower(TX_POWER, false);
+     LOG(DEBUG) << "TX_POWER set: <" << TX_POWER << ">";
+     driver.setFrequency(RF_FREQUENCY);
+     LOG(DEBUG) << "RF_FREQUENCY set: <" << RF_FREQUENCY << ">";
+     driver.setThisAddress(RF_NODE_ID);
+     driver.setHeaderFrom(RF_NODE_ID);
+     LOG(DEBUG) << "Address and HeaderFrom set: <" << RF_NODE_ID << ">";
      driver.setPromiscuous(true);
      driver.setModeRx();
-     LOG(DEBUG) << "RF settings set.";
+     LOG(DEBUG) << "Promiscuous mode enabled and mode set to Rx.";
 
-     LOG(DEBUG) << "Done setting up RF interface.";
+     LOG(INFO) << "RF configured for receive.";
 }
 
-void closeRF() {
-     bcm2835_close(); 
+void transmitRF(rfMessage m) {
+     driver.send(m->data, m->len);
+     driver.waitPacketSent();
+     LOG(INFO) << "Message transmitted.";
 }
 
-void receiveRF() {
-     driver.setModeRx();
+rfMessage *receiveRF() {
      uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
      uint8_t len    = sizeof(buf);
      uint8_t from   = driver.headerFrom();
@@ -51,27 +109,26 @@ void receiveRF() {
      uint8_t flags  = driver.headerFlags();;
      int8_t rssi    = driver.lastRssi();
 
-     time_t start = time(NULL);
-     // wait 10s for a message.
-     while(time(NULL) - start < 10) {
-          if(bcm2835_gpio_eds(RF_IRQ_PIN)) {
-               bcm2835_gpio_set_eds(RF_IRQ_PIN);
-               if(driver.available()) {
-                    if(driver.recv(buf, &len)) {
-                         LOG(DEBUG) << "RECEIVED: " << buf;
-                         printbuffer(buf, len);
-                    } else {
-                         LOG(FATAL) << "RF receive failed.";
-                    }
-               }
-          }
-          // Let OS do some stuff real quick.
-          bcm2835_delay(5);
+     if(driver.recv(buf, &len)) {
+          LOG(DEBUG) << "RF message received.";
+     } else {
+          LOG(FATAL) << "RF messaged failed to receive.";
      }
+
+     uint8_t *str = malloc(sizeof(uint8_t) * len);
+     int i;
+     for(i = 0; i < len; i++) {
+          str[i] = buf[i];
+     }
+
+     rfMessage *mess = malloc(sizeof(rfMessage));
+     mess->data = str;
+     mess->len = len;
+
+     LOG(DEBUG) << "Message received";
+     return mess;
 }
 
-void transmitRF(uint8_t data[], uint8_t len) {
-     driver.setModeTx();
-     driver.send(data, len);
-     driver.waitPacketSent();
+void closeRF() {
+     bcm2835_close();
 }
