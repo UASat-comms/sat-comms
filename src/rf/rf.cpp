@@ -101,8 +101,8 @@ void transmitRF(rfMessage m) {
 }
 
 rfMessage *receiveRF() {
-     uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
-     uint8_t len    = sizeof(buf);
+     uint8_t *buf   = malloc(sizeof(uint8_t) * RH_RF95_MAX_MESSAGE_LEN);
+     uint8_t len    = RH_RF95_MAX_MESSAGE_LEN;
      uint8_t from   = driver.headerFrom();
      uint8_t to     = driver.headerTo();
      uint8_t id     = driver.headerId();
@@ -115,14 +115,8 @@ rfMessage *receiveRF() {
           LOG(FATAL) << "RF messaged failed to receive.";
      }
 
-     uint8_t *str = malloc(sizeof(uint8_t) * len);
-     int i;
-     for(i = 0; i < len; i++) {
-          str[i] = buf[i];
-     }
-
      rfMessage *mess = malloc(sizeof(rfMessage));
-     mess->data = str;
+     mess->data = buf;
      mess->len = len;
 
      LOG(DEBUG) << "Message received";
