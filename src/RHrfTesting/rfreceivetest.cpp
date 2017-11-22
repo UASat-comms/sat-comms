@@ -181,6 +181,11 @@ int main (int argc, const char* argv[] )
             Serial.print("receive failed");
           }
           printf("\n");
+        
+          uint8_t data[] = "And hey back!";
+          rf95.send(data, sizeof(data));
+          rf95.waitPacketSent();
+
         }
         
 #ifdef RF_IRQ_PIN

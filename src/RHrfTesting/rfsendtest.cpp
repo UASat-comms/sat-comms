@@ -176,10 +176,10 @@ int main (int argc, const char* argv[] )
         printf("\n" );
         rf95.send(data, len);
         rf95.waitPacketSent();
-/*
+
         // Now wait for a reply
         uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
-        uint8_t len = sizeof(buf);
+        len = sizeof(buf);
 
         if (rf95.waitAvailableTimeout(1000)) { 
           // Should be a reply message for us now   
@@ -193,7 +193,7 @@ int main (int argc, const char* argv[] )
         } else {
           printf("No reply, is rf95_server running?\n");
         }
-*/
+
         
       }
 

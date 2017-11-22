@@ -1,1 +1,11 @@
 [DEBUG] [Fri Oct 27 05:11:28 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Nov 22 04:49:56 AM] [line #: 17] MSG: Setting up RF for transmit...
+[DEBUG] [Wed Nov 22 04:49:56 AM] [line #: 22] MSG: RF_IRQ_PIN setup complete. Pin: <25>
+[DEBUG] [Wed Nov 22 04:49:56 AM] [line #: 32] MSG: RF_RST_PIN setup complete. Pin: <22>
+[DEBUG] [Wed Nov 22 04:49:56 AM] [line #: 38] MSG: RF95 module init succeeded.
+[DEBUG] [Wed Nov 22 04:49:56 AM] [line #: 47] MSG: TX_POWER set: <14>
+[DEBUG] [Wed Nov 22 04:49:56 AM] [line #: 49] MSG: RF_FREQUENCY set: <915>
+[DEBUG] [Wed Nov 22 04:49:56 AM] [line #: 52] MSG: Address and HeaderFrom set: <1>
+[DEBUG] [Wed Nov 22 04:49:56 AM] [line #: 54] MSG: HeaderTo set: <1>
+[INFO]  [Wed Nov 22 04:49:56 AM] [line #: 56] MSG: RF configured for transmit.
+[DEBUG] [Wed Nov 22 04:49:56 AM] [line #: 12] MSG: RF Message created.
