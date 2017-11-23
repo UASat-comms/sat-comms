@@ -3,13 +3,16 @@
 #include <signal.h>
 #include <unistd.h>
 #include <RH_RF95.h>
+#include <RHReliableDatagram.h>
 #include "settings.h"
 #include "easylogging++.h"
 
 INITIALIZE_EASYLOGGINGPP
 
 el::Configurations conf(LOGCONFIG);
+
 RH_RF95 rf95(RF_CS_PIN, RF_IRQ_PIN);
+RHReliableDatagram manager(rf95, 9); //server is 1
 
 int main() {
     el::Loggers::reconfigureAllLoggers(conf);
@@ -37,11 +40,17 @@ int main() {
      
      rf95.setTxPower(23, false);
 
+    if(!manager.init()) {
+        LOG(FATAL) << "Manager failed to initialize.";
+    }
+
     while(1) {
-        if(rf95.available()) {
+        LOG(DEBUG) << "AVL: " << manager.available();
+        if(manager.available()) {
             uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
             uint8_t len = sizeof(buf);
-            if(rf95.recv(buf, &len)) {
+            uint8_t from;
+            if(manager.recvfromAck(buf, &len, &from)) {
                 LOG(DEBUG) << "MESS_LEN: <" << (int) len << ">";
                 LOG(DEBUG) << "MESS: " << buf;
                 break;
@@ -50,7 +59,7 @@ int main() {
             }
         }
         LOG(INFO) << "No message yet..";
-        bcm2835_delay(500);
+        bcm2835_delay(200);
     }
     bcm2835_close();
      return 0;
