@@ -5,3 +5,5 @@ https://spellfoundry.com/2016/05/29/configuring-gpio-serial-port-raspbian-jessie
 https://github.com/Hallard/RadioHead.git   <-  Repo w/ RPi examples.
 
 http://www.airspayce.com/mikem/arduino/RadioHead/classRHGenericDriver.html#a66a408f88a1188a0fab458816cb705f4 <- Talk on RF library.
+
+http://www.airspayce.com/mikem/bcm2835/group__constants.html#ga63c029bd6500167152db4e57736d0939 <- bcm2835 pin defs
