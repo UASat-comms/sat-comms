@@ -3,6 +3,7 @@
 #include <signal.h>
 #include <unistd.h>
 #include <RH_RF95.h>
+#include <RHReliableDatagram.h>
 #include "settings.h"
 #include "easylogging++.h"
 
@@ -10,6 +11,7 @@ INITIALIZE_EASYLOGGINGPP
 
 el::Configurations conf(LOGCONFIG);
 RH_RF95 rf95(RF_CS_PIN, RF_IRQ_PIN);
+RHReliableDatagram manager(rf95, 2); //client is 2
 
 int main() {
     el::Loggers::reconfigureAllLoggers(conf);
@@ -31,20 +33,28 @@ int main() {
           LOG(FATAL) << "rf95 driver failed to initialize.";
      }
 
+
      if(!rf95.setFrequency(RF_FREQUENCY)) {
           LOG(FATAL) << "rf95 frequency failed to be set.";
      }
      
      rf95.setTxPower(23, false);
+    
+     if(!manager.init()) {
+        LOG(FATAL) << "RHRaliableDatagram manager failed to initialze.";
+    }
      
      uint8_t data[] = "test";
      uint8_t len = sizeof(data);
+   
+    manager.setRetries(25);
 
      LOG(DEBUG) << "Starting packet transmission.";
-     rf95.send(data, len);
-     LOG(DEBUG) << "Waiting until transmission finishes..";
-     rf95.waitPacketSent();
-     LOG(DEBUG) << "Packet sent.";
-
+     if(manager.sendtoWait(data, len, 9)) {
+        LOG(DEBUG) << "Packet sent.";
+     } else {
+        LOG(DEBUG) << "Server failed to acknowledge!";
+     }
+    bcm2835_close();
      return 0;
 }
