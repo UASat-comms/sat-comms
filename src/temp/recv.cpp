@@ -9,12 +9,10 @@
 INITIALIZE_EASYLOGGINGPP
 
 el::Configurations conf(LOGCONFIG);
-
-//el::Loggers::reconfigureAllLoggers(conf);
-
 RH_RF95 rf95(RF_CS_PIN, RF_IRQ_PIN);
 
 int main() {
+    el::Loggers::reconfigureAllLoggers(conf);
      LOG(INFO) << "Starting program";
 
      if(!bcm2835_init()) {

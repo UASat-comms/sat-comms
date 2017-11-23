@@ -1,0 +1,8 @@
+[INFO]  [Thu Nov 23 04:53:22 AM] [line #: 17] MSG: Starting program
+[DEBUG] [Thu Nov 23 04:53:22 AM] [line #: 44] MSG: Starting packet transmission.
+[DEBUG] [Thu Nov 23 04:53:22 AM] [line #: 46] MSG: Waiting until transmission finishes..
+[DEBUG] [Thu Nov 23 04:53:22 AM] [line #: 48] MSG: Packet sent.
+[INFO]  [Thu Nov 23 04:56:47 AM] [line #: 16] MSG: Starting program
+[DEBUG] [Thu Nov 23 04:56:47 AM] [line #: 43] MSG: Starting packet transmission.
+[DEBUG] [Thu Nov 23 04:56:47 AM] [line #: 45] MSG: Waiting until transmission finishes..
+[DEBUG] [Thu Nov 23 04:56:47 AM] [line #: 47] MSG: Packet sent.
