@@ -2,37 +2,51 @@
 #include <stdio.h>
 #include <signal.h>
 #include <unistd.h>
-
-#include <RHReliableDatagram.h>
 #include <RH_RF95.h>
+#include "settings.h"
+#include "easylogging++.h"
 
-#define CLIENT 1
-#define SERVER 2
+INITIALIZE_EASYLOGGINGPP
 
-RH_RF95 rf95(RPI_V2_GPIO_P1_24, RPI_V2_GPIO_P1_22);
-RHReliableDatagram manager(rf95, SERVER); 
+el::Configurations conf(LOGCONFIG);
 
-int main(int argc, const char **argv[]) {
-    if(!bcm2835_init()) {
-        printf("nope\n");
-        return 1;
-    }
-    if(!manager.init()) {
-        printf("nope again\n");
-        return 2;
-    }
-    uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
-    int loopiter = 0;
-    while(true) {
-        printf("Loop: %d\n", loopiter);
-        uint8_t len = sizeof(buf);
-        uint8_t from, to, id, flags;
+//el::Loggers::reconfigureAllLoggers(conf);
 
-        if(manager.recvfromAck(buf, &len, &from)) {
-            printf((char *) buf);
-            bcm2835_close();
-            return 0;
-        }
-        ++loopiter;
-    }
+RH_RF95 rf95(RF_CS_PIN, RF_IRQ_PIN);
+
+int main() {
+     LOG(INFO) << "Starting program";
+
+     if(!bcm2835_init()) {
+          LOG(FATAL) << "bcm2835 failed to initialize.";
+     }
+
+     pinMode(RF_RST_PIN, OUTPUT);
+     digitalWrite(RF_RST_PIN, HIGH);
+     // manual reset
+     digitalWrite(RF_RST_PIN, LOW);
+     delay(10);
+     digitalWrite(RF_RST_PIN, HIGH);
+     delay(10);
+
+     if(!rf95.init()) {
+          LOG(FATAL) << "rf95 driver failed to initialize.";
+     }
+
+     if(!rf95.setFrequency(RF_FREQUENCY)) {
+          LOG(FATAL) << "rf95 frequency failed to be set.";
+     }
+     
+     rf95.setTxPower(23, false);
+     
+     uint8_t data[] = "test";
+     uint8_t len = sizeof(data);
+
+     LOG(DEBUG) << "Starting packet transmission.";
+     rf95.send(data, len);
+     LOG(DEBUG) << "Waiting until transmission finishes..";
+     rf95.waitPacketSent();
+     LOG(DEBUG) << "Packet sent.";
+
+     return 0;
 }
