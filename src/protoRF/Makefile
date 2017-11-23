@@ -17,8 +17,6 @@ EASYSRC_BASE		= $(EASYLOGGING_BASE)/src
 RADIOHEAD_BASE		= $(PROJECT_HEAD)/RadioHead
 INCLUDE       		= -I$(SRC_BASE) -I$(EASYSRC_BASE) -I$(RADIOHEAD_BASE)
 
-
-
 rf.o: rf.cpp rf.hpp $(SRC_BASE)/settings.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 

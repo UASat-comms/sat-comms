@@ -28,3 +28,8 @@ RHReliableDatagram setupRF(int CS_PIN, int IRQ_PIN, int RF_RST_PIN, int MY_ADDRE
      }
      return rf95Manager;
 }
+
+void send(RHReliableDatagram rf95Manager, RF_MESSAGE *) {
+
+}
+RF_MESSAGE recv(RHReliableDatagram rf95Manager);

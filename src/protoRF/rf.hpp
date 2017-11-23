@@ -18,11 +18,8 @@ typedef struct RF_MESSAGE {
      uint8_t len;
 } rfMessage;
 
-rfMessage *createRFMessage(char *data);
-void transmitModeRF();
-void receiveModeRF();
-void closeRF();
-rfMessage *receiveRF();
-void transmitRF(rfMessage *);
+RHReliableDatagram setupRF(int CS_PIN, int IRQ_PIN, int RF_RST_PIN, int MY_ADDRESS, int RF_FREQUENCY);
+void send(RHReliableDatagram rf95Manager, RF_MESSAGE *);
+RF_MESSAGE recv(RHReliableDatagram rf95Manager);
 
 #endif
