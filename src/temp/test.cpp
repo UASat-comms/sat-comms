@@ -29,8 +29,9 @@ int main(int argc, const char **argv[]) {
         if(manager.available()) {
             if(manager.recvfromAck(buf, &len, &from)) {
                 printf((char *) buf);
+                bcm2835_close();
+                return 0;
             }
-        bcm2835_close();
         }
     }
 }
