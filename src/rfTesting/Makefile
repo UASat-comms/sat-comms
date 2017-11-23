@@ -11,30 +11,46 @@ CC            		= g++
 CFLAGS        		= -DRASPBERRY_PI -DBCM2835_NO_DELAY_COMPATIBILITY -D__BASEFILE__=\"$*\" -O3 -std=c++11 -DLOGCONFIG=\"./../logconfig.txt\"
 LIBS          		= -lbcm2835 -lwiringPi
 PROJECT_HEAD		= ./../../
-SRC_BASE 	      	= $(PROJECT_HEAD)/src
-EASYLOGGING_BASE	= $(PROJECT_HEAD)/easyloggingpp
-EASYSRC_BASE		= $(EASYLOGGING_BASE)/src
-RF_BASE			= $(SRC_BASE)/rf/
 RADIOHEAD_BASE		= $(PROJECT_HEAD)/RadioHead
-RASPIBOARD_BASE 	= $(RADIOHEAD_BASE)/examples/raspi
-INCLUDE       		= -I$(RADIOHEAD_BASE) -I$(SRC_BASE) -I$(RASPIBOARD_BASE) -I$(RF_BASE) -I$(EASYSRC_BASE)
+EASYLOGGING_BASE 	= $(PROJECT_HEAD)/easyloggingpp
+EASYSRC_BASE		= $(EASYLOGGING_BASE)/src
+SRC_BASE 	      	= $(PROJECT_HEAD)/src
+INCLUDE       		= -I$(RADIOHEAD_BASE) -I$(SRC_BASE) -I$(EASYSRC_BASE)
 
-OBJS = RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o rf.o easylogging++.o
+OBJS = RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o RHReliableDatagram.o RHDatagram.o easylogging++.o
 
-rfsendtest: rfsendtest.o $(OBJS)
+all: recv send advrecv advsend
+
+recv: recv.o $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
 
-rfsendtest.o: rfsendtest.cpp $(SRC_BASE)/settings.h
+send: send.o $(OBJS)
+	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
+
+advrecv: advrecv.o $(OBJS)
+	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
+
+advsend: advsend.o $(OBJS)
+	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
+
+recv.o: recv.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
-rf.o: $(RF_BASE)/rf.cpp $(RF_BASE)/rf.hpp $(SRC_BASE)/settings.h
+send.o: send.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
+
+advrecv.o: advrecv.cpp
+	$(CC) $(CFLAGS) -c $(INCLUDE) $<
+
+advsend.o: advsend.cpp
+	$(CC) $(CFLAGS) -c $(INCLUDE) $<
+
 
 easylogging++.o: $(EASYSRC_BASE)/easylogging++.cc $(EASYSRC_BASE)/easylogging++.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 clean:
-	rm -f $(OBJS) rfreceivetest.o rfsendtest.o rfreceivetest rfsendtest
+	rm -f $(OBJS) send.o send recv.o recv advsend.o advsend advrecv.o advrecv
 
 
 # =======================================================================
@@ -56,4 +72,6 @@ RHSPIDriver.o: $(RADIOHEAD_BASE)/RHSPIDriver.cpp
 RHGenericDriver.o: $(RADIOHEAD_BASE)/RHGenericDriver.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 RHGenericSPI.o: $(RADIOHEAD_BASE)/RHGenericSPI.cpp
+	$(CC) $(CFLAGS) -c $(INCLUDE) $<
+RHReliableDatagram.o: $(RADIOHEAD_BASE)/RHReliableDatagram.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
