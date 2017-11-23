@@ -18,20 +18,22 @@ INCLUDE       		= -I$(RADIOHEAD_BASE) -I$(SRC_BASE) -I$(RASPIBOARD_BASE)
 
 OBJS = RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o RHReliableDatagram.o RHDatagram.o
 
-test: test.o $(OBJS)
+all: recv send
+
+recv: recv.o $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
 
-test2: test2.o $(OBJS)
+send: send.o $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
 
-test.o: test.cpp
+recv.o: recv.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
-test2.o: test2.cpp
+send.o: send.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 clean:
-	rm -f $(OBJS) test.o test test2.o test2
+	rm -f $(OBJS) send.o send recv.o recv
 
 
 # =======================================================================

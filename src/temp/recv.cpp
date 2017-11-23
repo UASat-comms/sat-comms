@@ -22,16 +22,17 @@ int main(int argc, const char **argv[]) {
         return 2;
     }
     uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
+    int loopiter = 0;
     while(true) {
+        printf("Loop: %d\n", loopiter);
         uint8_t len = sizeof(buf);
         uint8_t from, to, id, flags;
 
-        if(manager.available()) {
-            if(manager.recvfromAck(buf, &len, &from)) {
-                printf((char *) buf);
-                bcm2835_close();
-                return 0;
-            }
+        if(manager.recvfromAck(buf, &len, &from)) {
+            printf((char *) buf);
+            bcm2835_close();
+            return 0;
         }
+        ++loopiter;
     }
 }
