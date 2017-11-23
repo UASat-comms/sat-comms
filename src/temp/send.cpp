@@ -36,18 +36,15 @@ int main() {
      }
      
      rf95.setTxPower(23, false);
+     
+     uint8_t data[] = "test";
+     uint8_t len = sizeof(data);
 
-    while(1) {
-        if(rf95.available()) {
-            uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
-            uint8_t len;
-            rf95.recv(buf, &len);
-            printf("%s\n", (char *) buf);
-            break;
-        }
-        LOG(INFO) << "No message yet..";
-        bcm2835_delay(100);
-    }
-    bcm2835_close();
+     LOG(DEBUG) << "Starting packet transmission.";
+     rf95.send(data, len);
+     LOG(DEBUG) << "Waiting until transmission finishes..";
+     rf95.waitPacketSent();
+     LOG(DEBUG) << "Packet sent.";
+
      return 0;
 }

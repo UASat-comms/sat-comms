@@ -36,15 +36,22 @@ int main() {
      }
      
      rf95.setTxPower(23, false);
-     
-     uint8_t data[] = "test";
-     uint8_t len = sizeof(data);
 
-     LOG(DEBUG) << "Starting packet transmission.";
-     rf95.send(data, len);
-     LOG(DEBUG) << "Waiting until transmission finishes..";
-     rf95.waitPacketSent();
-     LOG(DEBUG) << "Packet sent.";
-
+    while(1) {
+        if(rf95.available()) {
+            uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
+            uint8_t len = sizeof(buf);
+            if(rf95.recv(buf, &len)) {
+                LOG(DEBUG) << "MESS_LEN: <" << (int) len << ">";
+                LOG(DEBUG) << "MESS: " << buf;
+                break;
+            } else {
+                LOG(FATAL) << "recv failed!";
+            }
+        }
+        LOG(INFO) << "No message yet..";
+        bcm2835_delay(500);
+    }
+    bcm2835_close();
      return 0;
 }
