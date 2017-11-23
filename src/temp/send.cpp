@@ -56,13 +56,11 @@ int main(int argc, const char **argv) {
     uint8_t len = sizeof(data);
     
     while(true) {
-        if(manager.available()) {
-            if(manager.sendtoWait(data, len, SERVER)) {
-                printf("Sent!");
-                bcm2835_close();
-                return 0;
-            }
-            printf("%d\n", manager.retries());
+        if(manager.sendtoWait(data, len, SERVER)) {
+            printf("Sent!");
+            bcm2835_close();
+            return 0;
         }
+        printf("%d\n", manager.retries());
     }
 }
