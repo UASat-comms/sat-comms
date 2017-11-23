@@ -21,12 +21,17 @@ OBJS = RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPID
 test: test.o $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
 
+test2: test2.o $(OBJS)
+	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
+
 test.o: test.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
+test2.o: test2.cpp
+	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 clean:
-	rm -f $(OBJS) rfreceivetest.o rfsendtest.o rfreceivetest rfsendtest
+	rm -f $(OBJS) test.o test test2.o test2
 
 
 # =======================================================================
