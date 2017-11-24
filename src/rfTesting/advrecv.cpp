@@ -29,11 +29,11 @@ int main() {
      delay(10);
      digitalWrite(RF_RST_PIN, HIGH);
      delay(10);
-
+/*
      if(!rf95.init()) {
           LOG(FATAL) << "rf95 driver failed to initialize.";
      }
-
+*/
      if(!rf95.setFrequency(RF_FREQUENCY)) {
           LOG(FATAL) << "rf95 frequency failed to be set.";
      }
