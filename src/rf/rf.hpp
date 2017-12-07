@@ -8,7 +8,6 @@
 #include <unistd.h>
 #include <string.h>
 
-#include <RH_RF69.h>
 #include <RH_RF95.h>
 
 #include "settings.h"
