@@ -47,7 +47,7 @@ void sendRF(rfMessage *mess) {
      rf95.send(mess->data, mess->len);
      LOG(DEBUG) << "Waiting until transmission finishes..";
      rf95.waitPacketSent();
-     LOG(DEBUG) << "Packet sent.";
+     LOG(INFO) << "Packet sent.";
 }
 
 rfMessage *recvRF() {
@@ -58,7 +58,7 @@ rfMessage *recvRF() {
                uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
                uint8_t len = sizeof(buf);
                if(rf95.recv(buf, &len)) {
-                    LOG(DEBUG) << "Succeeded in grabbing RF message from RF HW.";
+                    LOG(INFO) << "Succeeded in grabbing RF message from RF HW.";
                     rfMessage *mess = createRFMessage((char *) buf);
                     LOG(DEBUG) << "Saved received RF message.";
                     return mess;
