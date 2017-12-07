@@ -20,6 +20,9 @@ typedef struct RF_MESSAGE {
 } rfMessage;
 
 rfMessage *createRFMessage(char *data);
-void rfSend()
+void setupRF();
+void closeRF();
+void sendRF(rfMessage *);
+rfMessage *recvRF();
 
 #endif
