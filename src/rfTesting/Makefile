@@ -15,11 +15,12 @@ RADIOHEAD_BASE		= $(PROJECT_HEAD)/RadioHead
 EASYLOGGING_BASE 	= $(PROJECT_HEAD)/easyloggingpp
 EASYSRC_BASE		= $(EASYLOGGING_BASE)/src
 SRC_BASE 	      	= $(PROJECT_HEAD)/src
+RF_BASE			= $(SRC_BASE)/rf
 INCLUDE       		= -I$(RADIOHEAD_BASE) -I$(SRC_BASE) -I$(EASYSRC_BASE)
 
-OBJS = RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o RHReliableDatagram.o RHDatagram.o easylogging++.o
+OBJS = RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o RHReliableDatagram.o RHDatagram.o easylogging++.o rf.o
 
-all: recv send advrecv advsend
+all: recv send
 
 recv: recv.o $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
@@ -27,11 +28,17 @@ recv: recv.o $(OBJS)
 send: send.o $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
 
-advrecv: advrecv.o $(OBJS)
-	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
+#advrecv: advrecv.o $(OBJS)
+#	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
 
-advsend: advsend.o $(OBJS)
-	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
+#advsend: advsend.o $(OBJS)
+#	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
+
+#advrecv.o: advrecv.cpp
+#	$(CC) $(CFLAGS) -c $(INCLUDE) $<
+
+#advsend.o: advsend.cpp
+#	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 recv.o: recv.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
@@ -39,12 +46,8 @@ recv.o: recv.cpp
 send.o: send.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
-advrecv.o: advrecv.cpp
+rf.o: rf.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
-
-advsend.o: advsend.cpp
-	$(CC) $(CFLAGS) -c $(INCLUDE) $<
-
 
 easylogging++.o: $(EASYSRC_BASE)/easylogging++.cc $(EASYSRC_BASE)/easylogging++.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
