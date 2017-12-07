@@ -3,7 +3,7 @@
 // Create driver instance.
 RH_RF95 rf95(RF_CS_PIN, RF_IRQ_PIN);
 
-rfMessage *createRFMessage(char *str) {
+static rfMessage *createRFMessage(char *str) {
      if(strlen(str) > 255)
           LOG(FATAL) << "RF message must be between 0 and 255 chars. (8-bit unsigned)";
      rfMessage *mess = (rfMessage *) malloc(sizeof(rfMessage));
@@ -42,7 +42,8 @@ void closeRF() {
      bcm2835_close();
 }
 
-void sendRF(rfMessage *mess) {
+void sendRF(char *str) {
+     rfMessage *mess = createRFMessage(str);
      LOG(DEBUG) << "Starting RF packet transmission.";
      rf95.send(mess->data, mess->len);
      LOG(DEBUG) << "Waiting until transmission finishes..";
@@ -50,7 +51,7 @@ void sendRF(rfMessage *mess) {
      LOG(INFO) << "Packet sent.";
 }
 
-rfMessage *recvRF() {
+char *recvRF() {
      LOG(DEBUG) << "Starting RF packet receive.";
      while(1) {
           // See if the RF HW module has received a message we can grab.
@@ -59,7 +60,10 @@ rfMessage *recvRF() {
                uint8_t len = sizeof(buf);
                if(rf95.recv(buf, &len)) {
                     LOG(INFO) << "Succeeded in grabbing RF message from RF HW.";
-                    rfMessage *mess = createRFMessage((char *) buf);
+                    char *mess = (char *) malloc(sizeof(char) * len);
+                    for(int i = 0; i < len; i++) {
+                         mess[i] = buf[i];
+                    }
                     LOG(DEBUG) << "Saved received RF message.";
                     return mess;
                } else {

@@ -18,10 +18,10 @@ typedef struct RF_MESSAGE {
      uint8_t len;
 } rfMessage;
 
-rfMessage *createRFMessage(char *data);
+
 void setupRF();
 void closeRF();
-void sendRF(rfMessage *);
-rfMessage *recvRF();
+void sendRF(char *);
+char *recvRF();
 
 #endif
