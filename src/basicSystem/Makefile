@@ -8,30 +8,30 @@
 # evalues to 'make foo clean'
 
 CC            		= g++
-CFLAGS        		= -DRASPBERRY_PI -DBCM2835_NO_DELAY_COMPATIBILITY -D__BASEFILE__=\"$*\" -O3 -std=c++11
+CFLAGS        		= -DRASPBERRY_PI -DBCM2835_NO_DELAY_COMPATIBILITY -D__BASEFILE__=\"$*\" -O3 -std=c++11 -DLOGCONFIG=\"./../logconfig.txt\"
 LIBS          		= -lbcm2835 -lwiringPi
 PROJECT_HEAD		= ./../../
 RADIOHEAD_BASE		= $(PROJECT_HEAD)/RadioHead
-RASPIBOARD_BASE 	= $(RADIOHEAD_BASE)/examples/raspi
+EASYLOGGING_BASE 	= $(PROJECT_HEAD)/easyloggingpp
+EASYSRC_BASE		= $(EASYLOGGING_BASE)/src
 SRC_BASE 	      	= $(PROJECT_HEAD)/src
-INCLUDE       		= -I$(RADIOHEAD_BASE) -I$(SRC_BASE) -I$(RASPIBOARD_BASE)
+SERIAL_BASE 		= $(SRC_BASE)/serial/
+INCLUDE       		= -I$(RADIOHEAD_BASE) -I$(SRC_BASE) -I$(EASYSRC_BASE)
 
-OBJS = RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o
+OBJS = RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o RHReliableDatagram.o RHDatagram.o easylogging++.o \
+	  serial.o
 
-all: rfreceivetest rfsendtest
+all: OBJS
 
-rfreceivetest: rfreceivetest.o $(OBJS)
-	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
-rfsendtest: rfsendtest.o $(OBJS)
-	$(CC) $(CLFAGS) $(INCLUDE) $^ $(LIBS) -o $@
 
-rfreceivetest.o: rfreceivetest.cpp
+easylogging++.o: $(EASYSRC_BASE)/easylogging++.cc $(EASYSRC_BASE)/easylogging++.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
-rfsendtest.o: rfsendtest.cpp
+
+serial.o: serial.cpp serial.hpp $(SRC_BASE)/settings.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 clean:
-	rm -f $(OBJS) rfreceivetest.o rfsendtest.o rfreceivetest rfsendtest
+	rm -f $(OBJS) send.o send recv.o recv advsend.o advsend advrecv.o advrecv
 
 
 # =======================================================================
@@ -53,4 +53,6 @@ RHSPIDriver.o: $(RADIOHEAD_BASE)/RHSPIDriver.cpp
 RHGenericDriver.o: $(RADIOHEAD_BASE)/RHGenericDriver.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 RHGenericSPI.o: $(RADIOHEAD_BASE)/RHGenericSPI.cpp
+	$(CC) $(CFLAGS) -c $(INCLUDE) $<
+RHReliableDatagram.o: $(RADIOHEAD_BASE)/RHReliableDatagram.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
