@@ -59,9 +59,9 @@ rfMessage *recvRF() {
                uint8_t len = sizeof(buf);
                if(rf95.recv(buf, &len)) {
                     LOG(DEBUG) << "Succeeded in grabbing RF message from RF HW.";
-                    rfMessage *mess = createRFMessage((const char *) buf);
+                    rfMessage *mess = createRFMessage((char *) buf);
                     LOG(DEBUG) << "Saved received RF message.";
-                    break;
+                    return mess;
                } else {
                     LOG(FATAL) << "Failed to grab RF message from RF HW!";
                }
@@ -70,5 +70,4 @@ rfMessage *recvRF() {
                bcm2835_delay(500);
           }
      }
-     return mess;
 }
