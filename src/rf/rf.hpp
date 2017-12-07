@@ -12,7 +12,6 @@
 #include <RH_RF95.h>
 
 #include "settings.h"
-#include "RasPiBoards.h"
 #include "easylogging++.h"
 
 typedef struct RF_MESSAGE {
@@ -21,10 +20,6 @@ typedef struct RF_MESSAGE {
 } rfMessage;
 
 rfMessage *createRFMessage(char *data);
-void transmitModeRF();
-void receiveModeRF();
-void closeRF();
-rfMessage *receiveRF();
-void transmitRF(rfMessage *);
+void rfSend()
 
 #endif
