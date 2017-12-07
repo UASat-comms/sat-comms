@@ -6,14 +6,15 @@
 // -------------------- Serial Interface Settings -----------------------------
 #define INTERFACE "/dev/serial0"
 #define IDENTIFIER_LENGTH 32      // Size identifier.
-#define BAUD_RATE 38400
+#define BAUD_RATE 1000000         // 1MBaud ~ 1MHz
 
 // ============================================================================
 // -------------------- RF Interface Settings ---------------------------------
 #define RF_FREQUENCY 915.00 // FCC allocated frequency band for hobbyists
-#define RF_NODE_ID 1        //
+#define RF_SERVER_ID 1
+#define RF_CLIENT_ID 2
 #define RF_GATEWAY_ID 1
-#define TX_POWER 14
+#define TX_POWER 14         // Range: 13-23
 
 // -------------------- RF Pin Allocations ------------------------------------
 // bcm2835 pin constants defined @:
@@ -25,4 +26,6 @@
 #define RF_CS_PIN  RPI_V2_GPIO_P1_24
 #define RF_IRQ_PIN RPI_V2_GPIO_P1_22
 #define RF_RST_PIN RPI_V2_GPIO_P1_15
+
+// ============================================================================
 #endif
