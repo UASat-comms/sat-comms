@@ -10,8 +10,8 @@ el::Configurations conf(LOGCONFIG);
 int main() {
     el::Loggers::reconfigureAllLoggers(conf);
     setupRF();
-    rfMessage *m;
-    m = recvRF();
-    LOG(INFO) << "Message received: <" << m->data << ">";
+    char *mess = recvRF();
+    LOG(INFO) << "Message received: <" << mess << ">";
+    closeRF();
     return 0;
 }

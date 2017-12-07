@@ -11,7 +11,7 @@ int main() {
      el::Loggers::reconfigureAllLoggers(conf);
      setupRF();
      char data[] = "testtesttest";
-     rfMessage *m = createRFMessage((char *) data);
-     sendRF(m);
+     sendRF(data);
+     closeRF();
      return 0;
 }
