@@ -34,7 +34,7 @@ void setupRF() {
           LOG(FATAL) << "rf95 frequency failed to be set.";
      }
 
-     rf95.setTxPower(TX_POWER, false);
+     rf95.setTxPower(RF_TX_POWER, false);
      LOG(DEBUG) << "rf95 transmission power set with power level: <" << RF_TX_POWER << ">";
 }
 
@@ -58,7 +58,9 @@ rfMessage *recvRF() {
                uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
                uint8_t len = sizeof(buf);
                if(rf95.recv(buf, &len)) {
-                    LOG(DEBUG) << "Succeeded in grabbing RF message from RF HW."
+                    LOG(DEBUG) << "Succeeded in grabbing RF message from RF HW.";
+                    rfMessage *mess = createRFMessage((const char *) buf);
+                    LOG(DEBUG) << "Saved received RF message.";
                     break;
                } else {
                     LOG(FATAL) << "Failed to grab RF message from RF HW!";
@@ -68,7 +70,5 @@ rfMessage *recvRF() {
                bcm2835_delay(500);
           }
      }
-     rfMessage *mess = createRFMessage((const char *) buf);
-     LOG(DEBUG) << "Saved received RF message.";
      return mess;
 }
