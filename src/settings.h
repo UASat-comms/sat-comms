@@ -4,7 +4,7 @@
 
 // ============================================================================
 // -------------------- Serial Interface Settings -----------------------------
-#define INTERFACE             "/dev/serial0"
+#define INTERFACE             "/dev/serial0"      // Should be tyAMA0
 #define IDENTIFIER_LENGTH     32                  // Size identifier.
 #define BAUD_RATE             1000000             // 1MBaud ~ 1MHz
 
@@ -26,6 +26,16 @@
 #define RF_CS_PIN  RPI_V2_GPIO_P1_24
 #define RF_IRQ_PIN RPI_V2_GPIO_P1_22
 #define RF_RST_PIN RPI_V2_GPIO_P1_15
+
+// -------------------- RF System States --------------------------------------
+enum SystemStates {
+     hello,
+     helloBack,
+     send,
+     received,
+     badTx,
+     retryTx
+};
 
 // ============================================================================
 #endif
