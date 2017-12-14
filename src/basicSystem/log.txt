@@ -1,0 +1,3 @@
+[DEBUG] [Thu Dec 14 16:39:35 PM] [line #: 38] MSG: rf95 transmission power set with power level: <14>
+[DEBUG] [Thu Dec 14 16:52:18 PM] [line #: 38] MSG: rf95 transmission power set with power level: <14>
+[DEBUG] [Thu Dec 14 17:00:09 PM] [line #: 38] MSG: rf95 transmission power set with power level: <14>
