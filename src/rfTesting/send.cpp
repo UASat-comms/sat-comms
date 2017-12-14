@@ -10,8 +10,10 @@ el::Configurations conf(LOGCONFIG);
 int main() {
      el::Loggers::reconfigureAllLoggers(conf);
      setupRF();
-     char data[] = "testtesttest";
+     char data[] = "mynameismatthewdalemorganwhatisyournamedude?";
      sendRF(data);
+     char *mess = recvRF();
+     LOG(DEBUG) << "Reply was: <" << mess << ">";
      closeRF();
      return 0;
 }

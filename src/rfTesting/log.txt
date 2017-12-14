@@ -2793,3 +2793,41 @@
 [INFO]  [Thu Nov 23 06:53:19 AM] [line #: 52] MSG: No message yet..
 [DEBUG] [Thu Nov 23 06:53:19 AM] [line #: 45] MSG: MESS_LEN: <5>
 [DEBUG] [Thu Nov 23 06:53:19 AM] [line #: 46] MSG: MESS: test
+[DEBUG] [Wed Nov 29 00:17:50 AM] [line #: 38] MSG: rf95 transmission power set with power level: <14>
+[DEBUG] [Wed Nov 29 00:17:50 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Nov 29 00:17:50 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Nov 29 00:17:50 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Nov 29 00:17:50 AM] [line #: 51] MSG: Packet sent.
+[DEBUG] [Wed Nov 29 00:19:21 AM] [line #: 38] MSG: rf95 transmission power set with power level: <14>
+[DEBUG] [Wed Nov 29 00:19:21 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Nov 29 00:19:21 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Nov 29 00:19:21 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Nov 29 00:19:21 AM] [line #: 51] MSG: Packet sent.
+[DEBUG] [Wed Nov 29 00:37:34 AM] [line #: 38] MSG: rf95 transmission power set with power level: <14>
+[DEBUG] [Wed Nov 29 00:37:34 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Nov 29 00:37:34 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Nov 29 00:37:34 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Nov 29 00:37:34 AM] [line #: 51] MSG: Packet sent.
+[DEBUG] [Wed Nov 29 00:39:57 AM] [line #: 38] MSG: rf95 transmission power set with power level: <14>
+[DEBUG] [Wed Nov 29 00:39:57 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Nov 29 00:39:57 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Nov 29 00:39:57 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Nov 29 00:39:58 AM] [line #: 51] MSG: Packet sent.
+[DEBUG] [Wed Nov 29 00:39:58 AM] [line #: 55] MSG: Starting RF packet receive.
+[DEBUG] [Wed Nov 29 00:39:58 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Nov 29 00:39:58 AM] [line #: 73] MSG: No message available from RF HW yet..
+[INFO]  [Wed Nov 29 00:39:59 AM] [line #: 62] MSG: Succeeded in grabbing RF message from RF HW.
+[DEBUG] [Wed Nov 29 00:39:59 AM] [line #: 67] MSG: Saved received RF message.
+[DEBUG] [Wed Nov 29 00:39:59 AM] [line #: 16] MSG: Reply was: <hey back!>
+[DEBUG] [Wed Nov 29 00:41:17 AM] [line #: 38] MSG: rf95 transmission power set with power level: <14>
+[DEBUG] [Wed Nov 29 00:41:17 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Nov 29 00:41:17 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Nov 29 00:41:17 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Nov 29 00:41:17 AM] [line #: 51] MSG: Packet sent.
+[DEBUG] [Wed Nov 29 00:41:17 AM] [line #: 55] MSG: Starting RF packet receive.
+[DEBUG] [Wed Nov 29 00:41:17 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Nov 29 00:41:17 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Nov 29 00:41:18 AM] [line #: 73] MSG: No message available from RF HW yet..
+[INFO]  [Wed Nov 29 00:41:18 AM] [line #: 62] MSG: Succeeded in grabbing RF message from RF HW.
+[DEBUG] [Wed Nov 29 00:41:18 AM] [line #: 67] MSG: Saved received RF message.
+[DEBUG] [Wed Nov 29 00:41:18 AM] [line #: 16] MSG: Reply was: <hey back!>

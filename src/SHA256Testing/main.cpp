@@ -1,10 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include <cstdlib>
-#include <ctime>
-#include "picosha2.h"
 #include <sstream>
-#include <cinttypes>
+#include "picosha2.h"
 
 using namespace std;
 
@@ -14,21 +11,33 @@ std::string getSHA256Hash(const char *str) {
   return picosha2::hash256_hex_string(s.str());
 }
 
-std::string getSHA256Hash(std::string & str) {
+std::string getSHA256Hash(std::string str) {
   return picosha2::hash256_hex_string(str);
 }
 
 
-int main() {
-  srand(time(NULL));
-  cout << getSHA256Hash("test") << endl;  
-  std::string s = "abc";
-  cout << getSHA256Hash(s) << endl;  
-  
-  const char *str = getSHA256Hash(s).c_str();
-  while(*str) {
-    printf("%c", *str);
-    ++str;
-  }
-  printf("%s\n", str);
+int main(int argc, const char **argv) {
+    if(argc < 2) {
+        cout << "Enter a filename!" << endl;
+        return 1;
+    }
+
+    ifstream myfile(argv[1]);
+    stringstream mystr;
+    string line;
+
+    if(myfile.is_open()) {
+        while(getline(myfile, line)) {
+            mystr << line << endl;
+        }
+        myfile.close();
+    } else {
+        cout << "File not open!" << endl;
+        return 2;
+    }
+
+    cout << "Your SHA256 hash for " << argv[1] << " is: ";
+    cout << getSHA256Hash(mystr.str()) << endl;
+
+    return 0;
 }
