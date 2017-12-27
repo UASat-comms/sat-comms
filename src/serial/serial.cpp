@@ -139,7 +139,6 @@ char *receiveFile() {
      LOG(INFO) << "Resulting bit/s: <" << (fileSize * 8 / avg) << ">";
 
      LOG(DEBUG) << "Freeing resources...";
-     fclose(fp);
      serialClose(fd);
      LOG(DEBUG) << "Resources freed.";
 
