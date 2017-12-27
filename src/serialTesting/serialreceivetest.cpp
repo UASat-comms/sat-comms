@@ -25,4 +25,5 @@ int main(int argc, const char **argv) {
      }
      for(int i = 0; i < fileSize; i++) fputc(fileData[i], fp);
      LOG(INFO) << "File data written.";
+     fclose(fp);
 }
