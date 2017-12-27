@@ -52,7 +52,12 @@ int main(int argc, const char **argv) {
     LOG(DEBUG) << "File checksum is: " << checksum;
     sendRF((char *) checksum.c_str());
     LOG(INFO) << "File checksum transmitted.";
-    bcm2835_delay(3000);
+
+    // Wait for the receiving side to give us the go-ahead to transmit.
+    char *sendprompt = recvRF();
+    if(strcmp(sendprompt, "GOAHEAD") != 0) {
+         LOG(FATAL) << "Receiving HW had an issue and could not receive file.";
+    }
 
     // Transmit the file via serial.
     transmitFile((char *) argv[1]);
