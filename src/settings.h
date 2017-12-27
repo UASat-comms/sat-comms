@@ -7,6 +7,7 @@
 #define INTERFACE             "/dev/serial0"      // Should be tyAMA0
 #define IDENTIFIER_LENGTH     32                  // Size identifier.
 #define BAUD_RATE             1000000             // 1MBaud ~ 1MHz
+#define TRY_LIMIT             5                   // No. of allowed attempts.
 
 // ============================================================================
 // -------------------- RF Interface Settings ---------------------------------
