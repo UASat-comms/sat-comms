@@ -14,6 +14,6 @@
 #include "easylogging++.h"
 
 void transmitFile(char *);
-void receiveFile();
+char *receiveFile();
 
 #endif
