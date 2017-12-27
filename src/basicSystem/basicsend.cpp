@@ -57,6 +57,8 @@ int main(int argc, const char **argv) {
     char *sendprompt = recvRF();
     if(strcmp(sendprompt, "GOAHEAD") != 0) {
          LOG(FATAL) << "Receiving HW had an issue and could not receive file.";
+    } else {
+         LOG(DEBUG) << "Rx side is good to receive file.";
     }
 
     // Transmit the file via serial.
