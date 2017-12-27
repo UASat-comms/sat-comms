@@ -62,20 +62,26 @@ int main(int argc, const char **argv) {
     }
 
     // Transmit the file via serial.
+    bcm2835_delay(500);
     transmitFile((char *) argv[1]);
 
     /* See if the checksum matches. Try again until correct or
      * until try limit is reached.
      */
     char *reply = recvRF();
-    int tryCount = 0;
+    int tryCount = 1;
     int success = 0;
     while((strcmp(reply, "GOOD") != 0) && tryCount < TRY_LIMIT) {
          bcm2835_delay(1000);
          transmitFile((char *) argv[1]);
          ++tryCount;
          reply = recvRF();
-         if(strcmp(reply, "GOOD") == 0) success = 1;
+         if(strcmp(reply, "GOOD") == 0) {
+              success = 1;
+              LOG(DEBUG) << "Rx side said transmission was good.";
+         } else {
+              LOG(DEBUG) << "Rx side said transmission was bad.";
+         }
     }
 
     if(success) {
