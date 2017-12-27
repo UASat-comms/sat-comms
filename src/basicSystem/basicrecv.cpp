@@ -54,6 +54,7 @@ int main(int argc, const char **argv) {
      * until the limit is reached.
      */
     int tryCount = 0;
+    int success = 0;
     stringstream temp;
     char *fileData;
     while(tryCount < TRY_LIMIT) {
@@ -65,6 +66,7 @@ int main(int argc, const char **argv) {
          if(strcmp(checksum, recdChecksum) == 0) {
               LOG(DEBUG) << "Checksums match!";
               sendRF((char *) "GOOD");
+              success = 1;
               break;
          } else {
               LOG(DEBUG) << "Checksums do not match!";
@@ -73,15 +75,18 @@ int main(int argc, const char **argv) {
          }
     }
 
-    int fileSize = strlen(fileData);
-    LOG(INFO) << "attempting to write file data to 'RECD_data'...";
-    FILE *fp = fopen("RECD_data", "w");
-    if(fp == NULL) {
-         LOG(FATAL) << "Unable to open file.";
-    }
-    for(int i = 0; i < fileSize; i++) fputc(fileData[i], fp);
-    LOG(INFO) << "File data written.";
-    fclose(fp);
-
-    return 0;
+    if(success) {
+          int fileSize = strlen(fileData);
+          LOG(INFO) << "attempting to write file data to 'RECD_data'...";
+          FILE *fp = fopen("RECD_data", "w");
+          if(fp == NULL) {
+               LOG(FATAL) << "Unable to open file.";
+          }
+          for(int i = 0; i < fileSize; i++) fputc(fileData[i], fp);
+          LOG(INFO) << "File data written.";
+          fclose(fp);
+     } else {
+          LOG(FATAL) << "All attempts failed!";
+     }
+     return 0;
 }
