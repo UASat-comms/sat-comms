@@ -55,11 +55,11 @@ int main(int argc, const char **argv) {
      */
     int tryCount = 0;
     int success = 0;
-    stringstream temp;
     char *fileData;
     while(tryCount < TRY_LIMIT) {
          // Get the file data over serial.
          fileData = receiveFile();
+         stringstream temp;
          temp << fileData;
          char *recdChecksum = (char *) picosha2::hash256_hex_string(temp.str()).c_str();
          LOG(DEBUG) << "Received checksum is: " << recdChecksum;
