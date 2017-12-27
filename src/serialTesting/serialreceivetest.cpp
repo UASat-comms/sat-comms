@@ -17,7 +17,7 @@ int main(int argc, const char **argv) {
      LOG(INFO) << "Detected baud rate: <" << BAUD_RATE << ">";
      wiringPiSetup();
      char *fileData = receiveFile();
-     
+     int fileSize = strlen(fileData); 
      LOG(INFO) << "attempting to write file data to 'RECD_data'...";
      FILE *fp = fopen("RECD_data", "w");
      if(fp == NULL) {
