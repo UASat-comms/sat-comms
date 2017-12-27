@@ -61,18 +61,20 @@ int main(int argc, const char **argv) {
          fileData = receiveFile();
          stringstream temp;
          temp << fileData;
-         
+
          // Calculate the checksum.
          string recdChecksum = picosha2::hash256_hex_string(temp.str());
          LOG(DEBUG) << "Received checksum is: " << recdChecksum;
-         
+
          // Compare checksums.
          if(strcmp(checksum, recdChecksum.c_str()) == 0) {
+              bcm2835_delay(1000);
               LOG(DEBUG) << "Checksums match!";
               sendRF((char *) "GOOD");
               success = 1;
               break;
          } else {
+              bcm2835_delay(1000);
               LOG(DEBUG) << "Checksums do not match!";
               ++tryCount;
               sendRF((char *) "BAD");
