@@ -118,15 +118,14 @@ char *receiveFile() {
      LOG(INFO) << "Size of file of file to receive in BYTES: <" << fileSize << ">";
 
      LOG(DEBUG) << "Attempting to reserve memory for file data...";
-     char *fileData = (char *) malloc(sizeof(char) * (fileSize));
+     char *fileData = (char *) malloc(sizeof(char) * ((fileSize) + 1));
      if(fileData == NULL) {
           LOG(FATAL) << "Unable to reserve memory for file data.";
      }
      LOG(DEBUG) << "Memory successfully reserved for file data.";
-
-     //filedata[fileSize - 1] = '\0';
+     fileData[fileSize] = '\0';
+     
      time_t start, end;
-
      LOG(INFO) << "Receiving file data...";
      start = time(0);
      for(int i = 0; i < fileSize; i++) fileData[i] = serialGetchar(fd);
