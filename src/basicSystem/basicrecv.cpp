@@ -61,9 +61,13 @@ int main(int argc, const char **argv) {
          fileData = receiveFile();
          stringstream temp;
          temp << fileData;
-         char *recdChecksum = (char *) picosha2::hash256_hex_string(temp.str()).c_str();
+         
+         // Calculate the checksum.
+         string recdChecksum = picosha2::hash256_hex_string(temp.str());
          LOG(DEBUG) << "Received checksum is: " << recdChecksum;
-         if(strcmp(checksum, recdChecksum) == 0) {
+         
+         // Compare checksums.
+         if(strcmp(checksum, recdChecksum.c_str()) == 0) {
               LOG(DEBUG) << "Checksums match!";
               sendRF((char *) "GOOD");
               success = 1;
