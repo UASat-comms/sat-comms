@@ -13,8 +13,16 @@ INITIALIZE_EASYLOGGINGPP
 
 int main(int argc, const char **argv) {
      el::Configurations conf(LOGCONFIG);
-     el::Loggers::reconfigureAllLoggers(conf);     
+     el::Loggers::reconfigureAllLoggers(conf);
      LOG(INFO) << "Detected baud rate: <" << BAUD_RATE << ">";
      wiringPiSetup();
-     receiveFile();
+     char *fileData = receiveFile();
+     
+     LOG(INFO) << "attempting to write file data to 'RECD_data'...";
+     FILE *fp = fopen("RECD_data", "w");
+     if(fp == NULL) {
+          LOG(FATAL) << "Unable to open file.";
+     }
+     for(int i = 0; i < fileSize; i++) fputc(fileData[i], fp);
+     LOG(INFO) << "File data written.";
 }
