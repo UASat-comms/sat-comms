@@ -51,19 +51,21 @@ int main(int argc, const char **argv) {
     string checksum = getFileChecksum(argv[1]);
     LOG(DEBUG) << "File checksum is: " << checksum;
     sendRF((char *) checksum.c_str());
-    LOG(INFO) << "File checksum transmitted."
+    LOG(INFO) << "File checksum transmitted.";
     bcm2835_delay(3000);
 
     // Transmit the file via serial.
-    transmitFile(argv[1]);
+    transmitFile((char *) argv[1]);
 
-    // See if the checksum matches. Try again until correct.
+    /* See if the checksum matches. Try again until correct or
+     * until try limit is reached.
+     */
     char *reply = recvRF();
     int tryCount = 0;
     int success = 0;
     while((strcmp(reply, "GOOD") != 0) && tryCount < TRY_LIMIT) {
          bcm2835_delay(1000);
-         transmitFile(argv[1]);
+         transmitFile((char *) argv[1]);
          ++tryCount;
          reply = recvRF();
          if(strcmp(reply, "GOOD") == 0) success = 1;
