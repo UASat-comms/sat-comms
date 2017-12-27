@@ -17,18 +17,24 @@ EASYLOGGING_BASE 	= $(PROJECT_HEAD)/easyloggingpp
 EASYSRC_BASE		= $(EASYLOGGING_BASE)/src
 SRC_BASE 	      	= $(PROJECT_HEAD)/src
 SERIAL_BASE 		= $(SRC_BASE)/serial/
-RF_BASE				= $(SRC_BASE)/rf/
+RF_BASE			= $(SRC_BASE)/rf/
 INCLUDE       		= -I$(PICOSHA_BASE) -I$(RADIOHEAD_BASE) -I$(SRC_BASE) -I$(EASYSRC_BASE) -I$(SERIAL_BASE) -I$(RF_BASE)
 
 OBJS = RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o RHReliableDatagram.o RHDatagram.o easylogging++.o \
 	  serial.o rf.o
 
-all: basicsend
+all: basicsend basicrecv
 
 basicsend: basicsend.o $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
 
 basicsend.o: basicsend.cpp
+	$(CC) $(CFLAGS) -c $(INCLUDE) $<
+
+basicrecv: basicrecv.o $(OBJS)
+	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
+
+basicrecv.o: basicrecv.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 easylogging++.o: $(EASYSRC_BASE)/easylogging++.cc $(EASYSRC_BASE)/easylogging++.h
