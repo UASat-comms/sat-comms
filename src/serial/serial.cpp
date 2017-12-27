@@ -92,7 +92,7 @@ void transmitFile(char *fileName) {
      LOG(DEBUG) << "Resources freed.";
 }
 
-void receiveFile() {
+char *receiveFile() {
      LOG(DEBUG) << "Attempting to open serial interface...";
      int fd = serialOpen(INTERFACE, BAUD_RATE);
      if(fd < 0) {
@@ -133,23 +133,15 @@ void receiveFile() {
      end = time(0);
      LOG(INFO) << "File data received.";
 
-
      double avg = ((double) end - (double) start);
      LOG(INFO) << "Time in seconds taken to receive: <" << avg << ">";
      LOG(INFO) << "Resulting BYTE/s: <" << (fileSize / avg) << ">";
      LOG(INFO) << "Resulting bit/s: <" << (fileSize * 8 / avg) << ">";
 
-     LOG(INFO) << "attempting to write file data to 'RECD_data'...";
-     FILE *fp = fopen("RECD_data", "w");
-     if(fp == NULL) {
-          LOG(FATAL) << "Unable to open file.";
-     }
-     for(int i = 0; i < fileSize; i++) fputc(fileData[i], fp);
-     LOG(INFO) << "File data written.";
-
      LOG(DEBUG) << "Freeing resources...";
-     free(fileData);
      fclose(fp);
      serialClose(fd);
      LOG(DEBUG) << "Resources freed.";
+
+     return fileData;
 }
