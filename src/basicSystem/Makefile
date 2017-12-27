@@ -41,7 +41,7 @@ rf.o: $(RF_BASE)/rf.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 clean:
-	rm -f $(OBJS)
+	rm -f *.o basicsend basicrecv
 
 
 # =======================================================================
