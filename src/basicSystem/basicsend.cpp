@@ -70,7 +70,7 @@ int main(int argc, const char **argv) {
      */
     char *reply = recvRF();
     int tryCount = 1;
-    int success = 0;
+    int success = 1;
     while((strcmp(reply, "GOOD") != 0) && tryCount < TRY_LIMIT) {
          bcm2835_delay(1000);
          transmitFile((char *) argv[1]);
@@ -81,6 +81,7 @@ int main(int argc, const char **argv) {
               LOG(DEBUG) << "Rx side said transmission was good.";
          } else {
               LOG(DEBUG) << "Rx side said transmission was bad.";
+              success = 0;
          }
     }
 
