@@ -48,7 +48,7 @@ int main(int argc, const char **argv) {
     LOG(DEBUG) << "Checksum is: " << checksum;
 
     // Let the Tx side know that the Rx side is okay to receive the file.
-    sendRF("GOAHEAD");
+    sendRF((char *) "GOAHEAD");
 
     /* Receive data and make sure it matches checksums.  If not, try again
      * until the limit is reached.
@@ -60,16 +60,16 @@ int main(int argc, const char **argv) {
          // Get the file data over serial.
          fileData = receiveFile();
          temp << fileData;
-         char *recdChecksum = picosha2::hash256_hex_string(temp.str()).c_str();
+         char *recdChecksum = (char *) picosha2::hash256_hex_string(temp.str()).c_str();
          LOG(DEBUG) << "Received checksum is: " << recdChecksum;
          if(strcmp(checksum, recdChecksum) == 0) {
               LOG(DEBUG) << "Checksums match!";
-              sendRF("GOOD");
+              sendRF((char *) "GOOD");
               break;
          } else {
               LOG(DEBUG) << "Checksums do not match!";
               ++tryCount;
-              sendRF("BAD");
+              sendRF((char *) "BAD");
          }
     }
 
