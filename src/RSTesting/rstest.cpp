@@ -14,19 +14,20 @@
 #include "schifra_reed_solomon_block.hpp"
 #include "schifra_error_processes.hpp"
 
+#include "settings.h"
 #include "easylogging++.h"
 
 INITIALIZE_EASYLOGGINGPP
 
 /* Finite Field Parameters */
-const std::size_t field_descriptor                =   8;
-const std::size_t generator_polynomial_index      = 120;
-const std::size_t generator_polynomial_root_count =  64;
+const std::size_t field_descriptor                = FIELD_DESCRIPTOR;
+const std::size_t generator_polynomial_index      = GENERATOR_POLYNOMIAL_INDEX;
+const std::size_t generator_polynomial_root_count = GENERATOR_POLYNOMIAL_ROOT_COUNT;
 
 /* Reed Solomon Code Parameters */
-const std::size_t code_length = 255;
-const std::size_t fec_length  =  64;
-const std::size_t data_length = code_length - fec_length;
+const std::size_t code_length = CODE_LENGTH;
+const std::size_t fec_length  = FEC_LENGTH;
+const std::size_t data_length = DATA_LENGTH;
 
 /* Instantiate Finite Field and Generator Polynomials */
 const schifra::galois::field field(field_descriptor,
