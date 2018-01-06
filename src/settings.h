@@ -24,9 +24,9 @@
 // https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&ved=0ahUKEwigvqff8dLXAhVizIMKHXQ6CBwQFgg4MAI&url=https%3A%2F%2Fcdn-learn.adafruit.com%2Fdownloads%2Fpdf%2Fadafruit-rfm69hcw-and-rfm96-rfm95-rfm98-lora-packet-padio-breakouts.pdf&usg=AOvVaw0QSAlez_2xZeBRtOOmf2BB
 // NOTE: Hallard defined pinouts in RasPiBoards.h, but we're going to define
 //       them here for the sake of clarity & ease of change.
-#define RF_CS_PIN  RPI_V2_GPIO_P1_24
-#define RF_IRQ_PIN RPI_V2_GPIO_P1_22
-#define RF_RST_PIN RPI_V2_GPIO_P1_15
+#define RF_CS_PIN  RPI_V2_GPIO_P1_24 // "Chip Select" pin.
+#define RF_IRQ_PIN RPI_V2_GPIO_P1_22 // "Interrupt Request" pin.
+#define RF_RST_PIN RPI_V2_GPIO_P1_15 // "Reset" pin.
 
 // -------------------- RF System States --------------------------------------
 enum SystemStates {
@@ -37,6 +37,19 @@ enum SystemStates {
      badTx,
      retryTx
 };
+// ============================================================================
+
+// ============================================================================
+// -------------------------- Reed-Solomon Settings ---------------------------
+// Finite Field (Galois Field) Params.
+#define FIELD_DESCRIPTOR                8
+#define GENERATOR_POLYNOMIAL_INDEX      120
+#define GENERATOR_POLYNOMIAL_ROOT_COUNT 64
+
+// RS Codeword Params.
+#define CODE_LENGTH 255
+#define FEC_LENGTH  64
+#define DATA_LENGTH (CODE_LENGTH-FEC_LENGTH)
 
 // ============================================================================
 #endif
