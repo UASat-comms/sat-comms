@@ -7,3 +7,6 @@
 [submodule "RadioHead"]
 	path = RadioHead
 	url = https://github.com/mattm4300/RadioHead
+[submodule "schifra"]
+	path = schifra
+	url = https://github.com/ArashPartow/schifra
