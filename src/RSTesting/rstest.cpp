@@ -21,49 +21,41 @@ INITIALIZE_EASYLOGGINGPP
 /* Finite Field Parameters */
 const std::size_t field_descriptor                =   8;
 const std::size_t generator_polynomial_index      = 120;
-const std::size_t generator_polynomial_root_count =  32;
+const std::size_t generator_polynomial_root_count =  64;
 
 /* Reed Solomon Code Parameters */
 const std::size_t code_length = 255;
-const std::size_t fec_length  =  32;
+const std::size_t fec_length  =  64;
 const std::size_t data_length = code_length - fec_length;
 
+/* Instantiate Finite Field and Generator Polynomials */
+const schifra::galois::field field(field_descriptor,
+                                  schifra::galois::primitive_polynomial_size06,
+                                  schifra::galois::primitive_polynomial06);
+
+schifra::galois::field_polynomial generator_polynomial(field);
+
+
+
+/* Instantiate Encoder and Decoder (Codec) */
+typedef schifra::reed_solomon::encoder<code_length,fec_length,data_length> encoder_t;
+typedef schifra::reed_solomon::decoder<code_length,fec_length,data_length> decoder_t;
+
 int trywholefile(std::ifstream &myfile) {
+     const encoder_t encoder(field, generator_polynomial);
+     const decoder_t decoder(field, generator_polynomial_index);
      while(!myfile.eof()) {
           std::string message;
           char c;
-          while(myfile.get(c) && (message.length() < code_length)) {
+          while((message.length() < code_length) && myfile.get(c)) {
                message.push_back(c);
           }
-          /* Instantiate Finite Field and Generator Polynomials */
-          const schifra::galois::field field(field_descriptor,
-                                            schifra::galois::primitive_polynomial_size06,
-                                            schifra::galois::primitive_polynomial06);
 
-          schifra::galois::field_polynomial generator_polynomial(field);
-
-          if (
-               !schifra::make_sequential_root_generator_polynomial(field,
-                                                                   generator_polynomial_index,
-                                                                   generator_polynomial_root_count,
-                                                                   generator_polynomial)
-             )
-          {
-             std::cout << "Error - Failed to create sequential root generator!" << std::endl;
-             return 0;
-          }
-
-          /* Instantiate Encoder and Decoder (Codec) */
-          typedef schifra::reed_solomon::encoder<code_length,fec_length,data_length> encoder_t;
-          typedef schifra::reed_solomon::decoder<code_length,fec_length,data_length> decoder_t;
-
-          const encoder_t encoder(field, generator_polynomial);
-          const decoder_t decoder(field, generator_polynomial_index);
 
           /* Pad message with nulls up until the code-word length */
           message.resize(code_length,0x00);
 
-          //std::cout << "Original Message:  [" << message << "]" << std::endl;
+          std::cout << "Original Message:  [" << message << "]" << std::endl;
 
           /* Instantiate RS Block For Codec */
           schifra::reed_solomon::block<code_length,fec_length> block;
@@ -79,7 +71,7 @@ int trywholefile(std::ifstream &myfile) {
           /* Add errors at every 3rd location starting at position zero */
           schifra::corrupt_message_all_errors00(block, 0, 3);
 
-          //std::cout << "Corrupted Codeword: [" << block << "]" << std::endl;
+          std::cout << "Corrupted Codeword: [" << block << "]" << std::endl;
 
           if (!decoder.decode(block))
           {
@@ -95,13 +87,20 @@ int trywholefile(std::ifstream &myfile) {
 
           block.data_to_string(message);
 
-          //std::cout << "Corrected Message: [" << message << "]" << std::endl;
+          std::cout << "Corrected Message: [" << message << "]" << std::endl;
      }
      return 1;
 }
 
+void setup() {
+     el::Configurations conf(LOGCONFIG);
+     el::Loggers::reconfigureAllLoggers(conf);
+}
+
 
 int main(const int argc, const char **argv) {
+     setup();
+
      if(argc != 2) {
           LOG(FATAL) << "Must enter a filename!";
           return 1;
@@ -113,12 +112,21 @@ int main(const int argc, const char **argv) {
           return 2;
      }
 
-     int good = trywholefile(myfile);
+     if (
+          !schifra::make_sequential_root_generator_polynomial(field,
+                                                              generator_polynomial_index,
+                                                              generator_polynomial_root_count,
+                                                              generator_polynomial)
+        )
+     {
+        LOG(FATAL) << "Error - Failed to create sequential root generator!";
+        return 0;
+     }
 
-     if(good)
-          std::cout << "Success" << std::endl;
+     if(trywholefile(myfile))
+          LOG(INFO) << "Encoding and decoding was successful.";
      else
-          std::cout << "Failure" << std::endl;
+          LOG(INFO) << "Encoding and decoding was NOT successful.";
 
      myfile.close();
      return 0;
