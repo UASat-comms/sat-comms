@@ -40,6 +40,14 @@ enum SystemStates {
 // ============================================================================
 
 // ============================================================================
+// ---------------------------- Compression Settings --------------------------
+#define COMPRESSION_ENABLED  1 // 1 Enables compression, 0 disables it.
+#define USE_MAX_COMPRESSSION 1 // Generates smaller file but takes longer.
+#define COMP_FILE_NAME       "TEMP.zip"
+// ============================================================================
+
+
+// ============================================================================
 // -------------------------- Reed-Solomon Settings ---------------------------
 // Finite Field (Galois Field) Params.
 #define FIELD_DESCRIPTOR                8
