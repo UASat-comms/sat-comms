@@ -84,7 +84,7 @@ int main(int argc, char **argv) {
 
 	// Transmit the file via serial.
 	bcm2835_delay(500);
-	LOG(DEBUG) << "Doing initial transmit attempt.."
+	LOG(DEBUG) << "Doing initial transmit attempt..";
 	transmitFile((char *) fname);
 
 	/* See if the checksum matches. Try again until correct or
