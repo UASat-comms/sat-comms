@@ -38,6 +38,7 @@ std::string getFileChecksum(const char *fname) {
 	} else {
 		LOG(FATAL) << "Error reading file data for checksum.";
 	}
+    myfile.close();
 	return picosha2::hash256_hex_string(mystr.str());
 }
 
