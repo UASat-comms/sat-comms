@@ -14,6 +14,7 @@ using namespace std;
 INITIALIZE_EASYLOGGINGPP
 
 void setup() {
+    printf("-----> %s running | setting up..\n", __BASEFILE__);
 	// Configure logging module.
 	el::Configurations conf(LOGCONFIG);
 	el::Loggers::reconfigureAllLoggers(conf);
@@ -21,6 +22,7 @@ void setup() {
 	wiringPiSetup();
 	// Configure bcm2835 for RF comms.
 	setupRF();
+    LOG(DEBUG) << "Setup complete.";
 }
 
 std::string getFileChecksum(const char *fname) {
@@ -39,7 +41,7 @@ std::string getFileChecksum(const char *fname) {
 	return picosha2::hash256_hex_string(mystr.str());
 }
 
-int main(int argc, const char **argv) {
+int main(int argc, char **argv) {
 	setup();
 
 	// Make sure we enter the name of file we want to send.
@@ -53,8 +55,8 @@ int main(int argc, const char **argv) {
 
 	// Compress the file we want to send if compression enabled.
 	if(COMPRESSION_ENABLED) {
-		fname = COMP_FILE_NAME; // Make sure to use transmit the compressed file.
-		stringstream compcommand;
+		fname = (char *) COMP_FILE_NAME; // Make sure to use transmit the compressed file.
+        stringstream compcommand;
 		compcommand << "zip ";
 		if(USE_MAX_COMPRESSSION) {
 			compcommand << "-9 ";
