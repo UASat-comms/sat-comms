@@ -70,7 +70,7 @@ int main(int argc, char **argv) {
 
 	// Get the file checksum and transmit it via RF.
 	string checksum = getFileChecksum(fname);
-	LOG(DEBUG) << "File checksum is: " << checksum;
+	LOG(DEBUG) << "File checksum for " << fname << " is: " << checksum;
 	sendRF((char *) checksum.c_str());
 	LOG(INFO) << "File checksum transmitted.";
 
