@@ -22,7 +22,7 @@ void setup() {
 	wiringPiSetup();
 	// Configure bcm2835 for RF comms.
 	setupRF();
-    LOG(DEBUG) << "Setup complete.";
+    LOG(INFO) << "Setup complete.";
 }
 
 std::string getFileChecksum(const char *fname) {
@@ -55,8 +55,9 @@ int main(int argc, char **argv) {
 
 	// Compress the file we want to send if compression enabled.
 	if(COMPRESSION_ENABLED) {
+		LOG(DEBUG) << "Compressing file..";
 		fname = (char *) COMP_FILE_NAME; // Make sure to use transmit the compressed file.
-        stringstream compcommand;
+        	stringstream compcommand;
 		compcommand << "zip ";
 		if(USE_MAX_COMPRESSSION) {
 			compcommand << "-9 ";
@@ -64,6 +65,7 @@ int main(int argc, char **argv) {
 		compcommand << COMP_FILE_NAME << " ";
 		compcommand << argv[1];
 		system(compcommand.str().c_str()); // Do a system call to compress file.
+		LOG(DEBUG) << "Compression complete. Compressed file name is: " << COMP_FILE_NAME;
 	}
 
 	// Get the file checksum and transmit it via RF.
@@ -82,6 +84,7 @@ int main(int argc, char **argv) {
 
 	// Transmit the file via serial.
 	bcm2835_delay(500);
+	LOG(DEBUG) << "Doing initial transmit attempt.."
 	transmitFile((char *) fname);
 
 	/* See if the checksum matches. Try again until correct or
@@ -105,9 +108,13 @@ int main(int argc, char **argv) {
 	}
 
 	if(success) {
-		LOG(INFO) << "File transmission was successful!";
+		LOG(INFO)
+			<< "File transmission was successful! No. of attempts: "
+			<< tryCount;
 	} else {
-		LOG(INFO) << "File transmission failed!";
+		LOG(INFO)
+			<< "File transmission failed! Max attempt limit of "
+			<< tryCount << " reached.";
 	}
 	return 0;
 }
