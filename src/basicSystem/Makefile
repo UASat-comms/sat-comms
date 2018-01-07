@@ -28,7 +28,7 @@ all: basicsend basicrecv
 basicsend: basicsend.o $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
 
-basicsend.o: basicsend.cpp
+basicsend.o: basicsend.cpp $(SRC_BASE)/settings.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 basicrecv: basicrecv.o $(OBJS)
