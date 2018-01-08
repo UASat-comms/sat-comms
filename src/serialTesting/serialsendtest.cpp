@@ -22,7 +22,22 @@ int main(int argc, const char **argv) {
      el::Configurations conf(LOGCONFIG);
      el::Loggers::reconfigureAllLoggers(conf);
      wiringPiSetup();
+
      LOG(INFO) << "Detected baud rate: <" << BAUD_RATE << ">";
-     transmitFile((char *) argv[1]);
+
+     FILE *fp = fopen(argv[1], "r");
+     int datalen = getFileSize(fp);
+     char *data = (char *) malloc(sizeof(char) * (datalen + 1));
+     data[datalen] = '\0';
+
+     char c;
+     LOG(INFO) << "File size is: " << datalen;
+     printf("PRESS ENTER TO CONTINUE TRANSMISSION ");
+     scanf(" %c", &c);
+
+     for(int i = 0; i < datalen; i++) data[i] = fgetc(fp);
+     fclose(fp);
+
+     transmitFile(data, datalen);
      return 0;
 }
