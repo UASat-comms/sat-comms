@@ -5,6 +5,7 @@
 #include <cinttypes>
 #include <wiringPi.h>
 #include <wiringSerial.h>
+
 #include "settings.h"
 #include "serial.hpp"
 #include "easylogging++.h"
@@ -15,6 +16,11 @@ int main(int argc, const char **argv) {
      el::Configurations conf(LOGCONFIG);
      el::Loggers::reconfigureAllLoggers(conf);
      wiringPiSetup();
+
+     if(argc < 2) {
+          LOG(FATAL) << "Must enter file size as command-line argument!";
+     }
+
      LOG(INFO) << "Detected baud rate: <" << BAUD_RATE << ">";
 
      int datalen = atoi(argv[1]);
