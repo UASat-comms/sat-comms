@@ -56,7 +56,6 @@ void transmitData(char *data, int datalen) {
      LOG(INFO) << "Data transmitted.";
 
      LOG(DEBUG) << "Freeing resources...";
-     fclose(fp);
      serialClose(fd);
      LOG(DEBUG) << "Resources freed.";
 }
