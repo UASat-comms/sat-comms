@@ -26,7 +26,7 @@ int getFileSize(FILE *fp) {
  * - input: The integer to convert to a string.
  * ======================================================
  */
-static char *IntToString(int input) {
+char *intToString(int input) {
 	char *buffer = (char *) malloc(sizeof(char) * IDENTIFIER_LENGTH);
 	sprintf(buffer, "%d", input);
 	return buffer;
