@@ -28,6 +28,7 @@ int main(int argc, const char **argv) {
 
     if(myfile.is_open()) {
         while(getline(myfile, line)) {
+            cout << "line read: <" <<  line << ">" << endl;
             mystr << line << endl;
         }
         myfile.close();
@@ -36,8 +37,17 @@ int main(int argc, const char **argv) {
         return 2;
     }
 
+    string temp = mystr.str();
+    cout << "String before pop_back: <" << temp << ">" << endl;
+    cout << "Char count: <" << temp.length() << ">" << endl;
     cout << "Your SHA256 hash for " << argv[1] << " is: ";
-    cout << getSHA256Hash(mystr.str()) << endl;
+    cout << getSHA256Hash(temp) << endl;
+    
+    temp.pop_back();
+    cout << "String after pop_back: <" << temp << ">" << endl;
+    cout << "Char count: <" << temp.length() << ">" << endl;
+    cout << "Your SHA256 hash for " << argv[1] << " is: ";
+    cout << getSHA256Hash(temp) << endl;
 
     return 0;
 }
