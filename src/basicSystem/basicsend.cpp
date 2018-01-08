@@ -27,19 +27,21 @@ void setup() {
 
 std::string getFileChecksum(const char *fname) {
 	ifstream myfile(fname);
-	stringstream mystr;
-	string line;
+    string mystr;
+    char c;
 
 	LOG(DEBUG) << "Reading file data to get SHA256 checksum...";
 	if(myfile.is_open()) {
-		while(getline(myfile, line)) {
-			mystr << line << endl;
+		while(!myfile.eof()) {
+			myfile.get(c);
+            mystr.push_back(c);
 		}
+        myfile.close();
 	} else {
 		LOG(FATAL) << "Error reading file data for checksum.";
 	}
-     myfile.close();
-	return picosha2::hash256_hex_string(mystr.str());
+    mystr.pop_back();
+	return picosha2::hash256_hex_string(mystr);
 }
 
 int main(int argc, char **argv) {
