@@ -87,12 +87,12 @@ char *receiveData(int datalen) {
 
      double avg = ((double) end - (double) start);
      LOG(DEBUG) << "Time in seconds taken to receive: <" << avg << ">";
-     LOG(DEBUG) << "Resulting BYTE/s: <" << (fileSize / avg) << ">";
-     LOG(INFO) << "Resulting bit/s: <" << (fileSize * 8 / avg) << ">";
+     LOG(DEBUG) << "Resulting BYTE/s: <" << (datalen / avg) << ">";
+     LOG(INFO) << "Resulting bit/s: <" << (datalen * 8 / avg) << ">";
 
      LOG(DEBUG) << "Freeing resources...";
      serialClose(fd);
      LOG(DEBUG) << "Resources freed.";
 
-     return fileData;
+     return data;
 }
