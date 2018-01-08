@@ -14,7 +14,7 @@ using namespace std;
 INITIALIZE_EASYLOGGINGPP
 
 void setup() {
-    printf("-----> %s running | setting up..\n", __BASEFILE__);
+     printf("-----> %s running | setting up..\n", __BASEFILE__);
 	// Configure logging module.
 	el::Configurations conf(LOGCONFIG);
 	el::Loggers::reconfigureAllLoggers(conf);
@@ -81,11 +81,11 @@ int main(int argc, char **argv) {
      /* Put the file checksum and filesize into a single string. The RF
      * hardware can send up to 255 bytes in a single packet. The checksum is
      * always 64 bytes and the file size will only take around 15 bytes. */
-     stringstream fileData;
-     fileData << checksum << stringFileSize;
+     stringstream metadata;
+     metadata << checksum << stringFileSize;
 
      // transmit the file checksum and file size the Rx side.
-	sendRF((char *) fileData.str().c_str());
+	sendRF((char *) metadata.str().c_str());
 	LOG(INFO) << "File checksum and size transmitted.";
 
      // Go ahead and read file data while letting Rx side process checksum
