@@ -73,12 +73,13 @@ int main(int argc, char **argv) {
 
 	// Get the file checksum.
 	string checksum = getFileChecksum(fname);
-	LOG(DEBUG) << "File checksum for " << fname << " is: " << checksum;
+	LOG(DEBUG) << "File checksum for <" << fname << "> is: " << checksum;
 
      // Get the file size.
      FILE *fp = fopen(fname, "r");
      int fileSize = getFileSize(fp);
      char *stringFileSize = intToString(fileSize);
+     LOG(DEBUG) << "File size for <" << fname << "> is: <" << stringFileSize << ">"; 
 
      /* Put the file checksum and filesize into a single string. The RF
      * hardware can send up to 255 bytes in a single packet. The checksum is
