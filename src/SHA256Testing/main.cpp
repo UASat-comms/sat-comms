@@ -23,13 +23,13 @@ int main(int argc, const char **argv) {
     }
 
     ifstream myfile(argv[1]);
-    stringstream mystr;
-    string line;
+    string mystr;
+    char c;
 
     if(myfile.is_open()) {
-        while(getline(myfile, line)) {
-            cout << "line read: <" <<  line << ">" << endl;
-            mystr << line << endl;
+        while(!myfile.eof()) {
+            myfile.get(c);
+            mystr.push_back(c);
         }
         myfile.close();
     } else {
@@ -37,13 +37,8 @@ int main(int argc, const char **argv) {
         return 2;
     }
 
-    string temp = mystr.str();
-    cout << "String before pop_back: <" << temp << ">" << endl;
-    cout << "Char count: <" << temp.length() << ">" << endl;
-    cout << "Your SHA256 hash for " << argv[1] << " is: ";
-    cout << getSHA256Hash(temp) << endl;
-    
-    temp.pop_back();
+    string temp = mystr;
+    temp.pop_back(); // Must remove the last char, (EOF).
     cout << "String after pop_back: <" << temp << ">" << endl;
     cout << "Char count: <" << temp.length() << ">" << endl;
     cout << "Your SHA256 hash for " << argv[1] << " is: ";
