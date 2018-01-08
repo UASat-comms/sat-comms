@@ -27,7 +27,7 @@ int getFileSize(FILE *fp) {
  * ======================================================
  */
 char *intToString(int input) {
-	char *buffer = (char *) malloc(sizeof(char) * IDENTIFIER_LENGTH);
+	char *buffer = (char *) malloc(sizeof(char) * (IDENTIFIER_LENGTH + 1));
 	sprintf(buffer, "%d", input);
 	return buffer;
 }
