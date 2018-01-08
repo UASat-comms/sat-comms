@@ -31,7 +31,7 @@ int main(int argc, const char **argv) {
      data[datalen] = '\0';
 
      char c;
-     LOG(INFO) << "File size is: " << datalen;
+     LOG(INFO) << "File size is: <" << datalen << ">";
      printf("PRESS ENTER TO CONTINUE TRANSMISSION ");
      scanf("%c", &c);
 
