@@ -76,7 +76,6 @@ int main(int argc, char **argv) {
      // Get the file size.
      FILE *fp = fopen(fname, "r");
      int fileSize = getFileSize(fp);
-     fclose(fp);
      char *stringFileSize = intToString(fileSize);
 
      /* Put the file checksum and filesize into a single string. The RF
@@ -89,6 +88,14 @@ int main(int argc, char **argv) {
 	sendRF((char *) fileData.str().c_str());
 	LOG(INFO) << "File checksum and size transmitted.";
 
+     // Go ahead and read file data while letting Rx side process checksum
+     // and file size.
+     char *fileData = (char *) malloc(sizeof(char) * (fileSize + 1));
+     fileData[fileSize] = '\0';
+     for(int i = 0; i < fileSize; i++)
+          fileData[i] = fgetc(fp);
+     fclose(fp);
+
 	// Wait for the receiving side to give us the go-ahead to transmit.
 	char *sendprompt = recvRF();
 	if(strcmp(sendprompt, "GOAHEAD") != 0) {
@@ -100,7 +107,7 @@ int main(int argc, char **argv) {
 	// Transmit the file via serial.
 	bcm2835_delay(500);
 	LOG(DEBUG) << "Doing initial transmit attempt..";
-	transmitFile((char *) fname);
+	transmitData(fileData, fileSize);
 
 	/* See if the checksum matches. Try again until correct or
 	 * until try limit is reached.
@@ -110,8 +117,9 @@ int main(int argc, char **argv) {
 	int success = 1;
 	while((strcmp(reply, "GOOD") != 0) && tryCount < TRY_LIMIT) {
 		bcm2835_delay(1000);
-		transmitFile((char *) fname);
+		transmitData(fileData, fileSize);
 		++tryCount;
+          bcm2835_delay(1000);
 		reply = recvRF();
 		if(strcmp(reply, "GOOD") == 0) {
 			success = 1;
