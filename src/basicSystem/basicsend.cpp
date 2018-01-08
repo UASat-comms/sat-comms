@@ -22,7 +22,7 @@ void setup() {
 	wiringPiSetup();
 	// Configure bcm2835 for RF comms.
 	setupRF();
-    LOG(INFO) << "Setup complete.";
+     LOG(INFO) << "Setup complete.";
 }
 
 std::string getFileChecksum(const char *fname) {
@@ -38,7 +38,7 @@ std::string getFileChecksum(const char *fname) {
 	} else {
 		LOG(FATAL) << "Error reading file data for checksum.";
 	}
-    myfile.close();
+     myfile.close();
 	return picosha2::hash256_hex_string(mystr.str());
 }
 
@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
 	}
 
 	/* Default fname to given command-line argument. It will be changed if
-	compression is enabled. */
+	compression is enabled and/or FEC is enabled. */
 	char *fname = argv[1];
 
 	// Compress the file we want to send if compression enabled.
@@ -69,11 +69,25 @@ int main(int argc, char **argv) {
 		LOG(DEBUG) << "Compression complete. Compressed file name is: " << COMP_FILE_NAME;
 	}
 
-	// Get the file checksum and transmit it via RF.
+	// Get the file checksum.
 	string checksum = getFileChecksum(fname);
 	LOG(DEBUG) << "File checksum for " << fname << " is: " << checksum;
-	sendRF((char *) checksum.c_str());
-	LOG(INFO) << "File checksum transmitted.";
+
+     // Get the file size.
+     FILE *fp = fopen(fname, "r");
+     int fileSize = getFileSize(fp);
+     fclose(fp);
+     char *stringFileSize = intToString(fileSize);
+
+     /* Put the file checksum and filesize into a single string. The RF
+     * hardware can send up to 255 bytes in a single packet. The checksum is
+     * always 64 bytes and the file size will only take around 15 bytes. */
+     stringstream fileData;
+     fileData << checksum << stringFileSize;
+
+     // transmit the file checksum and file size the Rx side.
+	sendRF((char *) fileData.str().c_str());
+	LOG(INFO) << "File checksum and size transmitted.";
 
 	// Wait for the receiving side to give us the go-ahead to transmit.
 	char *sendprompt = recvRF();
