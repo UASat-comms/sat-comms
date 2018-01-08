@@ -18,7 +18,7 @@ int main(int argc, const char **argv) {
      LOG(INFO) << "Detected baud rate: <" << BAUD_RATE << ">";
 
      int datalen = atoi(argv[1]);
-     LOG(INFO) << "File size received as command-line argument: " << datalen;
+     LOG(INFO) << "File size received as command-line argument: <" << datalen << ">";
      char *data = receiveData(datalen);
 
      LOG(INFO) << "attempting to write file data to 'RECD_data'...";
