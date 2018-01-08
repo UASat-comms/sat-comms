@@ -32,12 +32,12 @@ int main(int argc, const char **argv) {
 
      char c;
      LOG(INFO) << "File size is: <" << datalen << ">";
-     printf("PRESS ENTER TO CONTINUE TRANSMISSION ");
-     scanf("%c", &c);
-
      for(int i = 0; i < datalen; i++) data[i] = fgetc(fp);
      fclose(fp);
 
+     printf("PRESS ENTER TO CONTINUE TRANSMISSION ");
+     scanf("%c", &c);
      transmitData(data, datalen);
+
      return 0;
 }
