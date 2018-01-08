@@ -38,6 +38,6 @@ int main(int argc, const char **argv) {
      for(int i = 0; i < datalen; i++) data[i] = fgetc(fp);
      fclose(fp);
 
-     transmitFile(data, datalen);
+     transmitData(data, datalen);
      return 0;
 }
