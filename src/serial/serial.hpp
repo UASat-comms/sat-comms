@@ -13,7 +13,8 @@
 #include "settings.h"
 #include "easylogging++.h"
 
-void transmitFile(char *);
-char *receiveFile();
+int getFileSize(FILE *fp);
+void transmitData(char *data, int datalen);
+char *receiveData(int datalen);
 
 #endif
