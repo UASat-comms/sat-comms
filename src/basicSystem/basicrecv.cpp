@@ -35,7 +35,7 @@ int main(int argc, const char **argv) {
      int metadataSize = strlen(metadata);
      char *checksum = (char *) malloc(sizeof(char) * (64 + 1));
      checksum[64] = '\0';
-     char *stringFileSize = malloc(sizeof(char) * (IDENTIFIER_LENGTH + 1));
+     char *stringFileSize = (char *) malloc(sizeof(char) * (IDENTIFIER_LENGTH + 1));
      stringFileSize[IDENTIFIER_LENGTH] = '\0';
      for(int i = 0; i < metadataSize; i++) {
           if(i < 64)
@@ -58,7 +58,7 @@ int main(int argc, const char **argv) {
      char *fileData;
      while(tryCount < TRY_LIMIT) {
           // Get the file data over serial.
-          fileData = receiveFile();
+          fileData = receiveData(fileSize);
           stringstream temp;
           temp << fileData;
 
@@ -82,7 +82,6 @@ int main(int argc, const char **argv) {
      }
 
      if(success) {
-          int fileSize = strlen(fileData);
           LOG(INFO) << "attempting to write file data to 'RECD_data'...";
           FILE *fp = fopen("RECD_data", "w");
           if(fp == NULL) {
