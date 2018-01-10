@@ -50,7 +50,7 @@ int main(int argc, const char **argv) {
      string fdata;
      while(tryCount < TRY_LIMIT) {
           // Get the file data over serial.
-          string fdata = receiveData(fsize);
+          fdata = receiveData(fsize);
 
           // Calculate the checksum.
           string recdchecksum = checksum(fdata.c_str(), fsize);
@@ -77,7 +77,7 @@ int main(int argc, const char **argv) {
 
      if(success) {
           LOG(INFO) << "attempting to write file data to 'RECD_data'...";
-          ofstream outputfile("RECD_data");
+          ofstream outputfile("RECD_DATA");
           outputfile << fdata;
           outputfile.close();
      } else {
