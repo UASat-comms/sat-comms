@@ -77,9 +77,9 @@ int main(int argc, char **argv) {
 
      // Go ahead and read file data while letting Rx side process checksum
      // and file size.
-     FILE *fp = fopen(fname, "r");
-     char *fdata = (char *) malloc(sizeof(char) * (fileSize + 1));
-     fdata[fileSize] = '\0';
+     FILE *fp = fopen(fname.c_str(), "r");
+     char *fdata = (char *) malloc(sizeof(char) * (fsize + 1));
+     fdata[fsize] = '\0';
      for(int i = 0; i < fsize; i++)
           fdata[i] = fgetc(fp);
      fclose(fp);

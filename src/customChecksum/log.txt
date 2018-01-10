@@ -9,3 +9,204 @@
 [INFO]  [Mon Jan 22 12:02:37 PM] [line #: 17] MSG: Checksum is 168
 [INFO]  [Mon Jan 22 12:02:39 PM] [line #: 17] MSG: Checksum is 168
 [INFO]  [Mon Jan 22 12:02:41 PM] [line #: 17] MSG: Checksum is 168
+[INFO]  [Wed Jan 10 03:12:13 AM] [line #: 21] MSG: Checksum is 10011100
+[INFO]  [Wed Jan 10 03:12:19 AM] [line #: 21] MSG: Checksum is 10101000
+[INFO]  [Wed Jan 10 03:20:49 AM] [line #: 21] MSG: Checksum is 10011100
+[INFO]  [Wed Jan 10 03:26:16 AM] [line #: 21] MSG: Checksum is 10011100
+[INFO]  [Wed Jan 10 03:26:16 AM] [line #: 41] MSG: Checksum is 01100011
+[INFO]  [Wed Jan 10 03:26:24 AM] [line #: 21] MSG: Checksum is 10101000
+[INFO]  [Wed Jan 10 03:26:25 AM] [line #: 41] MSG: Checksum is 01010111
+[INFO]  [Wed Jan 10 03:28:10 AM] [line #: 21] MSG: Checksum is 10011100
+[INFO]  [Wed Jan 10 03:28:10 AM] [line #: 41] MSG: Checksum is 01100011
+[DEBUG] [Wed Jan 10 03:32:10 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:32:10 AM] [line #: 25] MSG: Checksum is 10011100
+[DEBUG] [Wed Jan 10 03:32:10 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:32:10 AM] [line #: 46] MSG: Checksum is 01100011
+[DEBUG] [Wed Jan 10 03:34:14 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:34:14 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:34:14 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:34:14 AM] [line #: 46] MSG: Checksum is 01100011
+[DEBUG] [Wed Jan 10 03:34:32 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:34:32 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:34:32 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:34:32 AM] [line #: 46] MSG: Checksum is 01100011
+[DEBUG] [Wed Jan 10 03:35:45 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:35:45 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:35:45 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:35:45 AM] [line #: 46] MSG: Checksum is 01100011
+[DEBUG] [Wed Jan 10 03:35:48 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:35:48 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:35:48 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:35:48 AM] [line #: 46] MSG: Checksum is 01100011
+[DEBUG] [Wed Jan 10 03:35:49 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:35:49 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:35:49 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:35:49 AM] [line #: 46] MSG: Checksum is 01100011
+[DEBUG] [Wed Jan 10 03:37:14 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:37:14 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:37:14 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:37:14 AM] [line #: 46] MSG: Checksum is 01100011
+[DEBUG] [Wed Jan 10 03:38:18 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:18 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:18 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:18 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:29 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:29 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:29 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:29 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:30 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:30 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:30 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:30 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:33 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:33 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:33 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:33 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:34 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:34 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:34 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:34 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:34 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:34 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:34 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:34 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:35 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:35 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:35 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:35 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:36 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:36 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:36 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:36 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:36 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:36 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:36 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:36 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:37 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:37 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:37 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:37 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:39 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:39 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:39 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:39 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:40 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:40 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:40 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:40 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:40 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:40 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:40 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:40 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:41 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:41 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:41 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:41 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:42 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:42 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:42 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:42 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:42 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:42 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:42 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:42 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:43 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:43 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:43 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:43 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:43 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:43 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:43 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:43 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:44 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:44 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:44 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:44 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:44 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:44 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:44 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:44 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:45 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:45 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:45 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:45 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:46 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:46 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:46 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:46 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:47 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:47 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:47 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:47 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:48 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:38:48 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:48 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:38:48 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:38:55 AM] [line #: 22] MSG: C++ file length: <5447162>
+[INFO]  [Wed Jan 10 03:38:56 AM] [line #: 25] MSG: Checksum is 01011101
+[DEBUG] [Wed Jan 10 03:38:56 AM] [line #: 34] MSG: C file length: <5447162>
+[INFO]  [Wed Jan 10 03:38:56 AM] [line #: 46] MSG: Checksum is 01011101
+[DEBUG] [Wed Jan 10 03:39:07 AM] [line #: 22] MSG: C++ file length: <41943040>
+[INFO]  [Wed Jan 10 03:39:10 AM] [line #: 25] MSG: Checksum is 01011011
+[DEBUG] [Wed Jan 10 03:39:10 AM] [line #: 34] MSG: C file length: <41943040>
+[INFO]  [Wed Jan 10 03:39:14 AM] [line #: 46] MSG: Checksum is 01011011
+[DEBUG] [Wed Jan 10 03:40:07 AM] [line #: 22] MSG: C++ file length: <41943040>
+[INFO]  [Wed Jan 10 03:40:10 AM] [line #: 25] MSG: Checksum is 01011011
+[DEBUG] [Wed Jan 10 03:40:10 AM] [line #: 34] MSG: C file length: <41943040>
+[INFO]  [Wed Jan 10 03:40:14 AM] [line #: 46] MSG: Checksum is 01011011
+[DEBUG] [Wed Jan 10 03:46:22 AM] [line #: 22] MSG: C++ file length: <41943040>
+[INFO]  [Wed Jan 10 03:46:25 AM] [line #: 25] MSG: Checksum is 01011011
+[DEBUG] [Wed Jan 10 03:46:25 AM] [line #: 34] MSG: C file length: <41943040>
+[INFO]  [Wed Jan 10 03:46:29 AM] [line #: 46] MSG: Checksum is 01011011
+[DEBUG] [Wed Jan 10 03:46:30 AM] [line #: 22] MSG: C++ file length: <41943040>
+[INFO]  [Wed Jan 10 03:46:33 AM] [line #: 25] MSG: Checksum is 01011011
+[DEBUG] [Wed Jan 10 03:46:33 AM] [line #: 34] MSG: C file length: <41943040>
+[INFO]  [Wed Jan 10 03:46:37 AM] [line #: 46] MSG: Checksum is 01011011
+[DEBUG] [Wed Jan 10 03:48:18 AM] [line #: 22] MSG: C++ file length: <541>
+[INFO]  [Wed Jan 10 03:48:18 AM] [line #: 25] MSG: Checksum is 00101000
+[DEBUG] [Wed Jan 10 03:48:18 AM] [line #: 34] MSG: C file length: <541>
+[INFO]  [Wed Jan 10 03:48:18 AM] [line #: 46] MSG: Checksum is 00101000
+[DEBUG] [Wed Jan 10 03:48:24 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 03:48:24 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 03:48:24 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 03:48:24 AM] [line #: 46] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 04:01:25 AM] [line #: 22] MSG: C++ file length: <41949606>
+[INFO]  [Wed Jan 10 04:01:28 AM] [line #: 25] MSG: Checksum is 00111001
+[DEBUG] [Wed Jan 10 04:01:28 AM] [line #: 34] MSG: C file length: <41949606>
+[INFO]  [Wed Jan 10 04:01:32 AM] [line #: 46] MSG: Checksum is 00111001
+[DEBUG] [Wed Jan 10 04:27:51 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 04:27:51 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 04:27:51 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 04:27:52 AM] [line #: 46] MSG: Checksum is 01100011
+[DEBUG] [Wed Jan 10 04:28:14 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 04:28:14 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 04:28:14 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 04:28:14 AM] [line #: 46] MSG: Checksum is 01100011
+[DEBUG] [Wed Jan 10 04:30:16 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 04:30:16 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 04:30:16 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 04:30:16 AM] [line #: 46] MSG: Checksum is 01100011
+[DEBUG] [Wed Jan 10 04:33:28 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 04:33:28 AM] [line #: 25] MSG: Checksum is 01101001
+[DEBUG] [Wed Jan 10 04:33:28 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 04:33:28 AM] [line #: 46] MSG: Checksum is 01100011
+[DEBUG] [Wed Jan 10 04:37:05 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 04:37:05 AM] [line #: 25] MSG: Checksum is 01100011
+[DEBUG] [Wed Jan 10 04:37:05 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 04:37:05 AM] [line #: 46] MSG: Checksum is 01100011
+[DEBUG] [Wed Jan 10 04:38:31 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 04:38:31 AM] [line #: 25] MSG: Checksum is 01100011
+[DEBUG] [Wed Jan 10 04:38:31 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 04:38:31 AM] [line #: 46] MSG: Checksum is 01100011
+[DEBUG] [Wed Jan 10 04:38:35 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 04:38:35 AM] [line #: 25] MSG: Checksum is 01100011
+[DEBUG] [Wed Jan 10 04:38:35 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 04:38:35 AM] [line #: 46] MSG: Checksum is 01100011
+[DEBUG] [Wed Jan 10 04:38:45 AM] [line #: 22] MSG: C++ file length: <41943040>
+[INFO]  [Wed Jan 10 04:38:48 AM] [line #: 25] MSG: Checksum is 00010110
+[DEBUG] [Wed Jan 10 04:38:48 AM] [line #: 34] MSG: C file length: <41943040>
+[INFO]  [Wed Jan 10 04:38:51 AM] [line #: 46] MSG: Checksum is 00010110
+[DEBUG] [Wed Jan 10 04:51:12 AM] [line #: 22] MSG: C++ file length: <512>
+[INFO]  [Wed Jan 10 04:51:12 AM] [line #: 25] MSG: Checksum is 01100011
+[DEBUG] [Wed Jan 10 04:51:12 AM] [line #: 34] MSG: C file length: <512>
+[INFO]  [Wed Jan 10 04:51:12 AM] [line #: 46] MSG: Checksum is 01100011
