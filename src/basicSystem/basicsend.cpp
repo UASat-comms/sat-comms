@@ -70,7 +70,7 @@ int main(int argc, char **argv) {
      * hardware can send up to 255 bytes in a single packet. The checksum is
      * always 1 byte and the file size will only take around 15 bytes. */
      stringstream metadata;
-     metadata << checksum << stringFileSize;
+     metadata << fchecksum.at(0) << stringFileSize;
 
      // transmit the file checksum and file size the Rx side.
 	sendRF((char *) metadata.str().c_str());
