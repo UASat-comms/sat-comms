@@ -74,6 +74,7 @@ int main(int argc, const char **argv) {
           LOG(DEBUG) << "Received checksum is: " << (int) recdchecksum.c_str();
 
           // Compare checksums.
+          LOG(DEBUG) << "fchecksum: <" << atoi(fchecksum.c_str()) << "> | recdchecksum: <" << atoi(recdchecksum.c_str()) << ">";
           if(strcmp(fchecksum.c_str(), recdchecksum.c_str()) == 0) {
                bcm2835_delay(2000);
                LOG(DEBUG) << "Checksums match!";
@@ -85,6 +86,7 @@ int main(int argc, const char **argv) {
                LOG(DEBUG) << "Checksums do not match!";
                ++tryCount;
                sendRF((char *) "BAD");
+               recdchecksum.clear();
           }
      }
 

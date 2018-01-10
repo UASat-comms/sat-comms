@@ -63,3 +63,326 @@
 [DEBUG] [Wed Jan 10 02:14:25 AM] [line #: 73] MSG: No message available from RF HW yet..
 [DEBUG] [Wed Jan 10 02:14:26 AM] [line #: 73] MSG: No message available from RF HW yet..
 [DEBUG] [Wed Jan 10 02:14:26 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 01:56:39 AM] [line #: 38] MSG: rf95 transmission power set with power level: <14>
+[DEBUG] [Wed Jan 10 01:56:39 AM] [line #: 33] MSG: Waiting for RF checksum & file size transmission..
+[DEBUG] [Wed Jan 10 01:56:39 AM] [line #: 55] MSG: Starting RF packet receive.
+[DEBUG] [Wed Jan 10 01:56:39 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 01:56:39 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 01:56:40 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 01:56:40 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 01:56:41 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 01:56:41 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 01:56:42 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 01:56:42 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 01:56:43 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 01:56:43 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 01:56:44 AM] [line #: 73] MSG: No message available from RF HW yet..
+[INFO]  [Wed Jan 10 01:56:44 AM] [line #: 62] MSG: Succeeded in grabbing RF message from RF HW.
+[DEBUG] [Wed Jan 10 01:56:44 AM] [line #: 67] MSG: Saved received RF message.
+[DEBUG] [Wed Jan 10 01:56:44 AM] [line #: 43] MSG: Checksum is: 26872020
+[DEBUG] [Wed Jan 10 01:56:44 AM] [line #: 45] MSG: File size is: 512
+[DEBUG] [Wed Jan 10 01:56:44 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Jan 10 01:56:44 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Jan 10 01:56:44 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Jan 10 01:56:44 AM] [line #: 51] MSG: Packet sent.
+[DEBUG] [Wed Jan 10 01:56:44 AM] [line #: 64] MSG: Attempting to open serial interface...
+[DEBUG] [Wed Jan 10 01:56:44 AM] [line #: 69] MSG: Serial interface opened successfully.
+[DEBUG] [Wed Jan 10 01:56:44 AM] [line #: 71] MSG: Attempting to reserve memory for file data...
+[DEBUG] [Wed Jan 10 01:56:44 AM] [line #: 76] MSG: Memory successfully reserved for file data.
+[INFO]  [Wed Jan 10 01:56:44 AM] [line #: 80] MSG: Receiving file data...
+[INFO]  [Wed Jan 10 01:56:45 AM] [line #: 85] MSG: File data received.
+[DEBUG] [Wed Jan 10 01:56:45 AM] [line #: 88] MSG: Time in seconds taken to receive: <1>
+[DEBUG] [Wed Jan 10 01:56:45 AM] [line #: 89] MSG: Resulting BYTE/s: <512>
+[INFO]  [Wed Jan 10 01:56:45 AM] [line #: 90] MSG: Resulting bit/s: <4096>
+[DEBUG] [Wed Jan 10 01:56:45 AM] [line #: 92] MSG: Freeing resources...
+[DEBUG] [Wed Jan 10 01:56:45 AM] [line #: 94] MSG: Resources freed.
+[DEBUG] [Wed Jan 10 01:56:45 AM] [line #: 74] MSG: Received checksum is: 26873196
+[DEBUG] [Wed Jan 10 01:56:47 AM] [line #: 85] MSG: Checksums do not match!
+[DEBUG] [Wed Jan 10 02:01:32 AM] [line #: 38] MSG: rf95 transmission power set with power level: <14>
+[DEBUG] [Wed Jan 10 02:01:32 AM] [line #: 33] MSG: Waiting for RF checksum & file size transmission..
+[DEBUG] [Wed Jan 10 02:01:32 AM] [line #: 55] MSG: Starting RF packet receive.
+[DEBUG] [Wed Jan 10 02:01:32 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:01:32 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:01:33 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:01:33 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:01:34 AM] [line #: 73] MSG: No message available from RF HW yet..
+[INFO]  [Wed Jan 10 02:01:34 AM] [line #: 62] MSG: Succeeded in grabbing RF message from RF HW.
+[DEBUG] [Wed Jan 10 02:01:34 AM] [line #: 67] MSG: Saved received RF message.
+[DEBUG] [Wed Jan 10 02:01:34 AM] [line #: 43] MSG: Checksum is: 1452244
+[DEBUG] [Wed Jan 10 02:01:34 AM] [line #: 45] MSG: File size is: 512
+[DEBUG] [Wed Jan 10 02:01:34 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Jan 10 02:01:34 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Jan 10 02:01:34 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Jan 10 02:01:35 AM] [line #: 51] MSG: Packet sent.
+[DEBUG] [Wed Jan 10 02:01:35 AM] [line #: 64] MSG: Attempting to open serial interface...
+[DEBUG] [Wed Jan 10 02:01:35 AM] [line #: 69] MSG: Serial interface opened successfully.
+[DEBUG] [Wed Jan 10 02:01:35 AM] [line #: 71] MSG: Attempting to reserve memory for file data...
+[DEBUG] [Wed Jan 10 02:01:35 AM] [line #: 76] MSG: Memory successfully reserved for file data.
+[INFO]  [Wed Jan 10 02:01:35 AM] [line #: 80] MSG: Receiving file data...
+[INFO]  [Wed Jan 10 02:01:35 AM] [line #: 85] MSG: File data received.
+[DEBUG] [Wed Jan 10 02:01:35 AM] [line #: 88] MSG: Time in seconds taken to receive: <0>
+[DEBUG] [Wed Jan 10 02:01:35 AM] [line #: 89] MSG: Resulting BYTE/s: <inf>
+[INFO]  [Wed Jan 10 02:01:35 AM] [line #: 90] MSG: Resulting bit/s: <inf>
+[DEBUG] [Wed Jan 10 02:01:35 AM] [line #: 92] MSG: Freeing resources...
+[DEBUG] [Wed Jan 10 02:01:35 AM] [line #: 94] MSG: Resources freed.
+[DEBUG] [Wed Jan 10 02:01:35 AM] [line #: 74] MSG: Received checksum is: 1453420
+[DEBUG] [Wed Jan 10 02:01:37 AM] [line #: 85] MSG: Checksums do not match!
+[DEBUG] [Wed Jan 10 02:01:37 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Jan 10 02:01:37 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Jan 10 02:01:37 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Jan 10 02:01:37 AM] [line #: 51] MSG: Packet sent.
+[DEBUG] [Wed Jan 10 02:01:37 AM] [line #: 64] MSG: Attempting to open serial interface...
+[DEBUG] [Wed Jan 10 02:01:37 AM] [line #: 69] MSG: Serial interface opened successfully.
+[DEBUG] [Wed Jan 10 02:01:37 AM] [line #: 71] MSG: Attempting to reserve memory for file data...
+[DEBUG] [Wed Jan 10 02:01:37 AM] [line #: 76] MSG: Memory successfully reserved for file data.
+[INFO]  [Wed Jan 10 02:01:37 AM] [line #: 80] MSG: Receiving file data...
+[INFO]  [Wed Jan 10 02:01:39 AM] [line #: 85] MSG: File data received.
+[DEBUG] [Wed Jan 10 02:01:39 AM] [line #: 88] MSG: Time in seconds taken to receive: <2>
+[DEBUG] [Wed Jan 10 02:01:39 AM] [line #: 89] MSG: Resulting BYTE/s: <256>
+[INFO]  [Wed Jan 10 02:01:39 AM] [line #: 90] MSG: Resulting bit/s: <2048>
+[DEBUG] [Wed Jan 10 02:01:39 AM] [line #: 92] MSG: Freeing resources...
+[DEBUG] [Wed Jan 10 02:01:39 AM] [line #: 94] MSG: Resources freed.
+[DEBUG] [Wed Jan 10 02:01:39 AM] [line #: 74] MSG: Received checksum is: 1452724
+[DEBUG] [Wed Jan 10 02:01:41 AM] [line #: 85] MSG: Checksums do not match!
+[DEBUG] [Wed Jan 10 02:01:41 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Jan 10 02:01:41 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Jan 10 02:01:41 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Jan 10 02:01:41 AM] [line #: 51] MSG: Packet sent.
+[DEBUG] [Wed Jan 10 02:03:38 AM] [line #: 38] MSG: rf95 transmission power set with power level: <14>
+[DEBUG] [Wed Jan 10 02:03:38 AM] [line #: 33] MSG: Waiting for RF checksum & file size transmission..
+[DEBUG] [Wed Jan 10 02:03:38 AM] [line #: 55] MSG: Starting RF packet receive.
+[DEBUG] [Wed Jan 10 02:03:38 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:03:38 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:03:39 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:03:39 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:03:40 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:03:40 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:03:41 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:03:41 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:03:42 AM] [line #: 73] MSG: No message available from RF HW yet..
+[INFO]  [Wed Jan 10 02:03:42 AM] [line #: 62] MSG: Succeeded in grabbing RF message from RF HW.
+[DEBUG] [Wed Jan 10 02:03:42 AM] [line #: 67] MSG: Saved received RF message.
+[DEBUG] [Wed Jan 10 02:03:42 AM] [line #: 43] MSG: Checksum is: 27699412
+[DEBUG] [Wed Jan 10 02:03:42 AM] [line #: 45] MSG: File size is: 512
+[DEBUG] [Wed Jan 10 02:03:42 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Jan 10 02:03:42 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Jan 10 02:03:42 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Jan 10 02:03:42 AM] [line #: 51] MSG: Packet sent.
+[DEBUG] [Wed Jan 10 02:03:42 AM] [line #: 64] MSG: Attempting to open serial interface...
+[DEBUG] [Wed Jan 10 02:03:42 AM] [line #: 69] MSG: Serial interface opened successfully.
+[DEBUG] [Wed Jan 10 02:03:42 AM] [line #: 71] MSG: Attempting to reserve memory for file data...
+[DEBUG] [Wed Jan 10 02:03:42 AM] [line #: 76] MSG: Memory successfully reserved for file data.
+[INFO]  [Wed Jan 10 02:03:42 AM] [line #: 80] MSG: Receiving file data...
+[INFO]  [Wed Jan 10 02:03:43 AM] [line #: 85] MSG: File data received.
+[DEBUG] [Wed Jan 10 02:03:43 AM] [line #: 88] MSG: Time in seconds taken to receive: <1>
+[DEBUG] [Wed Jan 10 02:03:43 AM] [line #: 89] MSG: Resulting BYTE/s: <512>
+[INFO]  [Wed Jan 10 02:03:43 AM] [line #: 90] MSG: Resulting bit/s: <4096>
+[DEBUG] [Wed Jan 10 02:03:43 AM] [line #: 92] MSG: Freeing resources...
+[DEBUG] [Wed Jan 10 02:03:43 AM] [line #: 94] MSG: Resources freed.
+[DEBUG] [Wed Jan 10 02:03:43 AM] [line #: 74] MSG: Received checksum is: 27700588
+[DEBUG] [Wed Jan 10 02:03:45 AM] [line #: 85] MSG: Checksums do not match!
+[DEBUG] [Wed Jan 10 02:03:45 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Jan 10 02:03:45 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Jan 10 02:03:45 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Jan 10 02:03:45 AM] [line #: 51] MSG: Packet sent.
+[DEBUG] [Wed Jan 10 02:03:45 AM] [line #: 64] MSG: Attempting to open serial interface...
+[DEBUG] [Wed Jan 10 02:03:45 AM] [line #: 69] MSG: Serial interface opened successfully.
+[DEBUG] [Wed Jan 10 02:03:45 AM] [line #: 71] MSG: Attempting to reserve memory for file data...
+[DEBUG] [Wed Jan 10 02:03:45 AM] [line #: 76] MSG: Memory successfully reserved for file data.
+[INFO]  [Wed Jan 10 02:03:45 AM] [line #: 80] MSG: Receiving file data...
+[INFO]  [Wed Jan 10 02:03:47 AM] [line #: 85] MSG: File data received.
+[DEBUG] [Wed Jan 10 02:03:47 AM] [line #: 88] MSG: Time in seconds taken to receive: <2>
+[DEBUG] [Wed Jan 10 02:03:47 AM] [line #: 89] MSG: Resulting BYTE/s: <256>
+[INFO]  [Wed Jan 10 02:03:47 AM] [line #: 90] MSG: Resulting bit/s: <2048>
+[DEBUG] [Wed Jan 10 02:03:47 AM] [line #: 92] MSG: Freeing resources...
+[DEBUG] [Wed Jan 10 02:03:47 AM] [line #: 94] MSG: Resources freed.
+[DEBUG] [Wed Jan 10 02:03:47 AM] [line #: 74] MSG: Received checksum is: 27699892
+[DEBUG] [Wed Jan 10 02:03:49 AM] [line #: 85] MSG: Checksums do not match!
+[DEBUG] [Wed Jan 10 02:03:49 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Jan 10 02:03:49 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Jan 10 02:03:49 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Jan 10 02:03:49 AM] [line #: 51] MSG: Packet sent.
+[DEBUG] [Wed Jan 10 02:03:49 AM] [line #: 64] MSG: Attempting to open serial interface...
+[DEBUG] [Wed Jan 10 02:03:49 AM] [line #: 69] MSG: Serial interface opened successfully.
+[DEBUG] [Wed Jan 10 02:03:49 AM] [line #: 71] MSG: Attempting to reserve memory for file data...
+[DEBUG] [Wed Jan 10 02:03:49 AM] [line #: 76] MSG: Memory successfully reserved for file data.
+[INFO]  [Wed Jan 10 02:03:49 AM] [line #: 80] MSG: Receiving file data...
+[INFO]  [Wed Jan 10 02:03:50 AM] [line #: 85] MSG: File data received.
+[DEBUG] [Wed Jan 10 02:03:50 AM] [line #: 88] MSG: Time in seconds taken to receive: <1>
+[DEBUG] [Wed Jan 10 02:03:50 AM] [line #: 89] MSG: Resulting BYTE/s: <512>
+[INFO]  [Wed Jan 10 02:03:50 AM] [line #: 90] MSG: Resulting bit/s: <4096>
+[DEBUG] [Wed Jan 10 02:03:50 AM] [line #: 92] MSG: Freeing resources...
+[DEBUG] [Wed Jan 10 02:03:50 AM] [line #: 94] MSG: Resources freed.
+[DEBUG] [Wed Jan 10 02:03:50 AM] [line #: 74] MSG: Received checksum is: 27698932
+[DEBUG] [Wed Jan 10 02:03:52 AM] [line #: 85] MSG: Checksums do not match!
+[DEBUG] [Wed Jan 10 02:03:52 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Jan 10 02:03:52 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Jan 10 02:03:52 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Jan 10 02:03:52 AM] [line #: 51] MSG: Packet sent.
+[DEBUG] [Wed Jan 10 02:03:52 AM] [line #: 64] MSG: Attempting to open serial interface...
+[DEBUG] [Wed Jan 10 02:03:52 AM] [line #: 69] MSG: Serial interface opened successfully.
+[DEBUG] [Wed Jan 10 02:03:52 AM] [line #: 71] MSG: Attempting to reserve memory for file data...
+[DEBUG] [Wed Jan 10 02:03:52 AM] [line #: 76] MSG: Memory successfully reserved for file data.
+[INFO]  [Wed Jan 10 02:03:52 AM] [line #: 80] MSG: Receiving file data...
+[INFO]  [Wed Jan 10 02:03:54 AM] [line #: 85] MSG: File data received.
+[DEBUG] [Wed Jan 10 02:03:54 AM] [line #: 88] MSG: Time in seconds taken to receive: <2>
+[DEBUG] [Wed Jan 10 02:03:54 AM] [line #: 89] MSG: Resulting BYTE/s: <256>
+[INFO]  [Wed Jan 10 02:03:54 AM] [line #: 90] MSG: Resulting bit/s: <2048>
+[DEBUG] [Wed Jan 10 02:03:54 AM] [line #: 92] MSG: Freeing resources...
+[DEBUG] [Wed Jan 10 02:03:54 AM] [line #: 94] MSG: Resources freed.
+[DEBUG] [Wed Jan 10 02:03:54 AM] [line #: 74] MSG: Received checksum is: 27700732
+[DEBUG] [Wed Jan 10 02:03:56 AM] [line #: 85] MSG: Checksums do not match!
+[DEBUG] [Wed Jan 10 02:03:56 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Jan 10 02:03:56 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Jan 10 02:03:56 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[DEBUG] [Wed Jan 10 02:06:47 AM] [line #: 38] MSG: rf95 transmission power set with power level: <14>
+[DEBUG] [Wed Jan 10 02:06:47 AM] [line #: 33] MSG: Waiting for RF checksum & file size transmission..
+[DEBUG] [Wed Jan 10 02:06:47 AM] [line #: 55] MSG: Starting RF packet receive.
+[DEBUG] [Wed Jan 10 02:06:47 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:06:47 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:06:48 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:06:48 AM] [line #: 73] MSG: No message available from RF HW yet..
+[INFO]  [Wed Jan 10 02:06:49 AM] [line #: 62] MSG: Succeeded in grabbing RF message from RF HW.
+[DEBUG] [Wed Jan 10 02:06:49 AM] [line #: 67] MSG: Saved received RF message.
+[DEBUG] [Wed Jan 10 02:06:49 AM] [line #: 43] MSG: Checksum is: 25557204
+[DEBUG] [Wed Jan 10 02:06:49 AM] [line #: 45] MSG: File size is: 512
+[DEBUG] [Wed Jan 10 02:06:49 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Jan 10 02:06:49 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Jan 10 02:06:49 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Jan 10 02:06:49 AM] [line #: 51] MSG: Packet sent.
+[DEBUG] [Wed Jan 10 02:06:49 AM] [line #: 64] MSG: Attempting to open serial interface...
+[DEBUG] [Wed Jan 10 02:06:49 AM] [line #: 69] MSG: Serial interface opened successfully.
+[DEBUG] [Wed Jan 10 02:06:49 AM] [line #: 71] MSG: Attempting to reserve memory for file data...
+[DEBUG] [Wed Jan 10 02:06:49 AM] [line #: 76] MSG: Memory successfully reserved for file data.
+[INFO]  [Wed Jan 10 02:06:49 AM] [line #: 80] MSG: Receiving file data...
+[INFO]  [Wed Jan 10 02:06:50 AM] [line #: 85] MSG: File data received.
+[DEBUG] [Wed Jan 10 02:06:50 AM] [line #: 88] MSG: Time in seconds taken to receive: <1>
+[DEBUG] [Wed Jan 10 02:06:50 AM] [line #: 89] MSG: Resulting BYTE/s: <512>
+[INFO]  [Wed Jan 10 02:06:50 AM] [line #: 90] MSG: Resulting bit/s: <4096>
+[DEBUG] [Wed Jan 10 02:06:50 AM] [line #: 92] MSG: Freeing resources...
+[DEBUG] [Wed Jan 10 02:06:50 AM] [line #: 94] MSG: Resources freed.
+[DEBUG] [Wed Jan 10 02:06:50 AM] [line #: 74] MSG: Received checksum is: 25558380
+[DEBUG] [Wed Jan 10 02:06:52 AM] [line #: 79] MSG: Checksums match!
+[DEBUG] [Wed Jan 10 02:06:52 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Jan 10 02:06:52 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Jan 10 02:06:52 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Jan 10 02:06:52 AM] [line #: 51] MSG: Packet sent.
+[INFO]  [Wed Jan 10 02:06:52 AM] [line #: 93] MSG: attempting to write file data to 'RECD_data'...
+[INFO]  [Wed Jan 10 02:06:52 AM] [line #: 99] MSG: File data written.
+[DEBUG] [Wed Jan 10 02:08:49 AM] [line #: 38] MSG: rf95 transmission power set with power level: <14>
+[DEBUG] [Wed Jan 10 02:08:49 AM] [line #: 33] MSG: Waiting for RF checksum & file size transmission..
+[DEBUG] [Wed Jan 10 02:08:49 AM] [line #: 55] MSG: Starting RF packet receive.
+[DEBUG] [Wed Jan 10 02:08:49 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:08:49 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:08:50 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:08:50 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:08:51 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:08:51 AM] [line #: 73] MSG: No message available from RF HW yet..
+[INFO]  [Wed Jan 10 02:08:52 AM] [line #: 62] MSG: Succeeded in grabbing RF message from RF HW.
+[DEBUG] [Wed Jan 10 02:08:52 AM] [line #: 67] MSG: Saved received RF message.
+[DEBUG] [Wed Jan 10 02:08:52 AM] [line #: 43] MSG: Checksum is: 31799508
+[DEBUG] [Wed Jan 10 02:08:52 AM] [line #: 45] MSG: File size is: 512
+[DEBUG] [Wed Jan 10 02:08:52 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Jan 10 02:08:52 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Jan 10 02:08:52 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Jan 10 02:08:52 AM] [line #: 51] MSG: Packet sent.
+[DEBUG] [Wed Jan 10 02:08:52 AM] [line #: 64] MSG: Attempting to open serial interface...
+[DEBUG] [Wed Jan 10 02:08:52 AM] [line #: 69] MSG: Serial interface opened successfully.
+[DEBUG] [Wed Jan 10 02:08:52 AM] [line #: 71] MSG: Attempting to reserve memory for file data...
+[DEBUG] [Wed Jan 10 02:08:52 AM] [line #: 76] MSG: Memory successfully reserved for file data.
+[INFO]  [Wed Jan 10 02:08:52 AM] [line #: 80] MSG: Receiving file data...
+[INFO]  [Wed Jan 10 02:08:53 AM] [line #: 85] MSG: File data received.
+[DEBUG] [Wed Jan 10 02:08:53 AM] [line #: 88] MSG: Time in seconds taken to receive: <1>
+[DEBUG] [Wed Jan 10 02:08:53 AM] [line #: 89] MSG: Resulting BYTE/s: <512>
+[INFO]  [Wed Jan 10 02:08:53 AM] [line #: 90] MSG: Resulting bit/s: <4096>
+[DEBUG] [Wed Jan 10 02:08:53 AM] [line #: 92] MSG: Freeing resources...
+[DEBUG] [Wed Jan 10 02:08:53 AM] [line #: 94] MSG: Resources freed.
+[DEBUG] [Wed Jan 10 02:08:53 AM] [line #: 74] MSG: Received checksum is: 31800684
+[DEBUG] [Wed Jan 10 02:08:53 AM] [line #: 77] MSG: fchecksum: <œ> | recdchecksum: <œ>
+[DEBUG] [Wed Jan 10 02:08:55 AM] [line #: 80] MSG: Checksums match!
+[DEBUG] [Wed Jan 10 02:08:55 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Jan 10 02:08:55 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Jan 10 02:08:55 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Jan 10 02:08:55 AM] [line #: 51] MSG: Packet sent.
+[INFO]  [Wed Jan 10 02:08:55 AM] [line #: 94] MSG: attempting to write file data to 'RECD_data'...
+[INFO]  [Wed Jan 10 02:08:55 AM] [line #: 100] MSG: File data written.
+[DEBUG] [Wed Jan 10 02:09:52 AM] [line #: 38] MSG: rf95 transmission power set with power level: <14>
+[DEBUG] [Wed Jan 10 02:09:52 AM] [line #: 33] MSG: Waiting for RF checksum & file size transmission..
+[DEBUG] [Wed Jan 10 02:09:52 AM] [line #: 55] MSG: Starting RF packet receive.
+[DEBUG] [Wed Jan 10 02:09:52 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:09:53 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:09:53 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:09:54 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:09:54 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:09:55 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:09:55 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:09:56 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:09:56 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:09:57 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:09:57 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:09:58 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:09:58 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:09:59 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:09:59 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:10:00 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:10:00 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:10:01 AM] [line #: 73] MSG: No message available from RF HW yet..
+[INFO]  [Wed Jan 10 02:10:01 AM] [line #: 62] MSG: Succeeded in grabbing RF message from RF HW.
+[DEBUG] [Wed Jan 10 02:10:01 AM] [line #: 67] MSG: Saved received RF message.
+[DEBUG] [Wed Jan 10 02:10:01 AM] [line #: 43] MSG: Checksum is: 2062548
+[DEBUG] [Wed Jan 10 02:10:01 AM] [line #: 45] MSG: File size is: 512
+[DEBUG] [Wed Jan 10 02:10:01 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Jan 10 02:10:01 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Jan 10 02:10:01 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Jan 10 02:10:01 AM] [line #: 51] MSG: Packet sent.
+[DEBUG] [Wed Jan 10 02:10:01 AM] [line #: 64] MSG: Attempting to open serial interface...
+[DEBUG] [Wed Jan 10 02:10:01 AM] [line #: 69] MSG: Serial interface opened successfully.
+[DEBUG] [Wed Jan 10 02:10:01 AM] [line #: 71] MSG: Attempting to reserve memory for file data...
+[DEBUG] [Wed Jan 10 02:10:01 AM] [line #: 76] MSG: Memory successfully reserved for file data.
+[INFO]  [Wed Jan 10 02:10:01 AM] [line #: 80] MSG: Receiving file data...
+[INFO]  [Wed Jan 10 02:10:02 AM] [line #: 85] MSG: File data received.
+[DEBUG] [Wed Jan 10 02:10:02 AM] [line #: 88] MSG: Time in seconds taken to receive: <1>
+[DEBUG] [Wed Jan 10 02:10:02 AM] [line #: 89] MSG: Resulting BYTE/s: <512>
+[INFO]  [Wed Jan 10 02:10:02 AM] [line #: 90] MSG: Resulting bit/s: <4096>
+[DEBUG] [Wed Jan 10 02:10:02 AM] [line #: 92] MSG: Freeing resources...
+[DEBUG] [Wed Jan 10 02:10:02 AM] [line #: 94] MSG: Resources freed.
+[DEBUG] [Wed Jan 10 02:10:02 AM] [line #: 74] MSG: Received checksum is: 2063724
+[DEBUG] [Wed Jan 10 02:10:02 AM] [line #: 77] MSG: fchecksum: <0> | recdchecksum: <0>
+[DEBUG] [Wed Jan 10 02:10:04 AM] [line #: 80] MSG: Checksums match!
+[DEBUG] [Wed Jan 10 02:10:04 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Jan 10 02:10:04 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Jan 10 02:10:04 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Jan 10 02:10:04 AM] [line #: 51] MSG: Packet sent.
+[INFO]  [Wed Jan 10 02:10:04 AM] [line #: 94] MSG: attempting to write file data to 'RECD_data'...
+[INFO]  [Wed Jan 10 02:10:04 AM] [line #: 100] MSG: File data written.
+[DEBUG] [Wed Jan 10 02:12:45 AM] [line #: 38] MSG: rf95 transmission power set with power level: <14>
+[DEBUG] [Wed Jan 10 02:12:45 AM] [line #: 33] MSG: Waiting for RF checksum & file size transmission..
+[DEBUG] [Wed Jan 10 02:12:45 AM] [line #: 55] MSG: Starting RF packet receive.
+[DEBUG] [Wed Jan 10 02:12:45 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:45 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:46 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:46 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:47 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:47 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:48 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:48 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:49 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:49 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:50 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:50 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:51 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:51 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:52 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:52 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:53 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:53 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:54 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:54 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:55 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:55 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:12:56 AM] [line #: 73] MSG: No message available from RF HW yet..
+[INFO]  [Wed Jan 10 02:12:56 AM] [line #: 62] MSG: Succeeded in grabbing RF message from RF HW.
+[DEBUG] [Wed Jan 10 02:12:56 AM] [line #: 67] MSG: Saved received RF message.
+[DEBUG] [Wed Jan 10 02:12:56 AM] [line #: 43] MSG: Checksum is: 29386964
+[DEBUG] [Wed Jan 10 02:12:56 AM] [line #: 45] MSG: File size is: 5447162
+[DEBUG] [Wed Jan 10 02:12:56 AM] [line #: 12] MSG: RF Message created.
