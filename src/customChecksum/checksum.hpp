@@ -11,4 +11,6 @@
  */
 unsigned char checksum(FILE *fp);
 
+void printChecksum(unsigned char csum);
+
 #endif
