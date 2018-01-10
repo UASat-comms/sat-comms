@@ -37,3 +37,29 @@
 [DEBUG] [Wed Jan 10 02:07:43 AM] [line #: 73] MSG: No message available from RF HW yet..
 [DEBUG] [Wed Jan 10 02:07:43 AM] [line #: 73] MSG: No message available from RF HW yet..
 [DEBUG] [Wed Jan 10 02:07:44 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:13:43 AM] [line #: 38] MSG: rf95 transmission power set with power level: <14>
+[INFO]  [Wed Jan 10 02:13:43 AM] [line #: 25] MSG: Setup complete.
+[DEBUG] [Wed Jan 10 02:13:43 AM] [line #: 60] MSG: File checksum for <./../serialTesting/testdata> is: œ
+[DEBUG] [Wed Jan 10 02:13:43 AM] [line #: 67] MSG: File size for <./../serialTesting/testdata> is: <512>
+[DEBUG] [Wed Jan 10 02:13:43 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Jan 10 02:13:43 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Jan 10 02:13:43 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Jan 10 02:13:43 AM] [line #: 51] MSG: Packet sent.
+[INFO]  [Wed Jan 10 02:13:43 AM] [line #: 77] MSG: File checksum and size transmitted.
+[DEBUG] [Wed Jan 10 02:13:43 AM] [line #: 55] MSG: Starting RF packet receive.
+[DEBUG] [Wed Jan 10 02:13:43 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:13:44 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:13:44 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:14:25 AM] [line #: 38] MSG: rf95 transmission power set with power level: <14>
+[INFO]  [Wed Jan 10 02:14:25 AM] [line #: 25] MSG: Setup complete.
+[DEBUG] [Wed Jan 10 02:14:25 AM] [line #: 60] MSG: File checksum for <./../serialTesting/testdata> is: 31996116
+[DEBUG] [Wed Jan 10 02:14:25 AM] [line #: 67] MSG: File size for <./../serialTesting/testdata> is: <512>
+[DEBUG] [Wed Jan 10 02:14:25 AM] [line #: 12] MSG: RF Message created.
+[DEBUG] [Wed Jan 10 02:14:25 AM] [line #: 47] MSG: Starting RF packet transmission.
+[DEBUG] [Wed Jan 10 02:14:25 AM] [line #: 49] MSG: Waiting until transmission finishes..
+[INFO]  [Wed Jan 10 02:14:25 AM] [line #: 51] MSG: Packet sent.
+[INFO]  [Wed Jan 10 02:14:25 AM] [line #: 77] MSG: File checksum and size transmitted.
+[DEBUG] [Wed Jan 10 02:14:25 AM] [line #: 55] MSG: Starting RF packet receive.
+[DEBUG] [Wed Jan 10 02:14:25 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:14:26 AM] [line #: 73] MSG: No message available from RF HW yet..
+[DEBUG] [Wed Jan 10 02:14:26 AM] [line #: 73] MSG: No message available from RF HW yet..

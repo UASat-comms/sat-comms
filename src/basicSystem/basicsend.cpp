@@ -55,7 +55,9 @@ int main(int argc, char **argv) {
 	// Get the file checksum.
 	// string checksum = getFileChecksum(fname);
     FILE *fp = fopen(fname, "rb");
-    LOG(DEBUG) << "File checksum for <" << fname << "> is: " << (int) checksum(fp);
+    string fchecksum;
+    fchecksum.push_back(checksum(fp));
+    LOG(DEBUG) << "File checksum for <" << fname << "> is: " << (int) fchecksum.c_str();
     fclose(fp);
 
      // Get the file size.
@@ -66,7 +68,7 @@ int main(int argc, char **argv) {
 
      /* Put the file checksum and filesize into a single string. The RF
      * hardware can send up to 255 bytes in a single packet. The checksum is
-     * always 64 bytes and the file size will only take around 15 bytes. */
+     * always 1 byte and the file size will only take around 15 bytes. */
      stringstream metadata;
      metadata << checksum << stringFileSize;
 

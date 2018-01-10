@@ -34,7 +34,7 @@ basicsend.o: basicsend.cpp $(SRC_BASE)/settings.h
 basicrecv: basicrecv.o $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDE) $^ $(LIBS) -o $@
 
-basicrecv.o: basicrecv.cpp
+basicrecv.o: basicrecv.cpp $(SRC_BASE)/settings.h
 	$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 easylogging++.o: $(EASYSRC_BASE)/easylogging++.cc $(EASYSRC_BASE)/easylogging++.h

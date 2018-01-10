@@ -8,7 +8,7 @@
 #include "settings.h"
 #include "easylogging++.h"
 #include "serial.hpp"
-#include "picosha2.h"
+#include "checksum.hpp"
 
 using namespace std;
 
@@ -33,17 +33,14 @@ int main(int argc, const char **argv) {
      LOG(DEBUG) << "Waiting for RF checksum & file size transmission..";
      char *metadata = recvRF();
      int metadataSize = strlen(metadata);
-     char *checksum = (char *) malloc(sizeof(char) * (64 + 1));
-     checksum[64] = '\0';
+     string fchecksum;
      char *stringFileSize = (char *) malloc(sizeof(char) * (IDENTIFIER_LENGTH + 1));
      stringFileSize[IDENTIFIER_LENGTH] = '\0';
-     for(int i = 0; i < metadataSize; i++) {
-          if(i < 64)
-               checksum[i] = metadata[i];
-          else
-               stringFileSize[i - 64] = metadata[i];
+     fchecksum.push_back(metadata[0]);
+     for(int i = 1; i < metadataSize; i++) {
+            stringFileSize[i - 1] = metadata[i];
      }
-     LOG(DEBUG) << "Checksum is: " << checksum;
+     LOG(DEBUG) << "Checksum is: " << (int) fchecksum.c_str();
      int fileSize = atoi(stringFileSize);
      LOG(DEBUG) << "File size is: " << fileSize;
 
@@ -62,12 +59,22 @@ int main(int argc, const char **argv) {
           stringstream temp;
           temp << fileData;
 
+          FILE *fp = fopen("TEMP.file", "wb");
+          for(int i = 0; i < fileSize; i++) {
+              fputc(fileData[i], fp);
+          }
+          fclose(fp);
+          
           // Calculate the checksum.
-          string recdChecksum = picosha2::hash256_hex_string(temp.str());
-          LOG(DEBUG) << "Received checksum is: " << recdChecksum;
+          fp = fopen("TEMP.file", "rb");
+          string recdchecksum;
+          recdchecksum.push_back(checksum(fp));
+          fclose(fp);
+
+          LOG(DEBUG) << "Received checksum is: " << (int) recdchecksum.c_str();
 
           // Compare checksums.
-          if(strcmp(checksum, recdChecksum.c_str()) == 0) {
+          if(strcmp(fchecksum.c_str(), recdchecksum.c_str()) == 0) {
                bcm2835_delay(2000);
                LOG(DEBUG) << "Checksums match!";
                sendRF((char *) "GOOD");
