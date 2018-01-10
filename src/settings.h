@@ -41,7 +41,7 @@ enum SystemStates {
 
 // ============================================================================
 // ---------------------------- Compression Settings --------------------------
-#define COMPRESSION_ENABLED  1 // 1 Enables compression, 0 disables it.
+#define COMPRESSION_ENABLED  0 // 1 Enables compression, 0 disables it.
 #define USE_MAX_COMPRESSSION 1 // Generates smaller file but takes longer.
 #define COMP_FILE_NAME       "TEMP.zip"
 // ============================================================================

@@ -6,7 +6,7 @@
 #include "settings.h"
 #include "easylogging++.h"
 #include "serial.hpp"
-#include "picosha2.h"
+#include "checksum.hpp"
 
 using namespace std;
 
@@ -23,25 +23,6 @@ void setup() {
 	// Configure bcm2835 for RF comms.
 	setupRF();
      LOG(INFO) << "Setup complete.";
-}
-
-std::string getFileChecksum(const char *fname) {
-	ifstream myfile(fname);
-    string mystr;
-    char c;
-
-	LOG(DEBUG) << "Reading file data to get SHA256 checksum...";
-	if(myfile.is_open()) {
-		while(!myfile.eof()) {
-			myfile.get(c);
-            mystr.push_back(c);
-		}
-        myfile.close();
-	} else {
-		LOG(FATAL) << "Error reading file data for checksum.";
-	}
-    mystr.pop_back();
-	return picosha2::hash256_hex_string(mystr);
 }
 
 int main(int argc, char **argv) {
@@ -72,11 +53,13 @@ int main(int argc, char **argv) {
 	}
 
 	// Get the file checksum.
-	string checksum = getFileChecksum(fname);
-	LOG(DEBUG) << "File checksum for <" << fname << "> is: " << checksum;
+	// string checksum = getFileChecksum(fname);
+    FILE *fp = fopen(fname, "rb");
+    LOG(DEBUG) << "File checksum for <" << fname << "> is: " << (int) checksum(fp);
+    fclose(fp);
 
      // Get the file size.
-     FILE *fp = fopen(fname, "r");
+     fp = fopen(fname, "r");
      int fileSize = getFileSize(fp);
      char *stringFileSize = intToString(fileSize);
      LOG(DEBUG) << "File size for <" << fname << "> is: <" << stringFileSize << ">"; 
