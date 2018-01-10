@@ -17,7 +17,7 @@ std::string checksum(std::ifstream &file) {
      return streamer.str();
 }
 
-std::string checksum(char *data, size_t dataSize) {
+std::string checksum(const char *data, size_t dataSize) {
      unsigned char _sum = 0;
      for(int i = 0; i < dataSize; i++) {
           _sum ^= data[i];
