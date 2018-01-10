@@ -1,4 +1,5 @@
-#include <stdio.h>
+#include <iostream>
+#include <fstream>
 #include "checksum.hpp"
 #include "easylogging++.h"
 
@@ -12,10 +13,14 @@ int main(int argc, const char **argv) {
           LOG(FATAL) << "Must enter filename to generate checksum on!";
      }
 
-     FILE *fp = fopen(argv[1], "rb");
+     std::ifstream file(argv[1]);
+     if(!file.is_open()) {
+          LOG(FATAL) << "Error opening file!";
+     }
 
-     LOG(INFO) << "Checksum is " << (int) checksum(fp);
+     LOG(INFO) << "Checksum is " << checksum(file);
 
-     fclose(fp);
+     file.close();
+
      return 0;
 }
