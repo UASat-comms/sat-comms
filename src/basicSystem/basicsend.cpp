@@ -12,7 +12,7 @@
 #include "schifra_reed_solomon_decoder.hpp"
 #include "schifra_reed_solomon_block.hpp"
 #include "schifra_error_processes.hpp"
-#include "schifra_reed_solomon_file_encoder"
+#include "schifra_reed_solomon_file_encoder.hpp"
 
 #include "rf.hpp"
 #include "settings.h"
@@ -44,7 +44,7 @@ schifra::galois::field_polynomial generator_polynomial(field);
 
 /* Instantiate Encoder and Decoder (Codec) */
 typedef schifra::reed_solomon::encoder<code_length,fec_length,data_length> encoder_t;
-typedef schifra::reed_solomon::decoder<code_length,fec_length,data_length> decoder_t;
+typedef schifra::reed_solomon::file_encoder<code_length,fec_length> file_encoder_t;
 
 void setup() {
      printf("-----> %s running | setting up..\n", __BASEFILE__);
@@ -88,7 +88,7 @@ int main(int argc, char **argv) {
      // Apply Forward-Error Correction if enabled.
      if(FEC_ENABLED) {
           if(
-               !schifa::make_sequential_root_generator_polynomial(
+               !schifra::make_sequential_root_generator_polynomial(
                     field,
                     generator_polynomial_index,
                     generator_polynomial_root_count,
@@ -99,7 +99,7 @@ int main(int argc, char **argv) {
                LOG(DEBUG) << "Starting RS file encoding..";
                const encoder_t rs_encoder(field, generator_polynomial);
                file_encoder_t(rs_encoder, fname, FEC_FILE_NAME);
-               LOG(DEBUG) << "File RS encoded."
+               LOG(DEBUG) << "File RS encoded.";
                fname = FEC_FILE_NAME;
           }
      }
