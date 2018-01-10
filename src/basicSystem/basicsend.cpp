@@ -60,7 +60,7 @@ int main(int argc, char **argv) {
 
      // Get the file size.
      file.seekg(0, file.end);
-     size_t fsize = file.tellg();
+     int fsize = file.tellg();
      file.seekg(0, file.beg);
      LOG(DEBUG) << "File size for <" << fname << "> is: <" << fsize << ">";
 
