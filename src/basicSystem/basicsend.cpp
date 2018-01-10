@@ -56,11 +56,15 @@ int main(int argc, char **argv) {
 	// Get the file checksum.
      ifstream file(fname);
      string fchecksum = checksum(file);
+     file.close();
      LOG(DEBUG) << "File checksum for <" << fname << "> is: " << fchecksum;
 
+
      // Get the file size.
+     file.open(fname);
      file.seekg(0, file.end);
      int fsize = file.tellg();
+     printf("--%d--\n", fsize);
      file.seekg(0, file.beg);
      LOG(DEBUG) << "File size for <" << fname << "> is: <" << fsize << ">";
 
