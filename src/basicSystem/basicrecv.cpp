@@ -51,6 +51,13 @@ int main(int argc, const char **argv) {
      while(tryCount < TRY_LIMIT) {
           // Get the file data over serial.
           fdata = receiveData(fsize);
+          
+          FILE *fp = fopen("TEMP.file", "w");
+          for(int i = 0; i < fsize; i++) {
+               fputc(fdata.c_str()[i], fp);
+          }
+          fclose(fp);
+
 
           // Calculate the checksum.
           string recdchecksum = checksum(fdata.c_str(), fsize);
