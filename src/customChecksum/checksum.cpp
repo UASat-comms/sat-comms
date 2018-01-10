@@ -6,8 +6,21 @@
  */
 std::string checksum(std::ifstream &file) {
      unsigned char _sum = 0;
-     while ((!file.eof()) && (!file.bad())) {
-          _sum ^= (char) file.get();
+     char c;
+     while (file.get(c)) {
+          _sum ^= c;
+     }
+     std::stringstream streamer;
+     for(int i = 0; i < 8; i++) {
+          streamer << (int) ((_sum >> (7 - i)) & 0x0001);
+     }
+     return streamer.str();
+}
+
+std::string checksum(char *data, size_t dataSize) {
+     unsigned char _sum = 0;
+     for(int i = 0; i < dataSize; i++) {
+          _sum ^= data[i];
      }
      std::stringstream streamer;
      for(int i = 0; i < 8; i++) {
