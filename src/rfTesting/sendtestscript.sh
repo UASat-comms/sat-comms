@@ -1,8 +1,14 @@
-echo "Starting RF send test script."
+echo "=================================="
+echo "----  Start of RF Send Test   ----"
+
 for k in `seq 1 10`;
 do
     sleep 2
-    echo "Test $k"
+    echo "=====> Test iteration no.: $k"
     sudo ./send
 done
+
+echo "----   End of RF Send Test    ----"
+echo "=================================="
+
 exit 0
