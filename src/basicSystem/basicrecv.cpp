@@ -40,6 +40,7 @@ int main(int argc, const char **argv) {
      LOG(DEBUG) << "File size is: " << fsize;
 
      // Let the Tx side know that the Rx side is okay to receive the file.
+     bcm2835_delay(1500);
      sendRF((char *) "GOAHEAD");
 
      /* Receive data and make sure it matches checksums.  If not, try again
@@ -67,13 +68,13 @@ int main(int argc, const char **argv) {
           // Compare checksums.
           LOG(DEBUG) << "fchecksum: <" << fchecksum << "> | recdchecksum: <" << recdchecksum << ">";
           if(fchecksum.compare(recdchecksum) == 0) {
-               bcm2835_delay(2000);
+               bcm2835_delay(3000);
                LOG(DEBUG) << "Checksums match!";
                sendRF((char *) "GOOD");
                success = 1;
                break;
           } else {
-               bcm2835_delay(2000);
+               bcm2835_delay(3000);
                LOG(DEBUG) << "Checksums do not match!";
                ++tryCount;
                sendRF((char *) "BAD");
