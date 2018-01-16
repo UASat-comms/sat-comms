@@ -1,8 +1,8 @@
 echo "Starting RF send test script."
-for count in {1..50}
+for k in `seq 1 10`;
 do
-sleep 2
-echo "$count"
-sudo ./send
+    sleep 2
+    echo "Test $k"
+    sudo ./send
 done
 exit 0

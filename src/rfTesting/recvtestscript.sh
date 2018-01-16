@@ -1,7 +1,6 @@
-echo "Starting RF recv test script."
-for count in {1..50}
+for k in `seq 1 10`;
 do
-echo "$count"
-sudo ./recv
+    echo "Test $k"
+    sudo ./recv
 done
 exit 0
