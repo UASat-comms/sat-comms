@@ -12,6 +12,9 @@ int main() {
     setupRF();
     char *mess = recvRF();
     LOG(INFO) << "Message received: <" << mess << ">";
+    bcm2835_delay(500);
+    char *reply = (char *) "Got your message!";
+    sendRF(reply);
     closeRF();
     return 0;
 }
