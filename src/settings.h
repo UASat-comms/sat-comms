@@ -15,7 +15,7 @@
 #define RF_SERVER_ID     1
 #define RF_CLIENT_ID     2
 #define RF_GATEWAY_ID    1
-#define RF_TX_POWER      14        // Range: 13-23
+#define RF_TX_POWER      7       // Lowest power required if using 3.3V DC Power pin!
 
 // -------------------- RF Pin Allocations ------------------------------------
 // bcm2835 pin constants defined @:
