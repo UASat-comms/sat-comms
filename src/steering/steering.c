@@ -14,7 +14,6 @@ static void setStepLR(int w1, int w2, int w3, int w4){
         digitalWrite(IN4_LR, w4);
 }
 
-
 void motorUp(unsigned numSteps) {
      for(unsigned counter = 0; counter < numSteps; counter++) {
           setStepUD(1,0,0,0);

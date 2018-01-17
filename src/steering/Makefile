@@ -14,23 +14,11 @@ PROJECT_HEAD		= ./../../
 SRC_BASE 	     	= $(PROJECT_HEAD)/src/
 EASYLOGGING_BASE 	= $(PROJECT_HEAD)/easyloggingpp
 EASYSRC_BASE		= $(EASYLOGGING_BASE)/src
-STEER_BASE          = $(SRC_BASE)/steering
-INCLUDE       		= -I $(SRC_BASE) -I $(EASYSRC_BASE) -I $(STEER_BASE)
-
-OBJS = steeringTest.o steering.o easylogging++.o
-EXE  = steeringTest
-
-$(EXE): $(OBJS)
-	$(CC) $(INCLUDE) $(CFLAGS) $^ $(LIBS) -o $@
-
-steeringTest.o: steeringTest.cpp $(STEER_BASE)/steering.h
-	$(CC) $(INCLUDE) $(CFLAGS) -c $<
+STEER_BASE        = $(SRC_BASE)/steering
+INCLUDE       		= -I$(SRC_BASE) -I$(EASYSRC_BASE) -I$(STEER_BASE)
 
 steering.o: $(STEER_BASE)/steering.c $(STEER_BASE)/steering.h $(SRC_BASE)/settings.h
-	$(CC) $(INCLUDE) $(CFLAGS) -c $<
-
-easylogging++.o: $(EASYSRC_BASE)/easylogging++.cc $(EASYSRC_BASE)/easylogging++.h
-	$(CC) $(INCLUDE) $(CFLAGS) -c $<
+	$(CC) $(INCLUDE) $(CFLAGS) $(LIBS) -c $<
 
 clean:
-	rm -rf $(OBJS) $(EXE)
+	rm -rf steering.o

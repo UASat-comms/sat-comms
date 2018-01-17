@@ -28,17 +28,28 @@
 #define RF_IRQ_PIN RPI_V2_GPIO_P1_22 // "Interrupt Request" pin.
 #define RF_RST_PIN RPI_V2_GPIO_P1_15 // "Reset" pin.
 
+// -------------------- Steering Pin Allocations & Stuff ------------------------------------
 // For motor driver boards
-#define IN1_UD 21
-#define IN1_UD 21
-#define IN2_UD 22
-#define IN3_UD 23
+#define IN1_UD 22
+#define IN2_UD 23
+#define IN3_UD 24
 #define IN4_UD 25
+
 #define IN1_LR 26
 #define IN2_LR 27
 #define IN3_LR 28
 #define IN4_LR 29
 
+const char *connectionByteString = {
+    0b00110011,
+    0b11001100,
+    0b10101010,
+    0b01010101,
+    0b11110000,
+    0b01111111
+};
+
+// -------------------- Enable Pin Allocations ------------------------------------
 // Laser and UV enable pins
 // [TODO]: Choose pins
 #define LASER_ENABLE -1

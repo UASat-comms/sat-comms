@@ -8,3 +8,5 @@
 [INFO]  [Thu Oct 26 19:57:52 PM] [line #: 9] MSG: This is another test.
 [DEBUG] [Thu Oct 26 19:58:02 PM] [line #: 8] MSG: This is a test.
 [INFO]  [Thu Oct 26 19:58:02 PM] [line #: 9] MSG: This is another test.
+[DEBUG] [Wed Jan 17 01:43:59 AM] [line #: 8] MSG: This is a test.
+[INFO]  [Wed Jan 17 01:43:59 AM] [line #: 9] MSG: This is another test.

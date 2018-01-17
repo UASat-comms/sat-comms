@@ -1,0 +1,9 @@
+[INFO]  [Wed Jan 17 02:17:58 AM] [line #: 18] MSG: Setup complete.
+[DEBUG] [Wed Jan 17 02:17:58 AM] [line #: 23] MSG: Test!
+[INFO]  [Wed Jan 17 02:28:39 AM] [line #: 18] MSG: Setup complete.
+[DEBUG] [Wed Jan 17 02:28:39 AM] [line #: 23] MSG: Entering continuous loop.
+[DEBUG] [Wed Jan 17 02:28:42 AM] [line #: 62] MSG: Program ending.
+[INFO]  [Wed Jan 17 02:29:08 AM] [line #: 18] MSG: Setup complete.
+[DEBUG] [Wed Jan 17 02:29:08 AM] [line #: 23] MSG: Entering continuous loop.
+[DEBUG] [Wed Jan 17 02:29:13 AM] [line #: 59] MSG: Done with motor movement.
+[DEBUG] [Wed Jan 17 02:29:20 AM] [line #: 62] MSG: Program ending.
