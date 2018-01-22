@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <cstdio>
+#include <string>
 #include "rf.hpp"
 #include "settings.h"
 #include "easylogging++.h"
@@ -35,12 +36,12 @@ int main(int argc, char **argv) {
 
 	/* Default fname to given command-line argument. It will be changed if
 	compression is enabled and/or FEC is enabled. */
-	char *fname = argv[1];
+	string fname = argv[1];
 
 	// Compress the file we want to send if compression enabled.
 	if(COMPRESSION_ENABLED) {
 		LOG(DEBUG) << "Compressing file..";
-		fname = (char *) COMP_FILE_NAME; // Make sure to use transmit the compressed file.
+		fname = COMP_FILE_NAME; // Make sure to use transmit the compressed file.
         	stringstream compcommand;
 		compcommand << "zip ";
 		if(USE_MAX_COMPRESSSION) {
@@ -53,24 +54,22 @@ int main(int argc, char **argv) {
 	}
 
 	// Get the file checksum.
-	// string checksum = getFileChecksum(fname);
-    FILE *fp = fopen(fname, "rb");
-    string fchecksum;
-    fchecksum.push_back(checksum(fp));
-    LOG(DEBUG) << "File checksum for <" << fname << "> is: " << (int) fchecksum.c_str();
-    fclose(fp);
+     ifstream file(fname);
+     string fchecksum = checksum(file);
+     LOG(DEBUG) << "File checksum for <" << fname << "> is: " << fchecksum;
 
      // Get the file size.
-     fp = fopen(fname, "r");
-     int fileSize = getFileSize(fp);
-     char *stringFileSize = intToString(fileSize);
-     LOG(DEBUG) << "File size for <" << fname << "> is: <" << stringFileSize << ">"; 
+     file.seekg(0, file.end);
+     size_t fsize = file.tellg();
+     file.seekg(0, file.beg);
+     LOG(DEBUG) << "File size for <" << fname << "> is: <" << fsize << ">";
 
-     /* Put the file checksum and filesize into a single string. The RF
-     * hardware can send up to 255 bytes in a single packet. The checksum is
-     * always 1 byte and the file size will only take around 15 bytes. */
+     /* Put the file checksum and file size into a single string. The RF
+      * hardware can send up to 255 bytes in a single packet. The checksum is
+      * always 8 bytes and the file size will only take around 15 bytes max.
+      */
      stringstream metadata;
-     metadata << fchecksum.at(0) << stringFileSize;
+     metadata << fchecksum << fsize;
 
      // transmit the file checksum and file size the Rx side.
 	sendRF((char *) metadata.str().c_str());
@@ -78,10 +77,11 @@ int main(int argc, char **argv) {
 
      // Go ahead and read file data while letting Rx side process checksum
      // and file size.
-     char *fileData = (char *) malloc(sizeof(char) * (fileSize + 1));
-     fileData[fileSize] = '\0';
-     for(int i = 0; i < fileSize; i++)
-          fileData[i] = fgetc(fp);
+     FILE *fp = fopen(fname, "r");
+     char *fdata = (char *) malloc(sizeof(char) * (fileSize + 1));
+     fdata[fileSize] = '\0';
+     for(int i = 0; i < fsize; i++)
+          fdata[i] = fgetc(fp);
      fclose(fp);
 
 	// Wait for the receiving side to give us the go-ahead to transmit.
@@ -95,7 +95,7 @@ int main(int argc, char **argv) {
 	// Transmit the file via serial.
 	bcm2835_delay(500);
 	LOG(DEBUG) << "Doing initial transmit attempt..";
-	transmitData(fileData, fileSize);
+	transmitData(fdata, fsize);
 
 	/* See if the checksum matches. Try again until correct or
 	 * until try limit is reached.
@@ -105,7 +105,7 @@ int main(int argc, char **argv) {
 	int success = 1;
 	while((strcmp(reply, "GOOD") != 0) && tryCount < TRY_LIMIT) {
 		bcm2835_delay(1000);
-		transmitData(fileData, fileSize);
+		transmitData(fdata, fsize);
 		++tryCount;
           bcm2835_delay(1000);
 		reply = recvRF();

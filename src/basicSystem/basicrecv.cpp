@@ -31,18 +31,13 @@ int main(int argc, const char **argv) {
 
      // Use RF HW to get the checksum and file size;
      LOG(DEBUG) << "Waiting for RF checksum & file size transmission..";
-     char *metadata = recvRF();
-     int metadataSize = strlen(metadata);
-     string fchecksum;
-     char *stringFileSize = (char *) malloc(sizeof(char) * (IDENTIFIER_LENGTH + 1));
-     stringFileSize[IDENTIFIER_LENGTH] = '\0';
-     fchecksum.push_back(metadata[0]);
-     for(int i = 1; i < metadataSize; i++) {
-            stringFileSize[i - 1] = metadata[i];
-     }
-     LOG(DEBUG) << "Checksum is: " << (int) fchecksum.c_str();
-     int fileSize = atoi(stringFileSize);
-     LOG(DEBUG) << "File size is: " << fileSize;
+     string metadata(recvRF());
+     string fchecksum = metadata.substr(0, 8);
+     string stringfsize = metadata.substr(8, metadata.length() - 8);
+
+     LOG(DEBUG) << "Checksum is: " << fchecksum;
+     size_t fsize = (size_t) atoi(stringfsize.c_str());
+     LOG(DEBUG) << "File size is: " << fsize;
 
      // Let the Tx side know that the Rx side is okay to receive the file.
      sendRF((char *) "GOAHEAD");
@@ -52,30 +47,19 @@ int main(int argc, const char **argv) {
      */
      int tryCount = 0;
      int success = 0;
-     char *fileData;
+     string fdata;
      while(tryCount < TRY_LIMIT) {
           // Get the file data over serial.
-          fileData = receiveData(fileSize);
-          stringstream temp;
-          temp << fileData;
+          string fdata = receiveData(fsize);
 
-          FILE *fp = fopen("TEMP.file", "wb");
-          for(int i = 0; i < fileSize; i++) {
-              fputc(fileData[i], fp);
-          }
-          fclose(fp);
-          
           // Calculate the checksum.
-          fp = fopen("TEMP.file", "rb");
-          string recdchecksum;
-          recdchecksum.push_back(checksum(fp));
-          fclose(fp);
+          string recdchecksum = checksum(fdata.c_str(), fsize);
 
-          LOG(DEBUG) << "Received checksum is: " << (int) recdchecksum.c_str();
+          LOG(DEBUG) << "Received checksum is: " << recdchecksum;
 
           // Compare checksums.
-          LOG(DEBUG) << "fchecksum: <" << atoi(fchecksum.c_str()) << "> | recdchecksum: <" << atoi(recdchecksum.c_str()) << ">";
-          if(strcmp(fchecksum.c_str(), recdchecksum.c_str()) == 0) {
+          LOG(DEBUG) << "fchecksum: <" << fchecksum << "> | recdchecksum: <" << recdchecksum << ">";
+          if(fchecksum.compare(recdchecksum) == 0) {
                bcm2835_delay(2000);
                LOG(DEBUG) << "Checksums match!";
                sendRF((char *) "GOOD");
@@ -87,18 +71,15 @@ int main(int argc, const char **argv) {
                ++tryCount;
                sendRF((char *) "BAD");
                recdchecksum.clear();
+               fdata.clear();
           }
      }
 
      if(success) {
           LOG(INFO) << "attempting to write file data to 'RECD_data'...";
-          FILE *fp = fopen("RECD_data", "w");
-          if(fp == NULL) {
-               LOG(FATAL) << "Unable to open file.";
-          }
-          for(int i = 0; i < fileSize; i++) fputc(fileData[i], fp);
-          LOG(INFO) << "File data written.";
-          fclose(fp);
+          ofstream outputfile("RECD_data");
+          outputfile << fdata;
+          outputfile.close();
      } else {
      LOG(FATAL) << "All attempts failed!";
      }
