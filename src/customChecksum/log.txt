@@ -1,0 +1,11 @@
+[INFO]  [Mon Jan 22 12:01:49 PM] [line #: 17] MSG: Checksum is œ
+[INFO]  [Mon Jan 22 12:02:18 PM] [line #: 17] MSG: Checksum is 156
+[INFO]  [Mon Jan 22 12:02:20 PM] [line #: 17] MSG: Checksum is 156
+[INFO]  [Mon Jan 22 12:02:20 PM] [line #: 17] MSG: Checksum is 156
+[INFO]  [Mon Jan 22 12:02:21 PM] [line #: 17] MSG: Checksum is 156
+[INFO]  [Mon Jan 22 12:02:21 PM] [line #: 17] MSG: Checksum is 156
+[INFO]  [Mon Jan 22 12:02:27 PM] [line #: 17] MSG: Checksum is 156
+[INFO]  [Mon Jan 22 12:02:32 PM] [line #: 17] MSG: Checksum is 168
+[INFO]  [Mon Jan 22 12:02:37 PM] [line #: 17] MSG: Checksum is 168
+[INFO]  [Mon Jan 22 12:02:39 PM] [line #: 17] MSG: Checksum is 168
+[INFO]  [Mon Jan 22 12:02:41 PM] [line #: 17] MSG: Checksum is 168
