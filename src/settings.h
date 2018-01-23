@@ -49,6 +49,9 @@ enum SystemStates {
 
 // ============================================================================
 // -------------------------- Reed-Solomon Settings ---------------------------
+#define FEC_ENABLED   0
+#define FEC_FILE_NAME "TEMP.schifa"
+
 // Finite Field (Galois Field) Params.
 #define FIELD_DESCRIPTOR                8
 #define GENERATOR_POLYNOMIAL_INDEX      120

@@ -12,13 +12,14 @@ CFLAGS        		= -DRASPBERRY_PI -DBCM2835_NO_DELAY_COMPATIBILITY -D__BASEFILE__
 LIBS          		= -lbcm2835 -lwiringPi
 PROJECT_HEAD		= ./../../
 RADIOHEAD_BASE		= $(PROJECT_HEAD)/RadioHead
+SCHIFRA_BASE 		= $(PROJECT_HEAD)/schifa/
 EASYLOGGING_BASE 	= $(PROJECT_HEAD)/easyloggingpp
 EASYSRC_BASE		= $(EASYLOGGING_BASE)/src
 SRC_BASE 	      	= $(PROJECT_HEAD)/src
 CHECKSUM_BASE		= $(SRC_BASE)/customChecksum/
 SERIAL_BASE 		= $(SRC_BASE)/serial/
-RF_BASE				= $(SRC_BASE)/rf/
-INCLUDE       		= -I$(CHECKSUM_BASE) -I$(RADIOHEAD_BASE) -I$(SRC_BASE) -I$(EASYSRC_BASE) -I$(SERIAL_BASE) -I$(RF_BASE)
+RF_BASE			= $(SRC_BASE)/rf/
+INCLUDE       		= -I$(SCHIFRA_BASE) -I$(CHECKSUM_BASE) -I$(RADIOHEAD_BASE) -I$(SRC_BASE) -I$(EASYSRC_BASE) -I$(SERIAL_BASE) -I$(RF_BASE)
 
 OBJS = RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericSPI.o RHGenericDriver.o RHSPIDriver.o RHReliableDatagram.o RHDatagram.o easylogging++.o \
 	  serial.o rf.o checksum.o

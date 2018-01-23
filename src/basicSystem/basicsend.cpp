@@ -3,6 +3,13 @@
 #include <sstream>
 #include <cstdio>
 #include <string>
+#include <cstddef>
+
+#include "schifra_galois_field.hpp"
+#include "schifra_sequential_root_generator_polynomial_creator.hpp"
+#include "schifra_reed_solomon_encoder.hpp"
+#include "schifra_reed_solomon_file_encoder.hpp"
+
 #include "rf.hpp"
 #include "settings.h"
 #include "easylogging++.h"
@@ -13,6 +20,27 @@ using namespace std;
 
 // Required macro to initialize the easylogging module.
 INITIALIZE_EASYLOGGINGPP
+
+/* Finite Field Parameters */
+const std::size_t field_descriptor                = FIELD_DESCRIPTOR;
+const std::size_t generator_polynomial_index      = GENERATOR_POLYNOMIAL_INDEX;
+const std::size_t generator_polynomial_root_count = GENERATOR_POLYNOMIAL_ROOT_COUNT;
+
+/* Reed Solomon Code Parameters */
+const std::size_t code_length = CODE_LENGTH;
+const std::size_t fec_length  = FEC_LENGTH;
+const std::size_t data_length = DATA_LENGTH;
+
+/* Instantiate Finite Field and Generator Polynomials */
+const schifra::galois::field field(field_descriptor,
+                                  schifra::galois::primitive_polynomial_size06,
+                                  schifra::galois::primitive_polynomial06);
+
+schifra::galois::field_polynomial generator_polynomial(field);
+
+/* Instantiate Encoder and Decoder (Codec) */
+typedef schifra::reed_solomon::encoder<code_length,fec_length,data_length> encoder_t;
+typedef schifra::reed_solomon::decoder<code_length,fec_length,data_length> decoder_t;
 
 void setup() {
      printf("-----> %s running | setting up..\n", __BASEFILE__);
@@ -52,6 +80,25 @@ int main(int argc, char **argv) {
 		system(compcommand.str().c_str()); // Do a system call to compress file.
 		LOG(DEBUG) << "Compression complete. Compressed file name is: " << COMP_FILE_NAME;
 	}
+
+     // Apply Forward-Error Correction if enabled.
+     if(FEC_ENABLED) {
+          if(
+               !schifa::make_sequential_root_generator_polynomial(
+                    field,
+                    generator_polynomial_index,
+                    generator_polynomial_root_count,
+                    generator_polynomial)
+          ) {
+               LOG(FATAL) << "Failed to create sequential root generator!";
+          } else {
+               LOG(DEBUG) << "Starting RS file encoding..";
+               const encoder_t rs_encoder(field, generator_polynomial);
+               file_encoder_t(rs_encoder, fname, FEC_FILE_NAME);
+               LOG(DEBUG) << "File RS encoded."
+               fname = FEC_FILE_NAME;
+          }
+     }
 
 	// Get the file checksum.
      ifstream file(fname);
