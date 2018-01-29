@@ -88,9 +88,11 @@ int main(int argc, const char **argv) {
 
      if(success) {
           LOG(INFO) << "attempting to write file data to 'RECD_data'...";
-          ofstream outputfile("RECD_DATA");
-          outputfile << fdata;
-          outputfile.close();
+          FILE *fp = fopen("RECD_DATA", "w");
+          for(int i = 0; i < fsize; i++) {
+               fputc(fdata[i], fp);
+          }
+          fclose(fp);
      } else {
           LOG(FATAL) << "All attempts failed!";
      }
