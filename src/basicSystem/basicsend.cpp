@@ -58,6 +58,10 @@ void setup() {
      LOG(INFO) << "Setup complete.";
 }
 
+void setdown() {
+     bcm2835_close();
+}
+
 int main(int argc, char **argv) {
 	setup();
 
@@ -182,5 +186,12 @@ int main(int argc, char **argv) {
 			<< "File transmission failed! Max attempt limit of "
 			<< tryCount << " reached.";
 	}
+
+     // Free resources
+     free(fdata);
+
+     // Close used resources.
+     setdown();
+
 	return 0;
 }

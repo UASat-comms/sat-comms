@@ -26,6 +26,10 @@ void setup() {
      setupRF();
 }
 
+void setdown() {
+     bcm2835_close();
+}
+
 int main(int argc, const char **argv) {
      setup();
 
@@ -48,20 +52,19 @@ int main(int argc, const char **argv) {
      */
      int tryCount = 0;
      int success = 0;
-     string fdata;
+     char *fdata;
      while(tryCount < TRY_LIMIT) {
           // Get the file data over serial.
           fdata = receiveData(fsize);
-          
+
           FILE *fp = fopen("TEMP.file", "w");
           for(int i = 0; i < fsize; i++) {
-               fputc(fdata.c_str()[i], fp);
+               fputc(fdata[i], fp);
           }
           fclose(fp);
 
-
           // Calculate the checksum.
-          string recdchecksum = checksum(fdata.c_str(), fsize);
+          string recdchecksum = checksum(fdata, fsize);
 
           LOG(DEBUG) << "Received checksum is: " << recdchecksum;
 
@@ -89,7 +92,14 @@ int main(int argc, const char **argv) {
           outputfile << fdata;
           outputfile.close();
      } else {
-     LOG(FATAL) << "All attempts failed!";
+          LOG(FATAL) << "All attempts failed!";
      }
+
+     // Free resources
+     free(fdata);
+
+     // Close down resources
+     setdown();
+
      return 0;
 }
