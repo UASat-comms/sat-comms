@@ -82,7 +82,7 @@ int main(int argc, const char **argv) {
                ++tryCount;
                sendRF((char *) "BAD");
                recdchecksum.clear();
-               fdata.clear();
+               free(fdata);
           }
      }
 
