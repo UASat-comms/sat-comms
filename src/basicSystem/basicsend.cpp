@@ -42,7 +42,7 @@ const schifra::galois::field field(field_descriptor,
 
 schifra::galois::field_polynomial generator_polynomial(field);
 
-/* Instantiate Encoder and Decoder (Codec) */
+/* Instantiate Encoder (Codec) */
 typedef schifra::reed_solomon::encoder<code_length,fec_length,data_length> encoder_t;
 typedef schifra::reed_solomon::file_encoder<code_length,fec_length> file_encoder_t;
 
@@ -71,7 +71,7 @@ int main(int argc, char **argv) {
 	}
 
 	/* Default fname to given command-line argument. It will be changed if
-	compression is enabled and/or FEC is enabled. */
+	compression is enabled. */
 	string fname = argv[1];
 
 	// Compress the file we want to send if compression enabled.
@@ -89,6 +89,16 @@ int main(int argc, char **argv) {
 		LOG(DEBUG) << "Compression complete. Compressed file name is: " << COMP_FILE_NAME;
 	}
 
+     /* Get the file checksum. Even if both Compression and FEC are enabled,
+        we want to get the checksum for either a) the uncompressed file or
+        b) the compressed file. We'll decode the data on the other side with
+        FEC (if enabled) and THEN compare checksums.
+     */
+     ifstream file(fname);
+     string fchecksum = checksum(file);
+     file.close();
+     LOG(DEBUG) << "File checksum for <" << fname << "> is: " << fchecksum;
+
      // Apply Forward-Error Correction if enabled.
      if(FEC_ENABLED) {
           if(
@@ -104,18 +114,13 @@ int main(int argc, char **argv) {
                const encoder_t rs_encoder(field, generator_polynomial);
                file_encoder_t(rs_encoder, fname, FEC_FILE_NAME);
                LOG(DEBUG) << "File RS encoded.";
-               fname = FEC_FILE_NAME;
+               fname = FEC_FILE_NAME;  // We'll actually transmit the FEC encoded file.
           }
      }
 
-	// Get the file checksum.
-     ifstream file(fname);
-     string fchecksum = checksum(file);
-     file.close();
-     LOG(DEBUG) << "File checksum for <" << fname << "> is: " << fchecksum;
-
-
-     // Get the file size.
+     /* Get the file size. This will be the size of the whole data to send, which
+        includes compression and FEC data placed on the file. Remember the checksum is
+        for the data without FEC data placed on it. */
      file.open(fname);
      file.seekg(0, file.end);
      int fsize = file.tellg();
@@ -130,7 +135,7 @@ int main(int argc, char **argv) {
      stringstream metadata;
      metadata << fchecksum << fsize;
 
-     // transmit the file checksum and file size the Rx side.
+     // Transmit the file checksum and file size the Rx side.
 	sendRF((char *) metadata.str().c_str());
 	LOG(INFO) << "File checksum and size transmitted.";
 

@@ -15,6 +15,27 @@ using namespace std;
 // Required macro to initialize the easylogging module.
 INITIALIZE_EASYLOGGINGPP
 
+/* Finite Field Parameters */
+const std::size_t field_descriptor                = FIELD_DESCRIPTOR;
+const std::size_t generator_polynomial_index      = GENERATOR_POLYNOMIAL_INDEX;
+const std::size_t generator_polynomial_root_count = GENERATOR_POLYNOMIAL_ROOT_COUNT;
+
+/* Reed Solomon Code Parameters */
+const std::size_t code_length = CODE_LENGTH;
+const std::size_t fec_length  = FEC_LENGTH;
+const std::size_t data_length = DATA_LENGTH;
+
+/* Instantiate Finite Field and Generator Polynomials */
+const schifra::galois::field field(field_descriptor,
+                                  schifra::galois::primitive_polynomial_size06,
+                                  schifra::galois::primitive_polynomial06);
+
+schifra::galois::field_polynomial generator_polynomial(field);
+
+/* Instantiate Decoder (Codec) */
+typedef schifra::reed_solomon::decoder<code_length,fec_length> decoder_t;
+typedef schifra::reed_solomon::file_decoder<code_length,fec_length> file_decoder_t;
+
 void setup() {
      printf("-----> %s running | setting up..\n", __BASEFILE__);
      // Configure logging module.
