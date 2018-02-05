@@ -49,8 +49,9 @@ enum SystemStates {
 
 // ============================================================================
 // -------------------------- Reed-Solomon Settings ---------------------------
-#define FEC_ENABLED   0
-#define FEC_FILE_NAME "TEMP.schifa"
+#define FEC_ENABLED           0               // 0 = not enabled, 1 = enable
+#define FEC_FILE_NAME         "TEMP.schifa"   // Temporary file name to house encoded data
+#define FEC_FILE_DECODED_NAME "TEMP.decoded"  // Temporary file name to hosue decoded data (after FEC)
 
 // Finite Field (Galois Field) Params.
 #define FIELD_DESCRIPTOR                8

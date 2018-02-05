@@ -83,14 +83,41 @@ int main(int argc, const char **argv) {
           // Get the file data over serial.
           fdata = receiveData(fsize);
 
-          FILE *fp = fopen("TEMP.file", "w");
-          for(int i = 0; i < fsize; i++) {
-               fputc(fdata[i], fp);
-          }
-          fclose(fp);
-
-          // Calculate the checksum.
+          /* Need to store the checkum, but we have to see if FEC work is
+             required first.
+          */
           string recdchecksum = checksum(fdata, fsize);
+
+          /* If FEC is enabled, we need to decode the file FIRST, then
+             compare the checksums from the decoded file and the received
+             checksum over RF comms. To make things simple, we use the whole
+             file decoder code from schifra, so we need to write that data
+             to a file.
+          */
+          if(FEC_ENABLED) {
+               LOG(DEBUG) << "Writing data to file so FEC can be ran..";
+               FILE *fp = fopen(FEC_FILE_NAME, "w");
+               for(int i = 0; i < fsize; i++) {
+                    fputc(fdata[i], fp);
+               }
+               fclose(fp);
+               LOG(DEBUG) << "Data written to <" << FEC_FILE_NAME << ">";
+
+               LOG(DEBUG) << "Decoding file..";
+               const decoder_t rs_decoder(field, generator_polynomial_index);
+               file_decoder_t(rs_decoder, FEC_FILE_NAME, FEC_FILE_DECODED_NAME)
+               LOG(DEBUG)
+                    << "File decoded.  Ouput file: <"
+                    << FEC_FILE_DECODED_NAME << ">";
+
+               LOG(DEBUG) << "Reading decoded file for checksum..";
+               ifstream tempreader(FEC_FILE_DECODED_NAME);
+               recdchecksum = checksum(tempreader);  // Get checksum if FEC is enabled.
+               LOG(DEBUG) << "Checksum calculated.";
+               tempreader.close();
+          } else {
+               recdchecksum = checksum(fdata, fsize); // Get checksum if FEC not enabled.
+          }
 
           LOG(DEBUG) << "Received checksum is: " << recdchecksum;
 
@@ -113,12 +140,23 @@ int main(int argc, const char **argv) {
      }
 
      if(success) {
-          LOG(INFO) << "attempting to write file data to 'RECD_data'...";
-          FILE *fp = fopen("RECD_DATA", "w");
-          for(int i = 0; i < fsize; i++) {
-               fputc(fdata[i], fp);
+          // Just rename the decoded file if FEC was enabled.
+          if(FEC_ENABLED) {
+               stringstream movecommand;
+               movecommand
+                    << "mv "
+                    << FEC_FILE_DECODED_NAME
+                    << "RECD_DATA";
+               system(movecommand.str().c_str());
+          // Need to write the data if FEC not enabled.
+          } else {
+               LOG(INFO) << "attempting to write file data to 'RECD_data'...";
+               FILE *fp = fopen("RECD_DATA", "w");
+               for(int i = 0; i < fsize; i++) {
+                    fputc(fdata[i], fp);
+               }
+               fclose(fp);
           }
-          fclose(fp);
      } else {
           LOG(FATAL) << "All attempts failed!";
      }
