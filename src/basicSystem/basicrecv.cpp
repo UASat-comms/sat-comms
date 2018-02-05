@@ -10,6 +10,11 @@
 #include "serial.hpp"
 #include "checksum.hpp"
 
+#include "schifra_galois_field.hpp"
+#include "schifra_sequential_root_generator_polynomial_creator.hpp"
+#include "schifra_reed_solomon_decoder.hpp"
+#include "schifra_reed_solomon_file_decoder.hpp"
+
 using namespace std;
 
 // Required macro to initialize the easylogging module.
