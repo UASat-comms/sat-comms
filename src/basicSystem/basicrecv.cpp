@@ -105,7 +105,7 @@ int main(int argc, const char **argv) {
 
                LOG(DEBUG) << "Decoding file..";
                const decoder_t rs_decoder(field, generator_polynomial_index);
-               file_decoder_t(rs_decoder, FEC_FILE_NAME, FEC_FILE_DECODED_NAME)
+               file_decoder_t(rs_decoder, FEC_FILE_NAME, FEC_FILE_DECODED_NAME);
                LOG(DEBUG)
                     << "File decoded.  Ouput file: <"
                     << FEC_FILE_DECODED_NAME << ">";
