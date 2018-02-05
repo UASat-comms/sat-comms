@@ -146,7 +146,7 @@ int main(int argc, const char **argv) {
                movecommand
                     << "mv "
                     << FEC_FILE_DECODED_NAME
-                    << "RECD_DATA";
+                    << " " << "RECD_DATA";
                system(movecommand.str().c_str());
           // Need to write the data if FEC not enabled.
           } else {
