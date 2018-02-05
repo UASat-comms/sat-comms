@@ -86,7 +86,9 @@ int main(int argc, char **argv) {
 		compcommand << COMP_FILE_NAME << " ";
 		compcommand << argv[1];
 		system(compcommand.str().c_str()); // Do a system call to compress file.
-		LOG(DEBUG) << "Compression complete. Compressed file name is: " << COMP_FILE_NAME;
+		LOG(DEBUG)
+               << "Compression complete. Compressed file name is: <"
+               << COMP_FILE_NAME << ">";
 	}
 
      /* Get the file checksum. Even if both Compression and FEC are enabled,
@@ -110,7 +112,9 @@ int main(int argc, char **argv) {
           ) {
                LOG(FATAL) << "Failed to create sequential root generator!";
           } else {
-               LOG(DEBUG) << "Starting RS file encoding..";
+               LOG(DEBUG)
+                    << "Starting RS file encoding on file: <"
+                    << fname << ">..";
                const encoder_t rs_encoder(field, generator_polynomial);
                file_encoder_t(rs_encoder, fname, FEC_FILE_NAME);
                LOG(DEBUG) << "File RS encoded.";
