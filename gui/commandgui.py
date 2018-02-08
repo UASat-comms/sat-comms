@@ -76,18 +76,18 @@ class simpleapp_tk(Tkinter.Tk):
         self.Output.insert(Tkinter.END,"1.) Copying <"
                             + self.FileVariable.get() + "> to <"
                             + self.TxVariable.get() + ">...")
-        #os.system("sshpass -p \"" + passwords.TxPassword + "\" scp " +
-        #            self.FileVariable.get() + " pi@"
-        #            + self.TxVariable.get() + ":~/")
+        #[NOTE]: Temporaily set to Rx side.
+        os.system("sshpass -p \"" + passwords.TxPassword + "\" scp " +
+                    self.FileVariable.get() + " pi@"
+                    + self.RxVariable.get() + ":~/")
         self.Output.insert(Tkinter.END, "DONE.\n")
 
         # Start the Rx side
-        print("sshpass -p " + str(passwords.RxPassword) + " ssh "
-                    + "pi@" + str(self.RxVariable.get()) +
-                    " \"/~/sat-comms/src/basicsystem/basicrecv\"")
         os.system("sshpass -p " + str(passwords.RxPassword) + " ssh "
                     + "pi@" + str(self.RxVariable.get()) +
-                    " \"/~/sat-comms/src/basicsystem/basicrecv\"")
+                    " \"sh REMOTE_COMMANDS.sh\" &" )
+
+
 
 def main():
     app = simpleapp_tk(None)
