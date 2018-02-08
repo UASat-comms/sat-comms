@@ -1,7 +1,16 @@
 import Tkinter
 import passwords
 import os
-import subprocess
+from sockets import *
+import threading
+
+externalCommands = []
+lock = threading.Lock()
+
+def sendCommand(client, addr):
+    #print(type(externalCommands[0]))
+    client.send("hello")
+    client.close()
 
 class simpleapp_tk(Tkinter.Tk):
     def __init__(self, parent):
@@ -14,45 +23,45 @@ class simpleapp_tk(Tkinter.Tk):
 
         # Label for Tx IP Address
         self.TxLabelVariable = Tkinter.StringVar()
-        self.TxLabelVariable.set(u"Tx IP Address:")
+        self.TxLabelVariable.set("Tx IP Address:")
         self.TxLabel = Tkinter.Label(self, textvariable=self.TxLabelVariable,
                                         anchor="w",fg="white",bg="blue")
         self.TxLabel.grid(column=0,row=0,columnspan=1,sticky="EW")
 
         # Entry field for Tx IP Address
         self.TxVariable = Tkinter.StringVar()
-        self.TxVariable.set(u"IP Address")
+        self.TxVariable.set("192.168.1.2")
         self.Tx = Tkinter.Entry(self, textvariable=self.TxVariable)
         self.Tx.grid(column=0,row=1,sticky="EW")
 
         # Label for Rx IP Address
         self.RxLabelVariable = Tkinter.StringVar()
-        self.RxLabelVariable.set(u"Rx IP Address:")
+        self.RxLabelVariable.set("Rx IP Address:")
         self.RxLabel = Tkinter.Label(self, textvariable=self.RxLabelVariable,
                                         anchor="w",fg="white",bg="blue")
         self.RxLabel.grid(column=0,row=2,columnspan=1,sticky="EW")
 
         # Entry field for Rx IP Address
         self.RxVariable = Tkinter.StringVar()
-        self.RxVariable.set(u"IP Address")
+        self.RxVariable.set("192.168.1.1")
         self.Rx = Tkinter.Entry(self,textvariable=self.RxVariable)
         self.Rx.grid(column=0,row=4,sticky="EW")
 
         # Label for local file to send
         self.FileLabelVariable = Tkinter.StringVar()
-        self.FileLabelVariable.set(u"Enter local file to send:")
+        self.FileLabelVariable.set("Enter local file to send:")
         self.FileLabel = Tkinter.Label(self,textvariable=self.FileLabelVariable,
                                         anchor="w",fg="white",bg="blue")
         self.FileLabel.grid(column=0,row=5,sticky="EW")
 
         # Entry field for local file
         self.FileVariable = Tkinter.StringVar()
-        self.FileVariable.set(u"File Name")
+        self.FileVariable.set("File Name")
         self.File = Tkinter.Entry(self,textvariable=self.FileVariable)
         self.File.grid(column=0,row=6,sticky="EW")
 
         # Button to initialize System
-        self.CommandButton = Tkinter.Button(self,text=u"Transfer File",
+        self.CommandButton = Tkinter.Button(self,text="Transfer File",
                                             command=self.CommandButtonClick)
         self.CommandButton.grid(column=0,row=7)
 
@@ -70,23 +79,53 @@ class simpleapp_tk(Tkinter.Tk):
         self.Tx.selection_range(0, Tkinter.END)
 
     def CommandButtonClick(self):
-        self.Output.insert(Tkinter.END,"Starting File Transfer System:\n")
+        #self.Output.insert(Tkinter.END,"Starting File Transfer System:\n")
 
         # Copy the local file to the Tx RPI
-        self.Output.insert(Tkinter.END,"1.) Copying <"
-                            + self.FileVariable.get() + "> to <"
-                            + self.TxVariable.get() + ">...")
+        #self.Output.insert(Tkinter.END,"1.) Copying <"
+        #                    + self.FileVariable.get() + "> to <"
+        #                    + self.TxVariable.get() + ">...")
         #[NOTE]: Temporaily set to Rx side.
-        os.system("sshpass -p \"" + passwords.TxPassword + "\" scp " +
-                    self.FileVariable.get() + " pi@"
-                    + self.RxVariable.get() + ":~/")
-        self.Output.insert(Tkinter.END, "DONE.\n")
+        #os.system("sshpass -p \"" + passwords.TxPassword + "\" scp " +
+        #            self.FileVariable.get() + " pi@"
+        #           + self.RxVariable.get() + ":~/")
+        #self.Output.insert(Tkinter.END, "DONE.\n")
 
-        # Start the Rx side
-        os.system("sshpass -p " + str(passwords.RxPassword) + " ssh "
-                    + "pi@" + str(self.RxVariable.get()) +
-                    " \"sh REMOTE_COMMANDS.sh\" &" )
+        # Spawn 2 other terminals
+        #self.Output.insert(Tkinter.END,"2.) Spawning additional terminals..")
+        os.system("sudo open -a Terminal test.sh")
+        os.system("sudo open -a Terminal test.sh")
+        #self.Output.insert(Tkinter.END,"DONE.\n")
 
+
+        # Generate commands for other terminals
+        #self.Output.insert(Tkinter.END, "3.) Generating external commands..")
+        # [NOTE]: Something with the way I'm joining the strings throws an error..
+        sendCommand = "sshpass -p " + passwords.RxPassword \
+                    + " ssh pi@" + self.RxVariable.get() \
+                    + " '~/REMOTE_COMMANDS.sh " + self.FileVariable.get() \
+                    + "'"
+        recvCommand = "sshpass -p " + passwords.RxPassword \
+                    + " ssh pi@" + self.RxVariable.get() \
+                    + " '~/REMOTE_COMMANDS.sh'"
+        # [NOTE]: double send for testing
+        externalCommands.append(sendCommand)
+        externalCommands.append(sendCommand)
+        #self.Output.insert(Tkinter.END, "DONE\n")
+
+        #os.system(externalCommands[1])
+        #x = input()
+
+        # Start up the server to send command to other terminals
+        #self.Output.insert(Tkinter.END,"4.) Starting server to connect to other \
+        #                    terminals.\n")
+        s = server(func=sendCommand,connections=3,port=21700)
+        try:
+            s.run()
+        except:
+            s.close()
+        s.close()
+        #self.Output.insert(Tkinter.END,"Server has stopped running.\n")
 
 
 def main():
