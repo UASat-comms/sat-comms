@@ -4,13 +4,19 @@ import os
 from sockets import *
 import threading
 
-externalCommands = []
+externalCommands = list()
 lock = threading.Lock()
 
 def sendCommand(client, addr):
-    #print(type(externalCommands[0]))
-    client.send("hello")
-    client.close()
+    try:
+        lock.acquire()
+        client.send("ls")
+        client.close()
+        lock.release()
+    except Exception as e:
+        print(e)
+        lock.release()
+        client.close()
 
 class simpleapp_tk(Tkinter.Tk):
     def __init__(self, parent):
@@ -101,30 +107,28 @@ class simpleapp_tk(Tkinter.Tk):
         # Generate commands for other terminals
         #self.Output.insert(Tkinter.END, "3.) Generating external commands..")
         # [NOTE]: Something with the way I'm joining the strings throws an error..
-        sendCommand = "sshpass -p " + passwords.RxPassword \
-                    + " ssh pi@" + self.RxVariable.get() \
-                    + " '~/REMOTE_COMMANDS.sh " + self.FileVariable.get() \
-                    + "'"
-        recvCommand = "sshpass -p " + passwords.RxPassword \
-                    + " ssh pi@" + self.RxVariable.get() \
-                    + " '~/REMOTE_COMMANDS.sh'"
+        #sendCommand = "sshpass -p " + passwords.RxPassword \
+        #            + " ssh pi@" + self.RxVariable.get() \
+        #            + " '~/REMOTE_COMMANDS.sh " + self.FileVariable.get() \
+        #            + "'"
+        #recvCommand = "sshpass -p " + passwords.RxPassword \
+        #            + " ssh pi@" + self.RxVariable.get() \
+        #            + " '~/REMOTE_COMMANDS.sh'"
         # [NOTE]: double send for testing
-        externalCommands.append(sendCommand)
-        externalCommands.append(sendCommand)
+        #externalCommands.append(sendCommand)
+        #externalCommands.append(sendCommand)
         #self.Output.insert(Tkinter.END, "DONE\n")
-
-        #os.system(externalCommands[1])
-        #x = input()
 
         # Start up the server to send command to other terminals
         #self.Output.insert(Tkinter.END,"4.) Starting server to connect to other \
         #                    terminals.\n")
-        s = server(func=sendCommand,connections=3,port=21700)
+        serv = server(func=sendCommand,connections=2,port=21703)
         try:
-            s.run()
-        except:
-            s.close()
-        s.close()
+            serv.run()
+        except Exception as e:
+            print(e)
+            serv.close()
+        serv.close()
         #self.Output.insert(Tkinter.END,"Server has stopped running.\n")
 
 
