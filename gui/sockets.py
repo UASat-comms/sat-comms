@@ -72,17 +72,25 @@ class client(object):
 		self.sock.close()
 
 class server(object):
-	def __init__(self, func, port = defaultPort, connections = 1, host = defaultHost):
+	def __init__(self, func, stopFlag, flagLock, port = defaultPort, connections = 1, host = defaultHost):
 		self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.threads = list()
 		self.connections = connections
 		self.sock.bind((host, port))
 		self.func = func
+		self.stopFlag = stopFlag
+		self.flagLock = flagLock
 
 	def run(self):
 		self.sock.listen(self.connections)
 
 		while True:
+			self.flagLock.acquire()
+			if(self.stopFlag[0] == 1):
+				self.flagLock.release()
+				break
+			else:
+				self.flagLock.release()
 			clientSocket, addr = self.sock.accept()
 			client_socket = client(sock = clientSocket)
 

@@ -7,11 +7,20 @@ import threading
 externalCommands = list()
 lock = threading.Lock()
 
+# This integer had to be wrapped in an array so that it could be passed by
+# reference to another function/thread.
+STOP_FLAG = [0]
+FLAG_LOCK = threading.Lock()
+
 def sendCommand(client, addr):
     try:
         lock.acquire()
         client.send("ls")
         client.close()
+        FLAG_LOCK.acquire()
+        if(len(externalCommands) == 0):
+            STOP_FLAG[0] = 1
+        FLAG_LOCK.release()
         lock.release()
     except Exception as e:
         print(e)
@@ -122,7 +131,7 @@ class simpleapp_tk(Tkinter.Tk):
         # Start up the server to send command to other terminals
         #self.Output.insert(Tkinter.END,"4.) Starting server to connect to other \
         #                    terminals.\n")
-        serv = server(func=sendCommand,connections=2,port=21703)
+        serv = server(func=sendCommand,connections=2,port=21704,stopFlag=STOP_FLAG, flagLock=FLAG_LOCK)
         try:
             serv.run()
         except Exception as e:

