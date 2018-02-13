@@ -12,11 +12,11 @@ msgIdentifierLength = 15
 defaultHost = socket.gethostname()
 defaultPort = 15000
 
-
 class client(object):
 	def __init__(self, sock = None):
 		if(sock == None):
 			self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+			self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 		else:
 			self.sock = sock
 
@@ -74,6 +74,7 @@ class client(object):
 class server(object):
 	def __init__(self, func, stopFlag, flagLock, port = defaultPort, connections = 1, host = defaultHost):
 		self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 		self.threads = list()
 		self.connections = connections
 		self.sock.bind((host, port))
@@ -88,6 +89,8 @@ class server(object):
 			self.flagLock.acquire()
 			if(self.stopFlag[0] == 1):
 				self.flagLock.release()
+				print("Closing socket.")
+				self.close()
 				break
 			else:
 				self.flagLock.release()

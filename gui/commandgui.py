@@ -84,6 +84,11 @@ class simpleapp_tk(Tkinter.Tk):
         self.Output = Tkinter.Text(self)
         self.Output.grid(column=0,row=8,columnspan=1,sticky="EW")
 
+        # Button to close system
+        self.CloseButton = Tkinter.Button(self, text="Close System",
+                                            command=self.CloseButtonClick)
+        self.CloseButton.grid(column=0,row=9)
+
         # Just make the window behave nicer.
         self.grid_columnconfigure(0,weight=1)
         self.resizable(False,False)
@@ -94,7 +99,7 @@ class simpleapp_tk(Tkinter.Tk):
         self.Tx.selection_range(0, Tkinter.END)
 
     def CommandButtonClick(self):
-        #self.Output.insert(Tkinter.END,"Starting File Transfer System:\n")
+        self.Output.insert(Tkinter.END,"Starting File Transfer System:\n")
 
         # Copy the local file to the Tx RPI
         #self.Output.insert(Tkinter.END,"1.) Copying <"
@@ -107,14 +112,14 @@ class simpleapp_tk(Tkinter.Tk):
         #self.Output.insert(Tkinter.END, "DONE.\n")
 
         # Spawn 2 other terminals
-        #self.Output.insert(Tkinter.END,"2.) Spawning additional terminals..")
+        self.Output.insert(Tkinter.END,"2.) Spawning additional terminals..")
         os.system("sudo open -a Terminal test.sh")
         os.system("sudo open -a Terminal test.sh")
-        #self.Output.insert(Tkinter.END,"DONE.\n")
+        self.Output.insert(Tkinter.END,"DONE.\n")
 
 
         # Generate commands for other terminals
-        #self.Output.insert(Tkinter.END, "3.) Generating external commands..")
+        self.Output.insert(Tkinter.END, "3.) Generating external commands..")
         # [NOTE]: Something with the way I'm joining the strings throws an error..
         #sendCommand = "sshpass -p " + passwords.RxPassword \
         #            + " ssh pi@" + self.RxVariable.get() \
@@ -126,19 +131,16 @@ class simpleapp_tk(Tkinter.Tk):
         # [NOTE]: double send for testing
         #externalCommands.append(sendCommand)
         #externalCommands.append(sendCommand)
-        #self.Output.insert(Tkinter.END, "DONE\n")
+        self.Output.insert(Tkinter.END, "DONE\n")
 
         # Start up the server to send command to other terminals
-        #self.Output.insert(Tkinter.END,"4.) Starting server to connect to other \
-        #                    terminals.\n")
-        serv = server(func=sendCommand,connections=2,port=21704,stopFlag=STOP_FLAG, flagLock=FLAG_LOCK)
-        try:
-            serv.run()
-        except Exception as e:
-            print(e)
-            serv.close()
-        serv.close()
-        #self.Output.insert(Tkinter.END,"Server has stopped running.\n")
+        self.Output.insert(Tkinter.END,"4.) Starting server to connect to other terminals.\n")
+        serv = server(func=sendCommand,connections=2,port=21706,stopFlag=STOP_FLAG, flagLock=FLAG_LOCK)
+        serv.run()
+        self.Output.insert(Tkinter.END,"5.) Server has been closed.\n")
+
+    def CloseButtonClick(self):
+        exit()
 
 
 def main():
