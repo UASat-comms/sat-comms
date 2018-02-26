@@ -7,7 +7,7 @@ def main():
     time.sleep(6)
 
     c = client()
-    c.connect(port=25001)
+    c.connect(port=25001, host="192.168.1.3")
 
     try:
         cmd = ['ls','-al']
@@ -27,11 +27,11 @@ def main():
                     print(msg)
                     c.send(msg)
                     msg = ""
-                
+
     except Exception as e:
         print("Error occured!: ")
         print(e)
-    
+
     c.send("DONE")
     c.close()
 
