@@ -2,6 +2,7 @@ import Tkinter
 import os
 from sockets import *
 import threading
+import time
 
 outputBoxes = [0, 1]
 lock = threading.Lock()
@@ -21,9 +22,10 @@ def sendCommand(client, addr):
         lock.release()
         cmd = ""
         if(addr[0] == "192.168.1.1"):
-            cmd = "sudo ./basicrecv"
+            cmd = "./serialrecvtest 512"
         else:
-            cmd = "sudo ./basicsend ./../serialTesting/testdata"
+            time.sleep(2)
+            cmd = "./serialsendtest testdata"
         client.send(cmd)
         while(True):
             msg = client.receive()

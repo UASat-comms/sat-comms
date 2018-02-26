@@ -7,7 +7,7 @@ import os
 def main():
     time.sleep(6)
 
-    os.chdir("./../src/basicSystem")
+    os.chdir("./../src/serialTesting")
 
     c = client()
     c.connect(port=25001, host="192.168.1.3")
