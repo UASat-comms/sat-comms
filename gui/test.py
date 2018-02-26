@@ -5,9 +5,10 @@ import time
 import os
 
 def main():
-    time.sleep(6)
+    time.sleep(3)
 
     os.chdir("./../src/serialTesting")
+    os.system("make -j 4")
 
     c = client()
     c.connect(port=25001, host="192.168.1.3")
