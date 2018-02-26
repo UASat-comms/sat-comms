@@ -4,10 +4,10 @@ from sockets import *
 import time
 
 def main():
-    time.sleep(5)
+    time.sleep(6)
 
     c = client()
-    c.connect(port=25000, host="192.168.1.3")
+    c.connect(port=25001)
 
     try:
         cmd = ['ls','-al']
@@ -15,18 +15,23 @@ def main():
             cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE
         )
 
+        msg = str()
         while True:
             out = process.stdout.read(1)
             if out == '' and process.poll() != None:
                 break
             if out != '':
-                #sys.stdout.write(out)
-                #sys.stdout.flush()
-                c.send(out)
-    except:
-        c.send("DONE")
-        c.close()
-
+                if(out != '\n'):
+                    msg += out
+                elif(out == '\n'):
+                    print(msg)
+                    c.send(msg)
+                    msg = ""
+                
+    except Exception as e:
+        print("Error occured!: ")
+        print(e)
+    
     c.send("DONE")
     c.close()
 
