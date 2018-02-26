@@ -19,7 +19,12 @@ def sendCommand(client, addr):
         lock.acquire()
         outputBoxNum = outputBoxes.pop()
         lock.release()
-        client.send("ls -al")
+        cmd = ""
+        if(addr == "192.168.1.1"):
+            cmd = "sudo ./basicrecv"
+        else:
+            cmd = "sudo ./basicsend ./../serialTesting/testdata"
+        client.send(cmd)
         while(True):
             msg = client.receive()
             if(msg == "DONE"): break
