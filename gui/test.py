@@ -1,11 +1,11 @@
 import subprocess
 import sys
-from socket import *
+from sockets import *
 import time
 
 def main():
     time.sleep(5)
-    
+
     c = client()
     c.connect(port=25000, host="192.168.1.3")
 

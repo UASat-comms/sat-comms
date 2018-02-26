@@ -126,6 +126,9 @@ class simpleapp_tk(Tkinter.Tk):
         OUT0 = self.Output0
         OUT1 = self.Output1
 
+        os.system("sshpass -p Sat-comms7 ssh pi@192.168.1.1 'python ~/sat-comms/gui/test.py'")
+        os.system("sshpass -p Sat-comms7 ssh pi@192.168.1.2 'python ~/sat-comms/gui/test.py'")
+
         # Start up the server to send command to other terminals
         self.Output0.insert(Tkinter.END,"4.) Starting server to connect to other terminals.\n")
         serv = server(func=sendCommand,sigEnble=1,sigTime=10,connections=2,port=25000,stopFlag=STOP_FLAG, flagLock=FLAG_LOCK)
