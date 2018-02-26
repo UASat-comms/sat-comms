@@ -118,7 +118,7 @@ class simpleapp_tk(Tkinter.Tk):
 
         # Start up the server to send command to other terminals
         self.Output0.insert(Tkinter.END,"4.) Starting server to connect to other terminals.\n")
-        serv = server(func=sendCommand,sigEnble=1,sigTime=10,connections=2,port=21707,stopFlag=STOP_FLAG, flagLock=FLAG_LOCK)
+        serv = server(func=sendCommand,sigEnble=1,sigTime=10,connections=2,port=25000,stopFlag=STOP_FLAG, flagLock=FLAG_LOCK)
         serv.run()
         self.Output0.insert(Tkinter.END,"5.) Server has been closed.\n")
         import time
