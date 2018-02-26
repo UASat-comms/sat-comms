@@ -23,12 +23,13 @@ def sendCommand(client, addr):
             msg = client.receive()
             if(msg == "DONE"): break
             if(outputBoxNum == 0):
-                OUT0.insert(Tkinter.END,msg)
+                OUT0.insert(Tkinter.END,msg + "\n")
             else:
-                OUT1.insert(Tkinter.END,msg)
+                OUT1.insert(Tkinter.END,msg + "\n")
     except Exception as e:
         print(e)
         client.close()
+    client.close()
 
 class simpleapp_tk(Tkinter.Tk):
     def __init__(self, parent):
@@ -123,15 +124,17 @@ class simpleapp_tk(Tkinter.Tk):
         #os.system("sudo open -a Terminal test.sh")
         #self.Output0.insert(Tkinter.END,"DONE.\n")
 
+        global OUT0
+        global OUT1
         OUT0 = self.Output0
         OUT1 = self.Output1
 
-        os.system("sshpass -p Sat-comms7 ssh pi@192.168.1.1 'python ~/sat-comms/gui/test.py'")
-        os.system("sshpass -p Sat-comms7 ssh pi@192.168.1.2 'python ~/sat-comms/gui/test.py'")
+        os.system("sshpass -p Sat-comms7 ssh pi@192.168.1.1 'sh REMOTE_COMMANDS.sh' &")
+        os.system("sshpass -p Sat-comms7 ssh pi@192.168.1.2 'sh REMOTE_COMMANDS.sh' &")
 
         # Start up the server to send command to other terminals
         self.Output0.insert(Tkinter.END,"4.) Starting server to connect to other terminals.\n")
-        serv = server(func=sendCommand,sigEnble=1,sigTime=10,connections=2,port=25000,stopFlag=STOP_FLAG, flagLock=FLAG_LOCK)
+        serv = server(host="192.168.1.3",func=sendCommand,sigEnble=1,sigTime=10,connections=2,port=25001,stopFlag=STOP_FLAG, flagLock=FLAG_LOCK)
         serv.run()
         self.Output0.insert(Tkinter.END,"5.) Server has been closed.\n")
         import time
