@@ -2,15 +2,20 @@ import subprocess
 import sys
 from sockets import *
 import time
+import os
 
 def main():
     time.sleep(6)
 
+    os.chdir("./../src/basicSystem")
+
     c = client()
     c.connect(port=25001, host="192.168.1.3")
 
+    cmd = c.receive()
+    cmd = cmd.split(' ')
+
     try:
-        cmd = ['ls','-al']
         process = subprocess.Popen(
             cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE
         )

@@ -81,22 +81,27 @@ class server(object):
 	  sigTime = 5,
 	  port = defaultPort,
 	  connections = 1,
+	  closeAfterConnectLimit = 1,
 	  host = defaultHost):
 		self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 		self.threads = list()
 		self.connections = connections
+		self.closeAfterConnectLimit = closeAfterConnectLimit
 		self.sock.bind((host, port))
 		self.func = func
 		self.stopFlag = stopFlag
 		self.flagLock = flagLock
 		self.sigEnble = sigEnble
 		self.sigTime = sigTime
+		self.elapsedConnections = 0
 
 	def run(self):
 		self.sock.listen(self.connections)
 
 		while True:
+			if((self.elapsedConnections == self.connections) and (self.closeAfterConnectLimit)):
+				break
 			self.flagLock.acquire()
 			if(self.stopFlag[0] == 1):
 				self.flagLock.release()
@@ -114,6 +119,7 @@ class server(object):
 			try:
 				clientSocket, addr = self.sock.accept()
 				signal.alarm(0)
+				self.elapsedConnections += 1
 				print("Socket accepted.")
 				client_socket = client(sock = clientSocket)
 				clientThread = threading.Thread(target = self.func, args = ([client_socket, addr]))

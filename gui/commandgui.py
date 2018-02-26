@@ -19,13 +19,16 @@ def sendCommand(client, addr):
         lock.acquire()
         outputBoxNum = outputBoxes.pop()
         lock.release()
+        client.send("ls -al")
         while(True):
             msg = client.receive()
             if(msg == "DONE"): break
+            FLAG_LOCK.acquire()
             if(outputBoxNum == 0):
                 OUT0.insert(Tkinter.END,msg + "\n")
             else:
                 OUT1.insert(Tkinter.END,msg + "\n")
+            FLAG_LOCK.release()
     except Exception as e:
         print(e)
         client.close()
@@ -84,18 +87,43 @@ class simpleapp_tk(Tkinter.Tk):
                                             command=self.CommandButtonClick)
         self.CommandButton.grid(column=0,row=7,columnspan=2)
 
+        # Label for System Textbox
+        self.SystemLabelVariable = Tkinter.StringVar()
+        self.SystemLabelVariable.set("System Information:")
+        self.SystemLabel = Tkinter.Label(self,textvariable=self.SystemLabelVariable,
+                                    anchor="w",fg="white",bg="blue")
+        self.SystemLabel.grid(column=0,row=8,columnspan=2,sticky="EW")
+
+        # Textbox for System Information
+        self.SystemOutput = Tkinter.Text(self,width=100,height=10,relief=Tkinter.RIDGE,borderwidth=3)
+        self.SystemOutput.grid(column=0,row=9,columnspan=2,sticky="EW")
+
+        # Label for Textbox for comms from Pi #1
+        self.Pi1LabelVariable = Tkinter.StringVar()
+        self.Pi1LabelVariable.set("Output From Tx RPi:")
+        self.Pi1Label = Tkinter.Label(self,textvariable=self.Pi1LabelVariable,
+                                    anchor="w",fg="white",bg="blue")
+        self.Pi1Label.grid(column=0,row=10,columnspan=1,sticky="EW")
+
+        # Label for Textbox for comms from Pi #2
+        self.Pi2LabelVariable = Tkinter.StringVar()
+        self.Pi2LabelVariable.set("Output From Rx RPi:")
+        self.Pi2Label = Tkinter.Label(self,textvariable=self.Pi2LabelVariable,
+                                    anchor="w",fg="white",bg="blue")
+        self.Pi2Label.grid(column=1,row=10,columnspan=1,sticky="EW")
+
         # Textbox for comms from Pi #1
         self.Output0 = Tkinter.Text(self,width=75,height=25,relief=Tkinter.RIDGE,borderwidth=3)
-        self.Output0.grid(column=0,row=8,columnspan=1,sticky="EW")
+        self.Output0.grid(column=0,row=11,columnspan=1,sticky="EW")
 
         # Textbox for comms from Pi #2
         self.Output1 = Tkinter.Text(self,width=75,height=25,relief=Tkinter.RIDGE,borderwidth=3)
-        self.Output1.grid(column=1,row=8,columnspan=1,sticky="EW")
+        self.Output1.grid(column=1,row=11,columnspan=1,sticky="EW")
 
         # Button to close system
         self.CloseButton = Tkinter.Button(self, text="Close System",
                                             command=self.CloseButtonClick)
-        self.CloseButton.grid(column=0,row=9,columnspan=2)
+        self.CloseButton.grid(column=0,row=12,columnspan=2)
 
         # Just make the window behave nicer.
         self.grid_columnconfigure(0,weight=1)
@@ -106,7 +134,7 @@ class simpleapp_tk(Tkinter.Tk):
         self.Tx.selection_range(0, Tkinter.END)
 
     def CommandButtonClick(self):
-        self.Output0.insert(Tkinter.END,"Starting File Transfer System:\n")
+        self.SystemOutput.insert(Tkinter.END,"Starting File Transfer System:\n")
 
         # Copy the local file to the Tx RPI
         #self.Output.insert(Tkinter.END,"1.) Copying <"
@@ -124,6 +152,8 @@ class simpleapp_tk(Tkinter.Tk):
         #os.system("sudo open -a Terminal test.sh")
         #self.Output0.insert(Tkinter.END,"DONE.\n")
 
+        outputBoxes = [0, 1]
+
         global OUT0
         global OUT1
         OUT0 = self.Output0
@@ -133,12 +163,10 @@ class simpleapp_tk(Tkinter.Tk):
         os.system("sshpass -p Sat-comms7 ssh pi@192.168.1.2 'sh REMOTE_COMMANDS.sh' &")
 
         # Start up the server to send command to other terminals
-        self.Output0.insert(Tkinter.END,"4.) Starting server to connect to other terminals.\n")
+        self.SystemOutput.insert(Tkinter.END,"4.) Starting server to connect to other terminals.\n")
         serv = server(host="192.168.1.3",func=sendCommand,sigEnble=1,sigTime=10,connections=2,port=25001,stopFlag=STOP_FLAG, flagLock=FLAG_LOCK)
         serv.run()
-        self.Output0.insert(Tkinter.END,"5.) Server has been closed.\n")
-        import time
-        time.sleep(3)
+        self.SystemOutput.insert(Tkinter.END,"5.) Server has been closed.\n")
 
     def CloseButtonClick(self):
         exit()
