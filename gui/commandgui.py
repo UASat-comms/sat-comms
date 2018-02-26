@@ -20,7 +20,7 @@ def sendCommand(client, addr):
         outputBoxNum = outputBoxes.pop()
         lock.release()
         cmd = ""
-        if(addr == "192.168.1.1"):
+        if(addr[0] == "192.168.1.1"):
             cmd = "sudo ./basicrecv"
         else:
             cmd = "sudo ./basicsend ./../serialTesting/testdata"
