@@ -21,7 +21,11 @@ def main():
                 #sys.stdout.flush()
                 c.send(out)
     except:
+        c.send("DONE")
         c.close()
+
+    c.send("DONE")
+    c.close()
 
 if(__name__ == "__main__"):
     main()

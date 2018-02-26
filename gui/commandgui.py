@@ -3,8 +3,11 @@ import os
 from sockets import *
 import threading
 
-externalCommands = list()
+outputBoxes = [0, 1]
 lock = threading.Lock()
+
+OUT0 = None
+OUT1 = None
 
 # This integer had to be wrapped in an array so that it could be passed by
 # reference to another function/thread.
@@ -13,11 +16,16 @@ FLAG_LOCK = threading.Lock()
 
 def sendCommand(client, addr):
     try:
-        msg = ""
-        while(msg != "DONE"):
-          msg = client.receive()
-          print(msg)
-        client.close()
+        lock.acquire()
+        outputBoxNum = outputBoxes.pop()
+        lock.release()
+        while(True):
+            msg = client.receive()
+            if(msg == "DONE"): break
+            if(outputBoxNum == 0):
+                OUT0.insert(Tkinter.END,msg)
+            else:
+                OUT1.insert(Tkinter.END,msg)
     except Exception as e:
         print(e)
         client.close()
@@ -110,11 +118,13 @@ class simpleapp_tk(Tkinter.Tk):
         #self.Output.insert(Tkinter.END, "DONE.\n")
 
         # Spawn 2 other terminals
-        self.Output0.insert(Tkinter.END,"2.) Spawning additional terminals..")
-        os.system("sudo open -a Terminal test.sh")
-        os.system("sudo open -a Terminal test.sh")
-        self.Output0.insert(Tkinter.END,"DONE.\n")
+        #self.Output0.insert(Tkinter.END,"2.) Spawning additional terminals..")
+        #os.system("sudo open -a Terminal test.sh")
+        #os.system("sudo open -a Terminal test.sh")
+        #self.Output0.insert(Tkinter.END,"DONE.\n")
 
+        OUT0 = self.Output0
+        OUT1 = self.Output1
 
         # Start up the server to send command to other terminals
         self.Output0.insert(Tkinter.END,"4.) Starting server to connect to other terminals.\n")
