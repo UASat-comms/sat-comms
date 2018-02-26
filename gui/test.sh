@@ -1,5 +1,5 @@
-cd ~/sat-comms/gui/
-sleep 2
-sudo python guiclient.py
-sleep 2
+cd ~/PySockets/
+sleep 5
+cat data.dat | sudo python testclient.py
+sleep 1
 exit

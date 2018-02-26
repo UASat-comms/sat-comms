@@ -2,6 +2,7 @@ import socket
 import zlib
 import threading
 import hashlib
+import signal
 
 try:
 	import cpickle as pickle
@@ -72,7 +73,15 @@ class client(object):
 		self.sock.close()
 
 class server(object):
-	def __init__(self, func, stopFlag, flagLock, port = defaultPort, connections = 1, host = defaultHost):
+	def __init__(self,
+	  func,
+	  stopFlag,
+	  flagLock,
+	  sigEnble = 0,
+	  sigTime = 5,
+	  port = defaultPort,
+	  connections = 1,
+	  host = defaultHost):
 		self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 		self.threads = list()
@@ -81,6 +90,8 @@ class server(object):
 		self.func = func
 		self.stopFlag = stopFlag
 		self.flagLock = flagLock
+		self.sigEnble = sigEnble
+		self.sigTime = sigTime
 
 	def run(self):
 		self.sock.listen(self.connections)
@@ -94,11 +105,27 @@ class server(object):
 				break
 			else:
 				self.flagLock.release()
-			clientSocket, addr = self.sock.accept()
-			client_socket = client(sock = clientSocket)
 
-			clientThread = threading.Thread(target = self.func, args = ([client_socket, addr]))
-			clientThread.start()
+			if(self.sigEnble):
+				signal.signal(signal.SIGALRM, self.handler)
+				signal.alarm(self.sigTime)
+			print("Accepting sockets..")
+
+			try:
+				clientSocket, addr = self.sock.accept()
+				signal.alarm(0)
+				print("Socket accepted.")
+				client_socket = client(sock = clientSocket)
+				clientThread = threading.Thread(target = self.func, args = ([client_socket, addr]))
+				clientThread.start()
+			except Exception as e:
+				print(e)
+				break
+
+
+	def handler(self, signum, frame):
+		print("Timeout occured")
+		self.close()
 
 	def close(self):
 		self.sock.close()
