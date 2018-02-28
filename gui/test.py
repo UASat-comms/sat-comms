@@ -7,7 +7,7 @@ import os
 def main():
     time.sleep(3)
 
-    os.chdir("./../src/serialTesting")
+    os.chdir("./../src/basicSystem")
     os.system("make -j 4")
 
     c = client()
