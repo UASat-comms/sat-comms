@@ -22,10 +22,10 @@ def sendCommand(client, addr):
         lock.release()
         cmd = ""
         if(addr[0] == "192.168.1.1"):
-            cmd = "./serialrecvtest 512"
-        else:
             time.sleep(2)
-            cmd = "./serialsendtest testdata"
+            cmd = "sudo ./basicsend ./../serialTesting/testdata"
+        else:
+            cmd = "sudo ./basicrecv"
         client.send(cmd)
         while(True):
             msg = client.receive()
@@ -33,8 +33,10 @@ def sendCommand(client, addr):
             FLAG_LOCK.acquire()
             if(outputBoxNum == 0):
                 OUT0.insert(Tkinter.END,msg + "\n")
+                OUT0.see("end")
             else:
                 OUT1.insert(Tkinter.END,msg + "\n")
+                OUT1.see("end")
             FLAG_LOCK.release()
     except Exception as e:
         print(e)
