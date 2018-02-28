@@ -51,6 +51,8 @@ void transmitData(char *data, int datalen) {
      }
      LOG(DEBUG) << "Serial interface opened successfully.";
 
+     LOG(DEBUG) << "Baud Rate: <" << BAUD_RATE << ">";
+
      LOG(INFO) << "Transmitting data via serial..";
      for(int i = 0; i < datalen; i++) serialPutchar(fd, data[i]);
      LOG(INFO) << "Data transmitted.";
@@ -66,6 +68,9 @@ char *receiveData(int datalen) {
      if(fd < 0) {
           LOG(FATAL) << "Unable to open serial interface.";
      }
+
+     LOG(DEBUG) << "Baud Rate: <" << BAUD_RATE << ">";
+
      LOG(DEBUG) << "Serial interface opened successfully.";
 
      LOG(DEBUG) << "Attempting to reserve memory for file data...";
