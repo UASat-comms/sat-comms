@@ -11,7 +11,8 @@ def main():
     os.system("make -j 4")
 
     c = client()
-    c.connect(port=25001, host="192.168.1.3")
+    # sys.argv[1] = port, sys.argv[2] = hostname
+    c.connect(port=int(sys.argv[1]), host=sys.argv[2])
 
     cmd = c.receive()
     cmd = cmd.split(' ')

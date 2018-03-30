@@ -4,6 +4,28 @@ from sockets import *
 import threading
 import time
 
+# This integer had to be wrapped in an array so that it could be passed by
+# reference to another function/thread.
+STOP_FLAG = [0]
+FLAG_LOCK = threading.Lock()
+
+# The name of the file to be sent through the sat-comms system. This file will
+# be located in the home directory of the Tx RPi.
+fname = ""
+
+SYSTEMBOXFUNC = None
+
+def serverFunc(client, addr):
+    #FLAG_LOCK.acquire()
+    print(addr)
+    #SYSTEMBOXFUNC(addr)
+    identifier = client.receive()
+    client.send("GO")
+    client.close()
+    SYSTEMBOXFUNC(identifier)
+    print(identifier)
+    #FLAG_LOCK.release()
+
 class simpleapp_tk(Tkinter.Tk):
     def __init__(self, parent):
         Tkinter.Tk.__init__(self, parent)
@@ -92,8 +114,24 @@ class simpleapp_tk(Tkinter.Tk):
         self.Tx.focus_set()
         self.Tx.selection_range(0, Tkinter.END)
 
+    # Helper function to easily print messages to the system output textbox.
+    def addToSystemOutput(self, string):
+        self.SystemOutput.insert(Tkinter.END, string)
+        self.SystemOutput.see("end")
+
+    # What happens when you hit the 'GO' button.
     def CommandButtonClick(self):
-        None
+        global SYSTEMBOXFUNC
+        SYSTEMBOXFUNC = self.addToSystemOutput
+
+        self.addToSystemOutput("[Info]: System started.\n")
+
+        self.addToSystemOutput("[Info]: Starting server.\n")
+        # [Critical]: the number of connections MUST be 2 since
+        # we have 1 connection from Rx GUI and one from Tx RPI
+        serv = server(host="192.168.1.3",func=serverFunc,sigEnble=1,sigTime=10,connections=1,port=25000,stopFlag=STOP_FLAG, flagLock=FLAG_LOCK)
+        serv.run()
+        self.addToSystemOutput("[Info]: Server completed running.\n")
 
     def CloseButtonClick(self):
         exit()
