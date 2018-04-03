@@ -3,6 +3,16 @@ import os
 from sockets import *
 import threading
 import time
+import constants
+
+# This integer had to be wrapped in an array so that it could be passed by
+# reference to another function/thread.
+STOP_FLAG = [0]
+FLAG_LOCK = threading.Lock()
+
+# This is the function the main thread will launch to connect to the Rx RPi.
+def serverFunc(client, addr):
+    None
 
 class simpleapp_tk(Tkinter.Tk):
     def __init__(self, parent):
@@ -39,15 +49,10 @@ class simpleapp_tk(Tkinter.Tk):
         self.RxPassword = Tkinter.Entry(self,textvariable=self.RxPasswordVariable)
         self.RxPassword.grid(column=1,row=3,columnspan=1,sticky="EW")
 
-        # Button to initialize System
-        self.CommandButton = Tkinter.Button(self,text="Transfer File & Start System",
-                                            command=self.CommandButtonClick)
-        self.CommandButton.grid(column=0,row=7,columnspan=1)
-
         # Button to connect to server GUI.
         self.ConnectButton = Tkinter.Button(self,text="Connect to Tx GUI",
                                             command=self.ConnectButtonClick)
-        self.ConnectButton.grid(column=1,row=7,columnspan=1)
+        self.ConnectButton.grid(column=0,row=7,columnspan=2)
 
         # Label for System Textbox
         self.SystemLabelVariable = Tkinter.StringVar()
@@ -96,22 +101,38 @@ class simpleapp_tk(Tkinter.Tk):
 
         # Notify the Tx GUI that the connection it has just received is from the
         # Rx GUI, not a RPi.
-        c.send("RxGUI")
+        c.send(constants.RxGUIIdentifier)
 
         # Get the response of the Tx GUI. If 'GO' is the reply, then start the
         # RX RPi by using 'sshpass' utility.
         reply = c.receive()
-        if(reply == "GO"):
+        if(reply == constants.RxGUIGO):
             self.addToSystemOutput("[Info]: Tx GUI successfully recognized Rx GUI.\n")
         else:
             self.addToSystemOutput("[Err]: Tx GUI did not recognize the Rx GUI!\n")
+            c.close()
+            return
+
+        # Now that a link has been successfully established to the Tx GUI, we need
+        # to launch the Rx program on the RPi by launching the REMOTE_COMMANDS.sh
+        # file in the '~' directory of the Rx RPi. The 'sshpass' utility is used
+        # to do this. Format the system call string for the 'sshpass' utility.
+        cmdString = "sshpass -p "+self.RxPassword.get()+" ssh pi@"+self.Rx.get()+" 'sh TEST.sh BACON' &"
+        rxStartResult = os.system(cmdString)
+        print(rxStartResult)
+
+        # Check to see if the sshpass utility was successful in making the remote call.
+        if(rxStartResult > 0):
+            self.addToSystemOutput("[Err]: sshpass failed to start the 'REMOTE_COMMANDS.sh' shell script!\n")
+            c.close()
+            return
+
+        # The remote RPi program will pause for a short period to allow this program
+        # to get a server running to receive its connection; start the server and listen.
+        s = server(host="192.168.1.3",func=serverFunc,sigEnble=1,sigTime=10,connections=1,port=25500,flagLock=FLAG_LOCK,stopFlag=STOP_FLAG)
 
         # Close the connection to the Tx GUI.
         c.close()
-
-    def CommandButtonClick(self):
-        self.SystemOutput.insert(Tkinter.END,"[Info]: Starting receiveing system.\n")
-        self.SystemOutput.see("end")
 
     def CloseButtonClick(self):
         exit()
