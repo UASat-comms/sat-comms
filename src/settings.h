@@ -28,16 +28,21 @@
 #define RF_IRQ_PIN RPI_V2_GPIO_P1_22 // "Interrupt Request" pin.
 #define RF_RST_PIN RPI_V2_GPIO_P1_15 // "Reset" pin.
 
-// -------------------- RF System States --------------------------------------
-enum SystemStates {
-     hello,
-     helloBack,
-     send,
-     received,
-     badTx,
-     retryTx
-};
-// ============================================================================
+// For motor driver boards
+#define IN1_UD 21
+#define IN1_UD 21
+#define IN2_UD 22
+#define IN3_UD 23
+#define IN4_UD 25
+#define IN1_LR 26
+#define IN2_LR 27
+#define IN3_LR 28
+#define IN4_LR 29
+
+// Laser and UV enable pins
+// [TODO]: Choose pins
+#define LASER_ENABLE -1
+#define UV_ENABLE    -1
 
 // ============================================================================
 // ---------------------------- Compression Settings --------------------------
