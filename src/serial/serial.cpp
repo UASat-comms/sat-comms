@@ -62,7 +62,14 @@ void transmitData(char *data, int datalen) {
      LOG(DEBUG) << "Resources freed.";
 }
 
+void noInputHandler(int sig) {
+    LOG(FATAL) << "Lost connection from serial Tx side!";
+}
+
 char *receiveData(int datalen) {
+     LOG(DEBUG) << "Setting up serial timeout handler.";
+     signal(SIGALRM, noInputHandler); 
+
      LOG(DEBUG) << "Attempting to open serial interface...";
      int fd = serialOpen(INTERFACE, BAUD_RATE);
      if(fd < 0) {
@@ -84,8 +91,10 @@ char *receiveData(int datalen) {
      time_t start, end;
      LOG(INFO) << "Receiving file data...";
      start = time(0);
-     for(int i = 0; i < datalen; i++)
+     for(int i = 0; i < datalen; i++) {
+          alarm(1);
           data[i] = serialGetchar(fd);
+     }
      end = time(0);
      LOG(INFO) << "File data received.";
 

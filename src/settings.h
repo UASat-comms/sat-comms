@@ -40,14 +40,7 @@
 #define IN3_LR 28
 #define IN4_LR 29
 
-const char *connectionByteString = {
-    0b00110011,
-    0b11001100,
-    0b10101010,
-    0b01010101,
-    0b11110000,
-    0b01111111
-};
+const char connectionByte = 0b01010011;
 
 // -------------------- Enable Pin Allocations ------------------------------------
 // Laser and UV enable pins
