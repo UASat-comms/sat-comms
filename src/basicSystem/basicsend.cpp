@@ -55,7 +55,11 @@ void setup() {
 	wiringPiSetup();
 	// Configure bcm2835 for RF comms.
 	setupRF();
-     LOG(INFO) << "Setup complete.";
+    pinMode(LASER_ENABLE, OUTPUT);
+    pinMode(UV_ENABLE, OUTPUT);
+    digitalWrite(LASER_ENABLE, HIGH);
+    digitalWrite(UV_ENABLE, LOW);
+    LOG(INFO) << "Setup complete.";
 }
 
 void setdown() {

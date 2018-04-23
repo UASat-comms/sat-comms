@@ -45,8 +45,11 @@ const char connectionByte = 0b01010011;
 // -------------------- Enable Pin Allocations ------------------------------------
 // Laser and UV enable pins
 // [TODO]: Choose pins
-#define LASER_ENABLE -1
-#define UV_ENABLE    -1
+#define LASER_ENABLE 0
+#define UV_ENABLE    2
+
+// -------------------- Multiplexer Pin Allocations ---------------------------
+#define LASER_UV_SELECT 25
 
 // ============================================================================
 // ---------------------------- Compression Settings --------------------------
