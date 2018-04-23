@@ -62,13 +62,53 @@ void transmitData(char *data, int datalen) {
      LOG(DEBUG) << "Resources freed.";
 }
 
+char *receiveData(int datalen) {
+     LOG(DEBUG) << "Attempting to open serial interface...";
+     int fd = serialOpen(INTERFACE, BAUD_RATE);
+     if(fd < 0) {
+          LOG(FATAL) << "Unable to open serial interface.";
+     }
+
+     LOG(DEBUG) << "Baud Rate: <" << BAUD_RATE << ">";
+
+     LOG(DEBUG) << "Serial interface opened successfully.";
+
+     LOG(DEBUG) << "Attempting to reserve memory for file data...";
+     char *data = (char *) malloc(sizeof(char) * (datalen + 1));
+     if(data == NULL) {
+          LOG(FATAL) << "Unable to reserve memory for file data.";
+     }
+     LOG(DEBUG) << "Memory successfully reserved for file data.";
+     data[datalen] = '\0';
+
+     time_t start, end;
+     LOG(INFO) << "Receiving file data...";
+     start = time(0);
+     for(int i = 0; i < datalen; i++) {
+          data[i] = serialGetchar(fd);
+     }
+     end = time(0);
+     LOG(INFO) << "File data received.";
+
+     double avg = ((double) end - (double) start);
+     LOG(DEBUG) << "Time in seconds taken to receive: <" << avg << ">";
+     LOG(DEBUG) << "Resulting BYTE/s: <" << (datalen / avg) << ">";
+     LOG(INFO) << "Resulting bit/s: <" << (datalen * 8 / avg) << ">";
+
+     LOG(DEBUG) << "Freeing resources...";
+     serialClose(fd);
+     LOG(DEBUG) << "Resources freed.";
+
+     return data;
+}
+
 void noInputHandler(int sig) {
     LOG(FATAL) << "Lost connection from serial Tx side!";
 }
 
-char *receiveData(int datalen) {
+char *receiveData(int datalen, int timeout) {
      LOG(DEBUG) << "Setting up serial timeout handler.";
-     signal(SIGALRM, noInputHandler); 
+     signal(SIGALRM, noInputHandler);
 
      LOG(DEBUG) << "Attempting to open serial interface...";
      int fd = serialOpen(INTERFACE, BAUD_RATE);
@@ -92,7 +132,7 @@ char *receiveData(int datalen) {
      LOG(INFO) << "Receiving file data...";
      start = time(0);
      for(int i = 0; i < datalen; i++) {
-          alarm(1);
+          alarm(timeout);
           data[i] = serialGetchar(fd);
      }
      end = time(0);

@@ -16,6 +16,7 @@
 int getFileSize(FILE *fp);
 void transmitData(char *data, int datalen);
 char *receiveData(int datalen);
+char *receiveData(int datalen, int timeout);
 char *intToString(int input);
 
 #endif
