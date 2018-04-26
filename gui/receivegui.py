@@ -15,7 +15,7 @@ OUT = None
 # This is the function the main thread will launch to connect to the Rx RPi.
 def serverFunc(client, addr):
 	try:
-		cmd = "sudo ./recv"
+		cmd = "sudo ./basicrecv"
 		client.send(cmd)
 
 		while(True):

@@ -19,7 +19,7 @@ OUT = None
 
 def RPiServerFunc(client, addr):
 	try:
-		cmd = "sudo ./send"
+		cmd = "sudo ./basicsend ./../serialTesting/testdata"
 		client.send(cmd)
 
 		while(True):
