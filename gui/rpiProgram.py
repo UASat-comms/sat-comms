@@ -7,14 +7,26 @@ import os
 def main():
     time.sleep(3)
 
-    os.chdir("./../src/basicSystem")
-    os.system("make -j 4")
+    #[TODO]: Change this back to RPi from Mac!
+    #os.chdir("./../src/basicSystem")
+    #os.system("make -j 4")
+    os.chdir("./sat-comms/src/rfTesting")
+    #os.system("make -j 4")
+
+    #print(sys.argv)
+    #print("Sys1: " + sys.argv[1])
+    #print("Sys2: " + sys.argv[2])
 
     c = client()
     # sys.argv[1] = port, sys.argv[2] = hostname
-    c.connect(port=int(sys.argv[1]), host=sys.argv[2])
+    port = int(sys.argv[1])
+    host = sys.argv[2]
+    c.connect(port=port, host=host)
+
+    #print("Connected!")
 
     cmd = c.receive()
+    print("Received command: " + cmd)
     cmd = cmd.split(' ')
 
     try:
@@ -31,7 +43,7 @@ def main():
                 if(out != '\n'):
                     msg += out
                 elif(out == '\n'):
-                    print(msg)
+                    #print(msg)
                     c.send(msg)
                     msg = ""
 

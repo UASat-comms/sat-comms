@@ -131,6 +131,7 @@ class server(object):
 
 	def handler(self, signum, frame):
 		print("Timeout occured")
+		self.flagLock.release()
 		self.close()
 
 	def close(self):

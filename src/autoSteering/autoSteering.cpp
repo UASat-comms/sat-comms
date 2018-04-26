@@ -82,7 +82,7 @@ int findRxCube(unsigned boxSize) {
 
      // Let the Rx side know the system failed.
      sendRF("SYSTEM_FAILED!");
-     
+
      LOG(FATAL) << "Rx cube did not see Tx transmission on 1D sweep!";
      return 0;
 }
@@ -119,8 +119,13 @@ void findTxCube() {
           char *byte = receiveData(1);
 
           char *reply = recvRF();
-          if(strcmp(reply, "SEE_ME?") != 0) {
+
+          if(strcmp(reply, "SEE_ME?") != 0 && strcmp(reply, "SYSTEM_FAILED") != 0) {
                LOG(FATAL) << "Unexpected RF question from Tx side!";
+          }
+
+          if(strcmp(reply, "SYSTEM_FAILED") == 0) {
+               LOG(FATAL) << "Tx side said system failed!";
           }
 
           if(byte[0] == connectionByte) {

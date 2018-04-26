@@ -15,6 +15,28 @@ FLAG_LOCK = threading.Lock()
 fname = ""
 
 SYSTEMBOXFUNC = None
+OUT = None
+
+def RPiServerFunc(client, addr):
+	try:
+		cmd = "sudo ./send"
+		client.send(cmd)
+
+		while(True):
+			msg = client.receive()
+			print("Received MSG: " + msg)
+			FLAG_LOCK.acquire()
+			if(msg == "DONE"):
+				break
+			else:
+				OUT.insert(Tkinter.END, msg + "\n")
+				OUT.see("end")
+			FLAG_LOCK.release()
+
+	except Exception as e:
+		print(e)
+		client.close()
+	client.close()
 
 def serverFunc(client, addr):
 	# Get the identifier message from the connecting machine.
@@ -23,10 +45,35 @@ def serverFunc(client, addr):
 	# Identify the connecting machine and respond appropriately.
 	if(identifier == constants.RxGUIIdentifier):
 		SYSTEMBOXFUNC("[Info]: Received connection from Rx GUI.\n")
+
+		# Tell the Rx Side to start and get things going.
 		client.send(constants.RxGUIGO)
-	elif(identifier == constants.RPiIdentifier):
-		SYSTEMBOXFUNC("[Info]: Received connection from Tx RPi.\n")
-		client.send(constants.RemRPiGo)
+
+		# When the Rx side has started listening on the Rx RPi, we can
+		# tell the Tx RPi to go.
+		reply = client.receive()
+		if(reply != constants.TxGUIGO):
+			SYSTEMBOXFUNC("[Err]: Did not receive 'Tx GO' reply. Received: " + reply)
+
+		SYSTEMBOXFUNC("Starting Tx RPi now.")
+
+		# Tell the Remote Tx RPi to start
+		cmdString = "sshpass -p Sat-comms7 ssh pi@192.168.1.1 'sh TEST.sh 26000 192.168.1.3' &"
+		txStartResult = os.system(cmdString)
+
+		# Check to see if the sshpass utility was successful in making the rmeote call.
+		if(txStartResult > 0):
+			SYSTEMBOXFUNC("[Err]: sshpass failed to start the 'REMOTE_COMMANDS.sh' shell script!\n")
+			client.close()
+			return
+
+		# The remote RPi program will pause for a short period to allow this program
+		# to get a server running to receive its connection; start the server and listen.
+		serv = server(host="192.168.1.3",func=RPiServerFunc,sigEnble=0,sigTime=10,port=26000,flagLock=FLAG_LOCK,stopFlag=STOP_FLAG)
+		serv.run()
+
+		SYSTEMBOXFUNC("RPi Server Func running!")
+
 	else:
 		SYSTEMBOXFUNC("[Err]: Received connection from uknown machine!\n")
 		client.close()
@@ -130,6 +177,9 @@ class simpleapp_tk(Tkinter.Tk):
 	def CommandButtonClick(self):
 		global SYSTEMBOXFUNC
 		SYSTEMBOXFUNC = self.addToSystemOutput
+
+		global OUT
+		OUT = self.Output0
 
 		self.addToSystemOutput("[Info]: System started.\n")
 
