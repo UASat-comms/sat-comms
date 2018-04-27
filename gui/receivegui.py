@@ -144,7 +144,7 @@ class simpleapp_tk(Tkinter.Tk):
 
 		#[TODO]: put the command string pack to RPi from Mac Testing
 		#cmdString = "sshpass -p Secure5 ssh matthewmorgan@192.168.1.3 'sh TEST.sh 25500 192.168.1.3' &"
-		cmdString = "sshpass -p "+self.RxPassword.get()+" ssh pi@"+self.Rx.get()+" 'sh TEST.sh 25500 192.168.1.3' &"
+		cmdString = "sshpass -p "+self.RxPassword.get()+" ssh pi@"+self.Rx.get()+" 'sh TEST.sh 25500 192.168.1.4' &"
 		rxStartResult = os.system(cmdString)
 		print(rxStartResult)
 
@@ -156,7 +156,7 @@ class simpleapp_tk(Tkinter.Tk):
 
 		# The remote RPi program will pause for a short period to allow this program
 		# to get a server running to receive its connection; start the server and listen.
-		s = server(host="192.168.1.3",func=serverFunc,sigEnble=1,sigTime=10,connections=1,port=25500,flagLock=FLAG_LOCK,stopFlag=STOP_FLAG)
+		s = server(host="192.168.1.4",func=serverFunc,sigEnble=1,sigTime=10,connections=1,port=25500,flagLock=FLAG_LOCK,stopFlag=STOP_FLAG)
 		s.run()
 
 		# At this point, the Rx RPi is connected, so we need to tell the Tx RPi
