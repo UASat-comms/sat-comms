@@ -15,7 +15,7 @@ OUT = None
 # This is the function the main thread will launch to connect to the Rx RPi.
 def serverFunc(client, addr):
 	try:
-		cmd = "sudo ./basicrecv"
+		cmd = "sudo ./recv"
 		client.send(cmd)
 
 		while(True):
@@ -144,7 +144,7 @@ class simpleapp_tk(Tkinter.Tk):
 
 		#[TODO]: put the command string pack to RPi from Mac Testing
 		#cmdString = "sshpass -p Secure5 ssh matthewmorgan@192.168.1.3 'sh TEST.sh 25500 192.168.1.3' &"
-		cmdString = "sshpass -p "+self.RxPassword.get()+" ssh pi@"+self.Rx.get()+" 'sh TEST.sh 25500 192.168.1.4' &"
+		cmdString = "sshpass -p Sat-comms7 ssh pi@192.168.1.1 'sh TEST.sh 25500 192.168.1.4' &"
 		rxStartResult = os.system(cmdString)
 		print(rxStartResult)
 

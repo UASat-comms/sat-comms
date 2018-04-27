@@ -19,7 +19,7 @@ OUT = None
 
 def RPiServerFunc(client, addr):
 	try:
-		cmd = "sudo ./basicsend ./../serialTesting/testdata"
+		cmd = "sudo ./send"
 		client.send(cmd)
 
 		while(True):
@@ -58,7 +58,7 @@ def serverFunc(client, addr):
 		SYSTEMBOXFUNC("Starting Tx RPi now.")
 
 		# Tell the Remote Tx RPi to start
-		cmdString = "sshpass -p Sat-comms7 ssh pi@192.168.1.1 'sh TEST.sh 26000 192.168.1.3' &"
+		cmdString = "sshpass -p Sat-comms7 ssh pi@192.168.1.2 'sh TEST.sh 26000 192.168.1.3' &"
 		txStartResult = os.system(cmdString)
 
 		# Check to see if the sshpass utility was successful in making the rmeote call.

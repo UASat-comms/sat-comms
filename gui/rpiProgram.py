@@ -10,7 +10,7 @@ def main():
     #[TODO]: Change this back to RPi from Mac!
     #os.chdir("./../src/basicSystem")
     #os.system("make -j 4")
-    os.chdir("./sat-comms/src/basicSystem")
+    os.chdir("./sat-comms/src/rfTesting")
     #os.system("make -j 4")
 
     #print(sys.argv)
