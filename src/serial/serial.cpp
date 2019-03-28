@@ -86,6 +86,7 @@ char *receiveData(int datalen) {
      start = time(0);
      for(int i = 0; i < datalen; i++) {
           data[i] = serialGetchar(fd);
+          LOG(INFO) << "Received character" << (int) data[i];
      }
      end = time(0);
      LOG(INFO) << "File data received.";

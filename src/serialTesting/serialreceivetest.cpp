@@ -17,6 +17,9 @@ int main(int argc, const char **argv) {
      el::Loggers::reconfigureAllLoggers(conf);
      wiringPiSetup();
 
+     pinMode(LASER_UV_SELECT, OUTPUT);
+     digitalWrite(LASER_UV_SELECT, LOW);
+
      if(argc < 2) {
           LOG(FATAL) << "Must enter file size as command-line argument!";
      }

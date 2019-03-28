@@ -6,7 +6,7 @@
 // -------------------- Serial Interface Settings -----------------------------
 #define INTERFACE             "/dev/serial0"      // Should be tyAMA0
 #define IDENTIFIER_LENGTH     32                  // Size identifier.
-#define BAUD_RATE             1000000             // 1MBaud ~ 1MHz
+#define BAUD_RATE             460800            // 1MBaud ~ 1MHz
 #define TRY_LIMIT             5                   // No. of allowed attempts.
 
 // ============================================================================
@@ -61,7 +61,7 @@ const char connectionByte = 0b01010011;
 
 // ============================================================================
 // -------------------------- Reed-Solomon Settings ---------------------------
-#define FEC_ENABLED           0               // 0 = not enabled, 1 = enable
+#define FEC_ENABLED           1               // 0 = not enabled, 1 = enable
 #define FEC_FILE_NAME         "TEMP.schifa"   // Temporary file name to house encoded data
 #define FEC_FILE_DECODED_NAME "TEMP.decoded"  // Temporary file name to hosue decoded data (after FEC)
 
